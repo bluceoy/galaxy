@@ -94,3 +94,5 @@ else
     # args are properly quoted so use eval
     eval $run_server $server_args
 fi
+
+echo "Hello World!"
