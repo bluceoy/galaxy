@@ -1,0 +1,162 @@
+"""
+API operations on Cloud-based storages, such as Amazon Simple Storage Service (S3).
+"""
+
+import os
+import logging
+
+from galaxy import exceptions
+from galaxy.exceptions import ActionInputError
+from galaxy.managers import (
+    cloud,
+    datasets
+)
+from galaxy.web import expose_api
+from galaxy.webapps.base.controller import BaseAPIController
+
+log = logging.getLogger(__name__)
+
+
+class FileUtilController(BaseAPIController):
+    """
+    RESTfull controller for interaction with Amazon S3.
+    """
+
+    def __init__(self, app):
+        super(FileUtilController, self).__init__(app)
+
+    def make_sure_root(self, trans):
+      if trans.user:
+        file_path = trans.app.config.ftp_upload_dir
+        root_dir = file_path + "/" + trans.user.email 
+        if not os.path.exists(root_dir):
+          log.info("create root_dir = %s", trans.user.email)
+          os.makedirs(root_dir)
+
+    @expose_api
+    def get_dir(self, trans, **kwargs):
+        """
+        * GET /api/file/getdir
+        :param trans:
+        :param kwargs:
+        :return: current dir for user.
+        """
+        work_dir = trans.galaxy_session.work_dir
+        if work_dir == "" or work_dir is None:
+          work_dir = "/"
+        return {"current_dir": work_dir}
+
+    @expose_api
+    def set_dir(self, trans, payload, **kwargs):
+        """
+        * POST /api/file/setdir
+        :type  trans: galaxy.web.framework.webapp.GalaxyWebTransaction
+        :param trans: Galaxy web transaction
+        :param kwargs:
+
+        :rtype:  dictionary
+        :return: a dictionary containing a `summary` view of the datasets copied from the given cloud-based storage.
+        """
+        if not isinstance(payload, dict):
+            raise ActionInputError('Invalid payload data type. The payload is expected to be a dictionary, '
+                                   'but received data of type `{}`.'.format(str(type(payload))))
+
+        missing_arguments = []
+        work_dir = payload.get("path", None)
+        if work_dir is None:
+            missing_arguments.append("path")
+
+        if len(missing_arguments) > 0:
+            raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
+
+        trans.galaxy_session.work_dir = work_dir
+        trans.sa_session.add(trans.galaxy_session)
+        trans.sa_session.flush()
+        return {'work_dir': work_dir}
+
+    @expose_api
+    def list_dir(self, trans, **kwargs):
+        """
+        * GET /api/file/list
+        :type  trans: galaxy.web.framework.webapp.GalaxyWebTransaction
+        :param trans: Galaxy web transaction
+
+        :param kwargs:
+
+        :rtype:     dictionary
+        :return:    Information about the (un)successfully submitted dataset send jobs,
+                    containing the following keys:
+                        *   `bucket_name`:                  The name of bucket to which the listed datasets are queued
+                                                            to be sent.
+                        *   `sent_dataset_labels`:          A list of JSON objects with the following key-value pair:
+                            **  `object`:                   The name of object is queued to be created.
+                            **  `job_id`:                   The id of the queued send job.
+
+                        *   `failed_dataset_labels`:        A list of JSON objects with the following key-value pair
+                                                            representing the datasets Galaxy failed to create
+                                                            (and queue) send job for:
+                            **  `object`:                   The name of object is queued to be created.
+                            **  `error`:                    A descriptive error message.
+
+        """
+        if not trans.user:
+          log.info("please login first")
+          raise ActionInputError("please login first")
+
+        self.make_sure_root(trans)
+
+        work_dir = trans.galaxy_session.work_dir
+        if work_dir == "" or work_dir is None:
+          work_dir = "/"
+        file_path = trans.app.config.ftp_upload_dir
+        dir = file_path + "/" + trans.user.email + work_dir
+        log.info("ftp_dir = %s, work_dir = %s, dir = %s", file_path, work_dir, dir)
+        files = os.listdir(dir)
+        items = []
+        for file in files:
+          if file == "." or file == "..":
+            continue
+          item = {
+            "file": file
+          }
+          file_path = dir + "/" + file
+          ctime = int(os.path.getctime(file_path))
+          item["ctime"] = ctime
+          if os.path.isdir(file_path):
+            item["type"] = "dir"
+          else:
+            item["type"] = "file"
+            fsize = os.path.getsize(file_path)
+            item["size"] = fsize
+          items.append(item)
+        return {'files': items}
+
+    @expose_api
+    def create_dir(self, trans, payload, **kwargs):
+        """
+        * POST /api/file/addfolder
+        :type  trans: galaxy.web.framework.webapp.GalaxyWebTransaction
+        :param trans: Galaxy web transaction
+        :param kwargs:
+
+        :rtype:  dictionary
+        :return: a dictionary containing a `summary` view of the datasets copied from the given cloud-based storage.
+        """
+        if not isinstance(payload, dict):
+            raise ActionInputError('Invalid payload data type. The payload is expected to be a dictionary, '
+                                   'but received data of type `{}`.'.format(str(type(payload))))
+
+        missing_arguments = []
+        work_dir = payload.get("path", None)
+        if work_dir is None:
+            missing_arguments.append("path")
+
+        if len(missing_arguments) > 0:
+            raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
+
+        file_path = trans.app.config.ftp_upload_dir
+        dir = file_path + "/" + trans.user.email + work_dir
+        if not os.path.exists(dir):
+          os.makedirs(dir)
+        
+        return {'work_dir': work_dir}

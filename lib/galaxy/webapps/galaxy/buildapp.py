@@ -130,6 +130,8 @@ def app_factory(global_conf, load_app_kwds={}, **kwargs):
     webapp.add_client_route('/tours/{tour_id}')
     webapp.add_client_route('/user')
     webapp.add_client_route('/user/{form_id}')
+    webapp.add_client_route('/args/index')
+    webapp.add_client_route('/args/about')
     webapp.add_client_route('/visualizations')
     webapp.add_client_route('/visualizations/edit')
     webapp.add_client_route('/visualizations/sharing')
@@ -354,6 +356,11 @@ def populate_api_routes(webapp, app):
     # =======================
     # ====== TOOLS API ======
     # =======================
+
+    webapp.mapper.connect('/api/file/list', action='list_dir', controller='fileutil', conditions=dict(method=["GET"]))
+    webapp.mapper.connect('/api/file/getdir', action='get_dir', controller='fileutil', conditions=dict(method=["GET"]))
+    webapp.mapper.connect('/api/file/setdir', action='set_dir', controller='fileutil', conditions=dict(method=["POST"]))
+    webapp.mapper.connect('/api/file/addfolder', action='create_dir', controller='fileutil', conditions=dict(method=["POST"]))
 
     webapp.mapper.connect('/api/tools/fetch', action='fetch', controller='tools', conditions=dict(method=["POST"]))
     webapp.mapper.connect('/api/tools/all_requirements', action='all_requirements', controller="tools")
