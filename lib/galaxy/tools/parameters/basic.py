@@ -534,7 +534,8 @@ class FileToolParameter(ToolParameter):
                 session_id = value["session_id"]
                 upload_store = trans.app.config.new_file_path
                 if re.match(r'^[\w-]+$', session_id) is None:
-                    raise ValueError("Invald session id format.")
+                    #raise ValueError("Invald session id format.")
+                    pass
                 local_filename = os.path.abspath(os.path.join(upload_store, session_id))
             else:
                 # handle nginx upload

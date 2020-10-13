@@ -27,7 +27,7 @@ class FileUtilController(BaseAPIController):
 
     def make_sure_root(self, trans):
       if trans.user:
-        file_path = trans.app.config.ftp_upload_dir
+        file_path = trans.app.config.new_file_path
         root_dir = file_path + "/" + trans.user.email 
         if not os.path.exists(root_dir):
           log.info("create root_dir = %s", trans.user.email)
@@ -103,12 +103,15 @@ class FileUtilController(BaseAPIController):
           log.info("please login first")
           raise ActionInputError("please login first")
 
+        def sort_func(item):
+          return item["type"]
+
         self.make_sure_root(trans)
 
         work_dir = trans.galaxy_session.work_dir
         if work_dir == "" or work_dir is None:
           work_dir = "/"
-        file_path = trans.app.config.ftp_upload_dir
+        file_path = trans.app.config.new_file_path
         dir = file_path + "/" + trans.user.email + work_dir
         log.info("ftp_dir = %s, work_dir = %s, dir = %s", file_path, work_dir, dir)
         files = os.listdir(dir)
@@ -129,6 +132,7 @@ class FileUtilController(BaseAPIController):
             fsize = os.path.getsize(file_path)
             item["size"] = fsize
           items.append(item)
+        items.sort(key=sort_func)
         return {'files': items}
 
     @expose_api
@@ -154,7 +158,7 @@ class FileUtilController(BaseAPIController):
         if len(missing_arguments) > 0:
             raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
 
-        file_path = trans.app.config.ftp_upload_dir
+        file_path = trans.app.config.new_file_path
         dir = file_path + "/" + trans.user.email + work_dir
         if not os.path.exists(dir):
           os.makedirs(dir)

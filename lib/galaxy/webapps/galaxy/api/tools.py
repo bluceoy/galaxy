@@ -496,6 +496,11 @@ class ToolsController(BaseAPIController, UsesVisualizationMixin):
 
         # Set up inputs.
         inputs = payload.get('inputs', {})
+        dir = payload.get('dir', '/')
+        if trans.user:
+            prefix_dir = trans.user.email + dir
+        else:
+            prefix_dir = 'tmp' + dir
 
         # Find files coming in as multipart file data and add to inputs.
         for k, v in payload.items():
@@ -509,6 +514,15 @@ class ToolsController(BaseAPIController, UsesVisualizationMixin):
         # TODO: handle dbkeys
         params = util.Params(inputs, sanitize=False)
         incoming = params.__dict__
+        log.info("incoming = %s", incoming)
+
+        key = 'files_0|file_data'
+        if key in incoming:
+            v = incoming[key]
+            session_id = prefix_dir + '/' + v['session_id']
+            log.info("session_id = %s", session_id)
+            v['session_id'] = session_id
+            incoming[key] = v
 
         # use_cached_job can be passed in via the top-level payload or among the tool inputs.
         # I think it should be a top-level parameter, but because the selector is implemented

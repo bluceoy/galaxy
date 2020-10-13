@@ -1500,6 +1500,7 @@ class Tool(Dictifiable):
         # Fixed set of input parameters may correspond to any number of jobs.
         # Expand these out to individual parameters for given jobs (tool executions).
         expanded_incomings, collection_info = expand_meta_parameters(trans, self, incoming)
+        log.info("expanded_incomings = %s", expanded_incomings)
 
         # Remapping a single job to many jobs doesn't make sense, so disable
         # remap if multi-runs of tools are being used.
@@ -1546,6 +1547,7 @@ class Tool(Dictifiable):
         to the form or execute the tool (only if 'execute' was clicked and
         there were no errors).
         """
+        log.info('handle input, incoming = %s', incoming)
         request_context = WorkRequestContext(app=trans.app, user=trans.user, history=history or trans.history)
         all_params, all_errors, rerun_remap_job_id, collection_info = self.expand_incoming(trans=trans, incoming=incoming, request_context=request_context)
         # If there were errors, we stay on the same page and display them

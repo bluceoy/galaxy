@@ -29,12 +29,23 @@ class UploadsAPIController(BaseAPIController):
         session_start = payload.get("session_start")
         session_chunk = payload.get("session_chunk")
         if re.match(r'^[\w-]+$', session_id) is None:
-            raise exceptions.MessageException("Requires a session id.")
+            #raise exceptions.MessageException("Requires a session id.")
+            pass
         if session_start is None:
             raise exceptions.MessageException("Requires a session start.")
         if not hasattr(session_chunk, "file"):
             raise exceptions.MessageException("Requires a session chunk.")
-        target_file = os.path.join(trans.app.config.new_file_path, session_id)
+        file_path = trans.app.config.new_file_path
+        if trans.user:
+            current_dir = trans.galaxy_session.work_dir
+            if not current_dir:
+                current_dir = "/"
+            root_dir = file_path + "/" + trans.user.email + current_dir
+        else:
+            root_dir = file_path + "/" + "tmp"
+        log.info("root_dir = %s", root_dir)
+        #target_file = os.path.join(trans.app.config.new_file_path, session_id)
+        target_file = os.path.join(root_dir, session_id)
         target_size = 0
         if os.path.exists(target_file):
             target_size = os.path.getsize(target_file)
