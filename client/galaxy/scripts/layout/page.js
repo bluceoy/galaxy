@@ -22,7 +22,7 @@ const View = Backbone.View.extend({
             show_inactivity_warning: false,
             inactivity_box_content: "",
             hide_panels: false,
-            hide_masthead: false,
+            hide_masthead: window.location.pathname.startsWith('/args/'),
         });
 
         // attach global objects, build mastheads
@@ -34,6 +34,7 @@ const View = Backbone.View.extend({
 
         // display helper
         Galaxy.display = this.display = (view) => {
+            console.log('display')
             if (view.title) {
                 Utils.setWindowTitle(view.title);
                 view.allow_title_display = false;
@@ -72,6 +73,7 @@ const View = Backbone.View.extend({
             _.each(this._panelids, (panel_id) => {
                 const panel_class_name = panel_id.charAt(0).toUpperCase() + panel_id.slice(1);
                 const panel_class = options[panel_class_name];
+                console.log(options)
                 if (panel_class) {
                     const panel_instance = new panel_class(self, options);
                     const panel_el = self.$(`#${panel_id}`);

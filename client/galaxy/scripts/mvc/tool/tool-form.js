@@ -17,6 +17,7 @@ import ToolRecommendation from "components/ToolRecommendation";
 
 const View = Backbone.View.extend({
     initialize: function (options) {
+        console.log(options)
         const Galaxy = getGalaxyInstance();
         this.modal = Galaxy.modal || new Modal.View();
         this.form = new ToolFormBase(

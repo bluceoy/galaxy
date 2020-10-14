@@ -105,6 +105,7 @@ export default {
             listExtensions: [],
             genomesSet: false,
             extensionsSet: false,
+            dir: ''
         };
     },
     created: function () {
@@ -141,7 +142,10 @@ export default {
         },
     },
     methods: {
-        show() {
+        show(dir = '') {
+            if (dir) {
+                this.dir = dir
+            }
             this.modalShow = true;
             this.$nextTick(this.tryMountingTabs);
         },
@@ -178,6 +182,7 @@ export default {
                     tool_id: "upload1",
                     history_id: history_id || this.currentHistory(),
                     inputs: {},
+                    dir: this.dir // 支持指定目录上传
                 },
                 files: [],
                 error_message: null,

@@ -44,6 +44,8 @@ import Citations from "components/Citations.vue";
 import DisplayStructure from "components/DisplayStructured.vue";
 import { CloudAuth } from "components/User/CloudAuth";
 import { ExternalIdentities } from "components/User/ExternalIdentities";
+import ARGsIndex from "components/ARGs/Index.vue";
+import ARGsAbout from "components/ARGs/About.vue";
 import Vue from "vue";
 import store from "store";
 
@@ -51,6 +53,8 @@ import store from "store";
 export const getAnalysisRouter = (Galaxy) =>
     Router.extend({
         routes: {
+            "(/)args(/)index": "show_args_index",
+            "(/)args(/)about": "show_args_about",
             "(/)(#)(_=_)": "home",
             "(/)root*": "home",
             "(/)tools/view": "show_tools_view",
@@ -105,6 +109,20 @@ export const getAnalysisRouter = (Galaxy) =>
             }
             this.page.display(container);
             new instance({ store, propsData }).$mount(container);
+        },
+
+        show_args_index: function () {
+            this.page.toolPanel.getVueComponent().hide();
+            this.page.panels.right.hide();
+            console.log('show args index');
+            this._display_vue_helper(ARGsIndex);
+        },
+
+        show_args_about: function () {
+            this.page.toolPanel.getVueComponent().hide();
+            this.page.panels.right.hide();
+            console.log('show args about');
+            this._display_vue_helper(ARGsAbout);
         },
 
         show_tours: function (tour_id) {
@@ -400,6 +418,7 @@ export const getAnalysisRouter = (Galaxy) =>
         /** load the center panel with a tool form described by the given params obj */
         _loadToolForm: function (params) {
             //TODO: load tool form code async
+            console.log(params, this.page)
             if (params.tool_id) {
                 params.id = decodeUriComponent(params.tool_id);
             }

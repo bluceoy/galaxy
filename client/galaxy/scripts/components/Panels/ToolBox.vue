@@ -131,6 +131,7 @@ export default {
             this.query = term;
         },
         onOpen(tool, evt) {
+            console.log(tool, evt);
             const Galaxy = getGalaxyInstance();
             if (tool.id === "upload1") {
                 evt.preventDefault();

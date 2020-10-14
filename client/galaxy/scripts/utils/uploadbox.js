@@ -112,7 +112,8 @@ import { getAppRoot } from "onload/loadConfig";
             var size = file.size;
             console.debug(`Submitting chunk at ${start} bytes...`);
             var form = new FormData();
-            form.append("session_id", session_id);
+            // form.append("session_id", session_id);
+            form.append("session_id", file.name);
             form.append("session_start", start);
             form.append("session_chunk", slicer.bind(file)(start, end));
             _uploadrequest({
@@ -127,7 +128,8 @@ import { getAppRoot } from "onload/loadConfig";
                         console.debug("Upload completed.");
                         data.payload.inputs = JSON.parse(data.payload.inputs);
                         data.payload.inputs["files_0|file_data"] = {
-                            session_id: session_id,
+                            // session_id: session_id,
+                            session_id: file.name,
                             name: file.name,
                         };
                         data.payload.inputs = JSON.stringify(data.payload.inputs);
