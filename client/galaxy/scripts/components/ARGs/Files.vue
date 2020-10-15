@@ -158,7 +158,7 @@ export default {
         createFolder() {
             const galaxy = getGalaxyInstance();
             axios
-                .post(`${galaxy.root}api/file/addfolder`, { path: this.currentPos + (this.currentPos.lastIndexOf('/') > -1 ? '' : '/') + this.newFolderName })
+                .post(`${galaxy.root}api/file/addfolder`, { path: this.currentPos + (this.currentPos.substr(this.currentPos.length - 1, 1) === '/' ? '' : '/') + this.newFolderName })
                 .then((response) => {
                     console.log(response)
                     this.getCurrentList()
