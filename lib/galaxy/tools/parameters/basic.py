@@ -532,11 +532,14 @@ class FileToolParameter(ToolParameter):
             if 'session_id' in value:
                 # handle api upload
                 session_id = value["session_id"]
-                upload_store = trans.app.config.new_file_path
+                upload_store = trans.app.config.ftp_upload_dir
                 if re.match(r'^[\w-]+$', session_id) is None:
                     #raise ValueError("Invald session id format.")
                     pass
+                if 'dir' in value:
+                    session_id = value['dir'] + session_id
                 local_filename = os.path.abspath(os.path.join(upload_store, session_id))
+                log.info("session_id = %s, localfile = %s", value["session_id"], local_filename)
             else:
                 # handle nginx upload
                 upload_store = trans.app.config.nginx_upload_store

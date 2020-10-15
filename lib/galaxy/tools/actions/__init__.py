@@ -281,6 +281,7 @@ class DefaultToolAction(object):
         submitting the job to the job queue. If history is not specified, use
         trans.history as destination for tool's output datasets.
         """
+        log.info("tool.action execute, incoming = %s", incoming)
         trans.check_user_activation()
         incoming = incoming or {}
         self._check_access(tool, trans)

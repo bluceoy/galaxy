@@ -1681,6 +1681,7 @@ class Tool(Dictifiable):
         `self.tool_action`. In general this will create a `Job` that
         when run will build the tool's outputs, e.g. `DefaultToolAction`.
         """
+        log.info("job, execute, incoming = %s", incoming)
         if incoming is None:
             incoming = {}
         try:

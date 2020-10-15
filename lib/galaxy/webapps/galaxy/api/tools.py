@@ -1,6 +1,7 @@
 import logging
 import os
 from json import dumps, loads
+import cgi
 
 from galaxy import exceptions, managers, util, web
 from galaxy.managers.collections_util import dictify_dataset_collection_instance
@@ -501,11 +502,14 @@ class ToolsController(BaseAPIController, UsesVisualizationMixin):
             prefix_dir = trans.user.email + dir
         else:
             prefix_dir = 'tmp' + dir
+        if dir != '/':
+            prefix_dir = prefix_dir + '/'
 
         # Find files coming in as multipart file data and add to inputs.
         for k, v in payload.items():
             if k.startswith('files_') or k.startswith('__files_'):
                 inputs[k] = v
+        inputs["dir"] = prefix_dir
 
         # for inputs that are coming from the Library, copy them into the history
         self._patch_library_inputs(trans, inputs, target_history)
@@ -519,9 +523,15 @@ class ToolsController(BaseAPIController, UsesVisualizationMixin):
         key = 'files_0|file_data'
         if key in incoming:
             v = incoming[key]
-            session_id = prefix_dir + '/' + v['session_id']
-            log.info("session_id = %s", session_id)
-            v['session_id'] = session_id
+            if isinstance(v, dict) and 'session_id' in v:
+                v["dir"] = prefix_dir
+                # session_id = prefix_dir + v['session_id']
+                # log.info("session_id = %s", session_id)
+                # v['session_id'] = session_id
+            # elif isinstance(v, cgi.FieldStorage):
+            #     filename = prefix_dir + v.filename
+            #     log.info("filename = %s", filename)
+            #     v.filename = filename
             incoming[key] = v
 
         # use_cached_job can be passed in via the top-level payload or among the tool inputs.
