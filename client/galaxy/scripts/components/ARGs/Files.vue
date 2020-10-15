@@ -11,7 +11,7 @@
         <b-table :fields="fields" :items="items" :bordered="true">
             <template v-slot:cell(name)="data">
                 <b-icon icon="folder" font-scale="1.5" v-if="data.item.type === 'dir'"></b-icon>
-                <a class="text-info" v-if="data.item.type === 'dir'" href="#" @click="setCurrentPos(currentPos + (currentPos.lastIndexOf('/') > -1 ? '' : '/') + data.value)">{{ data.value }}</a>
+                <a class="text-info" v-if="data.item.type === 'dir'" href="#" @click="setCurrentPos(currentPos + (currentPos.substr(currentPos.length - 1, 1) === '/' ? '' : '/') + data.value)">{{ data.value }}</a>
                 <a class="text-info" v-else>{{ data.value }}</a>
             </template>
 
@@ -111,12 +111,12 @@ export default {
                     for (let i = 0; i < ps.length; i ++) {
                         this.pos.push({
                             text: ps[i],
-                            path: (i === 0 ? '/' : this.pos[i - 1].path) + ps[i].text
+                            path: (i === 0 ? '/' : this.pos[i - 1].path + '/') + ps[i]
                         })
                     }
-                    let idx = this.pos.length - 1
-                    if (idx >= 0) {
-                        this.pos[idx].active = true
+                    let idx = this.pos.length
+                    if (idx > 0) {
+                        this.pos[idx - 1].active = true
                     }
                     this.getCurrentList()
                 });
