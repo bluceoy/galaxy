@@ -4,7 +4,7 @@
             Availible Tools
             <span style="float:right;">
             <a v-if="!login" @click="onUploadDialog" style="font-size:1rem;color: #2196F3;cursor: pointer;margin-right:20px;"># Upload</a>
-            <a @click="onShowResult" style="font-size:1rem;color: #2196F3;cursor: pointer;"># Rusult</a>
+            <a @click="onShowResult" style="font-size:1rem;color: #2196F3;cursor: pointer;"># Result</a>
             </span>
         </h2>
         
