@@ -35,17 +35,8 @@ class UploadsAPIController(BaseAPIController):
             raise exceptions.MessageException("Requires a session start.")
         if not hasattr(session_chunk, "file"):
             raise exceptions.MessageException("Requires a session chunk.")
-        file_path = trans.app.config.ftp_upload_dir
-        if trans.user:
-            current_dir = trans.galaxy_session.work_dir
-            if not current_dir:
-                current_dir = "/"
-            root_dir = file_path + "/" + trans.user.email + current_dir
-        else:
-            root_dir = file_path + "/" + "tmp"
-        log.info("root_dir = %s", root_dir)
-        #target_file = os.path.join(trans.app.config.new_file_path, session_id)
-        target_file = os.path.join(root_dir, session_id)
+
+        target_file = os.path.join(trans.app.config.new_file_path, session_id)
         log.info('upload, target = %s', target_file)
         target_size = 0
         if os.path.exists(target_file):
@@ -55,7 +46,6 @@ class UploadsAPIController(BaseAPIController):
         chunk_size = os.fstat(session_chunk.file.fileno()).st_size
         if chunk_size > trans.app.config.chunk_upload_size:
             raise exceptions.MessageException("Invalid chunk size.")
-        #fh = open(target_file+".1", "ab")
         with open(target_file, "ab") as f:
             log.info("open, target_file = %s", target_file)
             while True:
@@ -63,7 +53,5 @@ class UploadsAPIController(BaseAPIController):
                 if not read_chunk:
                     break
                 f.write(read_chunk)
-                #fh.write(read_chunk)
-        #fh.close()
         session_chunk.file.close()
         return {"message": "Successful."}
