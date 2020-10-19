@@ -4,10 +4,10 @@
             <b-breadcrumb-item @click="e => {onChangePos('/')}">Home</b-breadcrumb-item>
             <b-breadcrumb-item v-for="(item, idx) in pos" @click="e => { !item.active ? onChangePos(item.path) : null}" :key="idx" :active="item.active"><span>{{ item.text }}</span></b-breadcrumb-item>
         </b-breadcrumb>
-        
+
         <b-button @click="onCreateFolderDialog">Create Folder</b-button>
         <b-button @click="onUploadDialog">Upload File(s)</b-button>
-
+        
         <b-table :fields="fields" :items="items" :bordered="true">
             <template v-slot:cell(name)="data">
                 <b-icon icon="folder" font-scale="1.5" v-if="data.item.type === 'dir'"></b-icon>
