@@ -78,7 +78,7 @@ class DefaultToolAction(object):
             all_permissions[action].add(role_id)
 
         def visitor(input, value, prefix, parent=None, **kwargs):
-
+            log.info("DefaultToolAction::visitor, input = %s, value = %s, prefix = %s", input, value, prefix)
             def process_dataset(data, formats=None):
                 if not data or isinstance(data, RuntimeValue):
                     return None
@@ -171,9 +171,11 @@ class DefaultToolAction(object):
                     collection = value.collection
 
                 action_tuples = collection.dataset_action_tuples
+                log.info("action_tuples = %s", action_tuples)
                 if not trans.app.security_agent.can_access_datasets(current_user_roles, action_tuples):
                     raise Exception("User does not have permission to use a dataset provided for input.")
                 for action, role_id in action_tuples:
+                    log.info("action = %s, role_id = %s", action, role_id)
                     record_permission(action, role_id)
 
                 replace_collection = False
@@ -202,6 +204,7 @@ class DefaultToolAction(object):
         return input_datasets, all_permissions
 
     def collect_input_dataset_collections(self, tool, param_values):
+        log.info("collect_input_dataset_collections, param_values = %s", param_values)
         def append_to_key(the_dict, key, value):
             if key not in the_dict:
                 the_dict[key] = []
@@ -256,7 +259,7 @@ class DefaultToolAction(object):
         inp_dataset_collections = self.collect_input_dataset_collections(tool, incoming)
         # Collect any input datasets from the incoming parameters
         inp_data, all_permissions = self._collect_input_datasets(tool, incoming, trans, history=history, current_user_roles=current_user_roles, collection_info=collection_info)
-
+        log.info("input_dataset_collections = %s, input_data = %s", inp_dataset_collections, inp_data)
         # grap tags from incoming HDAs
         preserved_tags = {}
         for data in inp_data.values():
@@ -290,6 +293,7 @@ class DefaultToolAction(object):
             execution_cache = ToolExecutionCache(trans)
         current_user_roles = execution_cache.current_user_roles
         history, inp_data, inp_dataset_collections, preserved_tags, all_permissions = self._collect_inputs(tool, trans, incoming, history, current_user_roles, collection_info)
+        log.info("input_data = %s, input_dataset_collections = %s", inp_data, inp_dataset_collections)
         # Build name for output datasets based on tool name and input names
         on_text = self._get_on_text(inp_data)
 
@@ -337,6 +341,7 @@ class DefaultToolAction(object):
         # Add the dbkey to the incoming parameters
         incoming["dbkey"] = input_dbkey
         incoming["__input_ext"] = input_ext
+        log.info("incoming = %s", incoming)
         # wrapped params are used by change_format action and by output.label; only perform this wrapping once, as needed
         wrapped_params = self._wrapped_params(trans, tool, incoming, inp_data)
 
@@ -364,6 +369,7 @@ class DefaultToolAction(object):
         async_tool = tool.tool_type == 'data_source_async'
 
         def handle_output(name, output, hidden=None):
+            log.info("handle_output, name = %s, output = %s", name, output)
             if output.parent:
                 parent_to_child_pairs.append((output.parent, name))
                 child_dataset_names.add(name)
@@ -455,6 +461,7 @@ class DefaultToolAction(object):
             return data
 
         for name, output in tool.outputs.items():
+            log.info("output, name = %s, output = %s, incoming = %s", name, output, incoming)
             if not filter_output(output, incoming):
                 handle_output_timer = ExecutionTimer()
                 if output.collection:
@@ -525,6 +532,7 @@ class DefaultToolAction(object):
         for name, data in out_data.items():
             if name not in child_dataset_names and name not in incoming:  # don't add children; or already existing datasets, i.e. async created
                 datasets_to_persist.append(data)
+        log.info("datasets_to_persist, %s", datasets_to_persist)
         # Set HID and add to history.
         # This is brand new and certainly empty so don't worry about quota.
         history.add_datasets(trans.sa_session, datasets_to_persist, set_hid=set_output_hid, quota=False, flush=False)
@@ -581,6 +589,7 @@ class DefaultToolAction(object):
             # Dispatch to a job handler. enqueue() is responsible for flushing the job
             app.job_manager.enqueue(job, tool=tool)
             trans.log_event("Added job to the job queue, id: %s" % str(job.id), tool_id=job.tool_id)
+            log.info("Added job to the job queue, id: %s" % str(job.id), tool_id=job.tool_id)
             return job, out_data
 
     def _remap_job_on_rerun(self, trans, galaxy_session, rerun_remap_job_id, current_job, out_data):
@@ -667,7 +676,7 @@ class DefaultToolAction(object):
         for data in reversed(list(inp_data.values())):
             if getattr(data, "hid", None):
                 input_names.append('data %s' % data.hid)
-
+        log.info("input_names = %s", input_names)
         return on_text_for_names(input_names)
 
     def _new_job_for_session(self, trans, tool, history):
@@ -697,7 +706,7 @@ class DefaultToolAction(object):
         # FIXME: Don't need all of incoming here, just the defined parameters
         #        from the tool. We need to deal with tools that pass all post
         #        parameters to the command as a special case.
-        log.info("_record_inputs, incoming = %s", incoming)
+        log.info("_record_inputs, incoming = %s, input_dataset_collection = %s", incoming, inp_dataset_collections)
         reductions = {}
         for name, dataset_collection_info_pairs in inp_dataset_collections.items():
             for (dataset_collection, reduced) in dataset_collection_info_pairs:

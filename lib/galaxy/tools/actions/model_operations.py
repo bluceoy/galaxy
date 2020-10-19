@@ -36,6 +36,7 @@ class ModelOperationToolAction(DefaultToolAction):
 
         # Build name for output datasets based on tool name and input names
         on_text = self._get_on_text(inp_data)
+        log.info("output, on_text = %s", on_text)
 
         # wrapped params are used by change_format action and by output.label; only perform this wrapping once, as needed
         wrapped_params = self._wrapped_params(trans, tool, incoming)
