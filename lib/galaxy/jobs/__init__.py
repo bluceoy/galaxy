@@ -1645,6 +1645,7 @@ class JobWrapper(HasResourceParameters):
             for dataset_path in self.get_output_fnames():
                 try:
                     shutil.move(dataset_path.false_path, dataset_path.real_path)
+                    log.info("finish(): Moved %s to %s" % (dataset_path.false_path, dataset_path.real_path))
                     log.debug("finish(): Moved %s to %s" % (dataset_path.false_path, dataset_path.real_path))
                 except (IOError, OSError):
                     # this can happen if Galaxy is restarted during the job's
