@@ -2721,10 +2721,13 @@ class DatabaseOperationTool(Tool):
                     raise ValueError("Tool requires inputs to be in valid state.")
 
         for input_dataset in input_datasets.values():
+            log.info("DatabaseOperationTool::check_inputs_ready, input_dataset = %s", 
+                input_dataset)
             check_dataset_instance(input_dataset)
 
         for input_dataset_collection_pairs in input_dataset_collections.values():
             for input_dataset_collection, _ in input_dataset_collection_pairs:
+                log.info("DatabaseOperationTool::check_inputs_ready input_collection = %s", input_dataset_collection)
                 if not input_dataset_collection.collection.populated:
                     raise ToolInputsNotReadyException("An input collection is not populated.")
 
@@ -2919,6 +2922,7 @@ class MergeCollectionTool(DatabaseOperationTool):
 class FilterDatasetsTool(DatabaseOperationTool):
 
     def _get_new_elements(self, history, elements_to_copy):
+        log.info("FilterDatasetsTool::_get_new_elements, history = %s", history)
         new_elements = OrderedDict()
         for dce in elements_to_copy:
             element_identifier = dce.element_identifier
@@ -2930,6 +2934,7 @@ class FilterDatasetsTool(DatabaseOperationTool):
         return new_elements
 
     def produce_outputs(self, trans, out_data, output_collections, incoming, history, **kwds):
+        log.info("FilterDatasetsTool, incoming = %s", incoming)
         collection = incoming["input"]
 
         if hasattr(collection, 'element_object'):
@@ -2978,6 +2983,7 @@ class FilterEmptyDatasetsTool(FilterDatasetsTool):
     require_dataset_ok = False
 
     def element_is_valid(self, element):
+        log.info("element_is_valid, element = %s", element)
         return element.element_object.has_data()
 
 
