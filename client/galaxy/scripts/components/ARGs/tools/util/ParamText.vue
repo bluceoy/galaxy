@@ -1,7 +1,9 @@
 <template>
     <div class="util-wrap">
         <div class="title">{{ title }}</div>
-        <div><input v-model="value" @input="$emit('parent-event', $event.target.value)" /></div>
+        <div>
+            <b-form-input v-model="value" @input="$emit('parent-event', $event.target.value)"></b-form-input>
+        </div>
         <div class="tip">{{ tip }}</div>
     </div>
 </template>
@@ -42,10 +44,6 @@ export default {
     font-size: 1rem;
     font-weight: bold;
     margin: 5px 0;
-}
-.util-wrap input {
-    width: 100%;
-    padding: 3px;
 }
 .util-wrap .tip {
     margin: 5px 0;
