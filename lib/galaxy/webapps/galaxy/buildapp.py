@@ -362,6 +362,7 @@ def populate_api_routes(webapp, app):
     webapp.mapper.connect('/api/file/getdir', action='get_dir', controller='fileutil', conditions=dict(method=["GET"]))
     webapp.mapper.connect('/api/file/setdir', action='set_dir', controller='fileutil', conditions=dict(method=["POST"]))
     webapp.mapper.connect('/api/file/addfolder', action='create_dir', controller='fileutil', conditions=dict(method=["POST"]))
+    webapp.mapper.connect('/api/file/remove', action='remove', controller='fileutil', conditions=dict(method=["POST"]))
     webapp.mapper.connect('/api/upload_v2/', action='create_v2', controller='uploads', conditions=dict(method=["POST"]))
 
     webapp.mapper.connect('/api/tools/fetch', action='fetch', controller='tools', conditions=dict(method=["POST"]))

@@ -160,9 +160,46 @@ class FileUtilController(BaseAPIController):
         if len(missing_arguments) > 0:
             raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
 
-        file_path = trans.app.config.new_file_path
+        file_path = trans.app.config.ftp_upload_dir
         dir = file_path + "/" + trans.user.email + work_dir
         if not os.path.exists(dir):
           os.makedirs(dir)
         
         return {'work_dir': work_dir}
+
+    @expose_api
+    def remove(self, trans, payload, **kwargs):
+        """
+        * POST /api/file/remove
+        :type  trans: galaxy.web.framework.webapp.GalaxyWebTransaction
+        :param trans: Galaxy web transaction
+        :param kwargs:
+
+        :rtype:  dictionary
+        :return: a dictionary containing a `summary` view of the datasets copied from the given cloud-based storage.
+        """
+        if not isinstance(payload, dict):
+          raise ActionInputError('Invalid payload data type. The payload is expected to be a dictionary, '
+                                   'but received data of type `{}`.'.format(str(type(payload))))
+
+        missing_arguments = []
+        path = payload.get("path", None)
+
+        if path is None:
+          missing_arguments.append("path")
+
+        if len(missing_arguments) > 0:
+          raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
+
+        root_dir = self.make_sure_root(trans)
+        real_path = os.path.join(root_dir, path)
+
+        if not os.path.exists(real_path):
+          raise ActionInputError("path: %s not found" % (path))
+
+        if os.path.isdir(real_path):
+          os.removedirs(real_path)
+        else:
+          os.remove(real_path)
+
+        return {'message': 'Successful.'}
