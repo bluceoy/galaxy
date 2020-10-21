@@ -34,6 +34,7 @@ class FileUtilController(BaseAPIController):
       if not os.path.exists(root_dir):
         log.info("create root_dir = %s", trans.user.email)
         os.makedirs(root_dir)
+      log.info("root_dir = %s", root_dir)
       return root_dir
 
     @expose_api
