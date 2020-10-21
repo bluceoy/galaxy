@@ -122,7 +122,8 @@ class FileUtilController(BaseAPIController):
           if file == "." or file == "..":
             continue
           item = {
-            "file": file
+            "file": file,
+            "realpath": dir + '/' + file
           }
           file_path = dir + "/" + file
           ctime = int(os.path.getctime(file_path))
