@@ -21,9 +21,7 @@
             </template>
 
             <template v-slot:cell(action)="data">
-                <i>View</i>
-                <i>Edit</i>
-                <i>Remove</i>
+                <a href="#" @click="onRemove(data.item.path)">Remove</a>
             </template>
         </b-table>
 
@@ -43,13 +41,12 @@
             <template v-slot:modal-header>
                 <h4 class="title" tabindex="0">Upload Files</h4>
             </template>
-            <uploader :options="options" class="uploader-example">
+            <uploader :options="options" class="uploader-example" @file-success="uploadSuccess">
                 <uploader-unsupport></uploader-unsupport>
                 <uploader-drop>
-                <p>Drop files here to upload or</p>
-                <uploader-btn>select files</uploader-btn>
-                <uploader-btn :attrs="attrs">select images</uploader-btn>
-                <uploader-btn :directory="true">select folder</uploader-btn>
+                    <p>Drop files here to upload or</p>
+                    <uploader-btn>select files</uploader-btn>
+                    <uploader-btn :directory="true">select folder</uploader-btn>
                 </uploader-drop>
                 <uploader-list></uploader-list>
             </uploader>
@@ -77,10 +74,8 @@ export default {
             options: {
                 // https://github.com/simple-uploader/Uploader/tree/develop/samples/Node.js
                 target: '/api/upload_v2/',
+                query: {},
                 testChunks: false
-            },
-            attrs: {
-                accept: 'image/*'
             },
             status: "",
             percentage: 0,
@@ -146,6 +141,10 @@ export default {
                     if (idx > 0) {
                         this.pos[idx - 1].active = true
                     }
+                    this.options.target = ''
+                    this.options.query = {
+                        dir: this.currentPos
+                    }
                     this.getCurrentList()
                 });
         },
@@ -178,6 +177,7 @@ export default {
                             type: f.type,
                             size: f.size,
                             time: f.ctime,
+                            path: f.real_path,
                             status: 0
                         })
                     });
@@ -212,6 +212,23 @@ export default {
             console.log(this.newFolderName)
             this.createFolder()
             this.showCreateFolderDialog = false
+        },
+        uploadSuccess(rootFile, file, message, chunk) {
+            console.log(rootFile, file, message, chunk);
+            this.getCurrentList();
+        },
+        onRemove(path) {
+            const galaxy = getGalaxyInstance();
+            axios
+                .post(`${galaxy.root}api/file/remove`, { path: path })
+                .then((response) => {
+                    console.log(response)
+                    this.getCurrentList()
+                })
+                .catch((error) => {
+                    const message = error.response.data && error.response.data.err_msg;
+                    this.errorMessage = message;
+                });
         }
     }
 }
@@ -220,5 +237,18 @@ export default {
 <style scoped>
 .file-wrap {
     margin-bottom: 40px;
+}
+.uploader-example {
+    padding: 15px;
+    font-size: 12px;
+}
+.uploader-example .uploader-btn {
+    margin-right: 4px;
+}
+.uploader-example .uploader-list {
+    max-height: 440px;
+    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 </style>
