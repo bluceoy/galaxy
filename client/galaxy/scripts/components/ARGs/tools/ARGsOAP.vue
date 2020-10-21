@@ -51,7 +51,7 @@ export default {
         return {
             modalShow: false,
             tool: {
-                id: 'addValue',
+                id: '__args_index__',
                 version: '1.0.0',
                 form_style: 'regular',
                 link: '/tool_runner?tool_id=addValue',
