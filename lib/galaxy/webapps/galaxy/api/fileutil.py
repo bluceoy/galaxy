@@ -111,12 +111,14 @@ class FileUtilController(BaseAPIController):
           return item["type"]
 
         root_dir = self.make_sure_root(trans)
-
         work_dir = trans.galaxy_session.work_dir
         if work_dir == "" or work_dir is None:
           work_dir = "/"
-        dir = root_dir + "/" + work_dir
-        log.info("listdir, root_dir = %s, work_dir = %s", root_dir, work_dir)
+        if work_dir == "/":
+          dir = root_dir
+        else:
+          dir = root_dir + work_dir
+        log.info("listdir, root_dir = %s, work_dir = %s, dir = %s", root_dir, work_dir, dir)
         files = os.listdir(dir)
         items = []
         for file in files:
