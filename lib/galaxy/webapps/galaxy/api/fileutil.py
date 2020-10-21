@@ -26,12 +26,15 @@ class FileUtilController(BaseAPIController):
         super(FileUtilController, self).__init__(app)
 
     def make_sure_root(self, trans):
+      file_path = trans.app.config.ftp_upload_dir
       if trans.user:
-        file_path = trans.app.config.new_file_path
         root_dir = file_path + "/" + trans.user.email 
-        if not os.path.exists(root_dir):
-          log.info("create root_dir = %s", trans.user.email)
-          os.makedirs(root_dir)
+      else:
+        root_dir = file_path + "/tmp/session-" + str(trans.galaxy_session.id)
+      if not os.path.exists(root_dir):
+        log.info("create root_dir = %s", trans.user.email)
+        os.makedirs(root_dir)
+      return root_dir
 
     @expose_api
     def get_dir(self, trans, **kwargs):
@@ -99,21 +102,20 @@ class FileUtilController(BaseAPIController):
                             **  `error`:                    A descriptive error message.
 
         """
-        if not trans.user:
-          log.info("please login first")
-          raise ActionInputError("please login first")
+        # if not trans.user:
+        #   log.info("please login first")
+        #   raise ActionInputError("please login first")
 
         def sort_func(item):
           return item["type"]
 
-        self.make_sure_root(trans)
+        root_dir = self.make_sure_root(trans)
 
         work_dir = trans.galaxy_session.work_dir
         if work_dir == "" or work_dir is None:
           work_dir = "/"
-        file_path = trans.app.config.new_file_path
-        dir = file_path + "/" + trans.user.email + work_dir
-        log.info("ftp_dir = %s, work_dir = %s, dir = %s", file_path, work_dir, dir)
+        dir = root_dir + "/" + work_dir
+        log.info("listdir, root_dir = %s, work_dir = %s", root_dir, work_dir)
         files = os.listdir(dir)
         items = []
         for file in files:
