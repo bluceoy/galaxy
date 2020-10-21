@@ -73,13 +73,13 @@ class UploadsAPIController(BaseAPIController):
         """
         POST /api/uploads_v2/
         """
-        session_id = payload.get("session_id")
-        session_chunk = payload.get("session_chunk")
+        session_id = payload.get("filename")
+        session_chunk = payload.get("file")
         # if re.match(r'^[\w-]+$', session_id) is None:
         #     raise exceptions.MessageException("Requires a session id.")
         #     pass
-        if not hasattr(session_chunk, "file"):
-            raise exceptions.MessageException("Requires a session chunk.")
+        # if not hasattr(session_chunk, "file"):
+        #     raise exceptions.MessageException("Requires a session chunk.")
         file_path = trans.app.config.ftp_upload_dir
         if trans.user:
             current_dir = trans.galaxy_session.work_dir
