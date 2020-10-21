@@ -123,7 +123,7 @@ class FileUtilController(BaseAPIController):
             continue
           item = {
             "file": file,
-            "realpath": dir + '/' + file
+            "real_path": dir + '/' + file
           }
           file_path = dir + "/" + file
           ctime = int(os.path.getctime(file_path))
