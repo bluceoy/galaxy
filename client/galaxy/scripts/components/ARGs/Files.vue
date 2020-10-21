@@ -7,6 +7,7 @@
 
         <b-button @click="onCreateFolderDialog">Create Folder</b-button>
         <b-button @click="onUploadDialog">Upload File(s)</b-button>
+        <!-- <b-button @click="onUploadDialog">Upload File(s)</b-button> -->
         
         <b-table :fields="fields" :items="items" :bordered="true">
             <template v-slot:cell(name)="data">
@@ -37,6 +38,22 @@
                 <b-button type="submit" variant="primary">Submit</b-button>
             </b-form>
         </b-modal>
+
+        <b-modal v-model="showUploadDialog" static no-enforce-focus hide-footer>
+            <template v-slot:modal-header>
+                <h4 class="title" tabindex="0">Upload Files</h4>
+            </template>
+            <uploader :options="options" class="uploader-example">
+                <uploader-unsupport></uploader-unsupport>
+                <uploader-drop>
+                <p>Drop files here to upload or</p>
+                <uploader-btn>select files</uploader-btn>
+                <uploader-btn :attrs="attrs">select images</uploader-btn>
+                <uploader-btn :directory="true">select folder</uploader-btn>
+                </uploader-drop>
+                <uploader-list></uploader-list>
+            </uploader>
+        </b-modal>
     </div>
 </template>
 
@@ -44,9 +61,11 @@
 import axios from "axios";
 import $ from "jquery";
 import Vue from "vue";
+import uploader from 'vue-simple-uploader'
 import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
 import { getGalaxyInstance } from "app";
 
+Vue.use(uploader);
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 
@@ -55,9 +74,18 @@ export default {
     },
     data() {
         return {
+            options: {
+                // https://github.com/simple-uploader/Uploader/tree/develop/samples/Node.js
+                target: '/api/upload_v2/',
+                testChunks: false
+            },
+            attrs: {
+                accept: 'image/*'
+            },
             status: "",
             percentage: 0,
             showCreateFolderDialog: false,
+            showUploadDialog: false,
             // 当前位置
             currentPos: '',
             pos: [],
@@ -169,10 +197,11 @@ export default {
                 });
         },
         onUploadDialog(e) {
-            console.log(e)
-            const Galaxy = getGalaxyInstance();
-            e.preventDefault();
-            Galaxy.upload.show(this.currentPos);
+            console.log(e);
+            this.showUploadDialog = true;
+            // const Galaxy = getGalaxyInstance();
+            // e.preventDefault();
+            // Galaxy.upload.show(this.currentPos);
         },
         onCreateFolderDialog(e) {
             console.log(e);
