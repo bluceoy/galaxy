@@ -58,6 +58,8 @@ def app_factory(global_conf, load_app_kwds={}, **kwargs):
     # Create the universe WSGI application
     webapp = GalaxyWebApplication(app, session_cookie='galaxysession', name='galaxy')
 
+    log.info("galaxy tool_path = %s", app.config.tool_path)
+
     # STANDARD CONTROLLER ROUTES
     webapp.add_ui_controllers('galaxy.webapps.galaxy.controllers', app)
     # Force /history to go to view of current
