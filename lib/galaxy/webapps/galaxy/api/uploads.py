@@ -73,7 +73,7 @@ class UploadsAPIController(BaseAPIController):
         """
         POST /api/uploads_v2/
         """
-        session_id = payload.get("filename")
+        session_id = payload.get("relativePath")
         session_chunk = payload.get("file")
         # if re.match(r'^[\w-]+$', session_id) is None:
         #     raise exceptions.MessageException("Requires a session id.")
@@ -91,6 +91,10 @@ class UploadsAPIController(BaseAPIController):
         log.info("uploadv2, root_dir = %s", root_dir)
         target_file = os.path.join(root_dir, session_id)
         log.info('uploadv2, target = %s', target_file)
+        dirname = os.path.dirname(target_file)
+        if not os.path.exists(dirname):
+            log.info("create dirname = %s", dirname)
+            os.makedirs(dirname)
         chunk_size = os.fstat(session_chunk.file.fileno()).st_size
         if chunk_size > trans.app.config.chunk_upload_size:
             raise exceptions.MessageException("Invalid chunk size.")
