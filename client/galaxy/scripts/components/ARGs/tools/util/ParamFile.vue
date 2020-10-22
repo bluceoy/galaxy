@@ -50,10 +50,6 @@ export default {
       event: 'parent-event'
     },
     props: {
-        value: {
-            type: String,
-            default: '',
-        },
         title: {
             type: String,
             default: '',
@@ -73,40 +69,25 @@ export default {
             showOption: false,
             searching: '',
             items: [],
-            currentPos: '/',
-            pos: []
+            currentPos: '/'
         };
     },
     created() {
         const Galaxy = getGalaxyInstance();
-        this.getCurrentList()
+        this.getCurrentList(this.currentPos);
     },
     methods: {
         setCurrentPos(dir) {
-            // 进入某个目录
-            this.currentPos = dir
-            let ps = this.currentPos.split('/').filter(e => { return e !== '' })
-            console.log(ps)
-            this.pos = []
-            for (let i = 0; i < ps.length; i ++) {
-                this.pos.push({
-                    text: ps[i],
-                    path: (i === 0 ? '/' : this.pos[i - 1].path + '/') + ps[i]
-                })
-            }
-            let idx = this.pos.length
-            if (idx > 0) {
-                this.pos[idx - 1].active = true
-            }
-            this.getCurrentList()
+            this.getCurrentList(dir, () => {
+                this.currentPos = dir
+            })
         },
-        getCurrentList() {
+        getCurrentList(dir, callback = null) {
             const galaxy = getGalaxyInstance();
             const url = `${galaxy.root}api/file/list`;
             axios
-                .get(url + '?dir=' + this.currentPos)
+                .get(url + '?dir=' + dir)
                 .then((response) => {
-                    console.log(response)
                     this.items = []
                     response.data.files.forEach((f, i) => {
                         this.items.push({
@@ -119,10 +100,10 @@ export default {
                             status: 0
                         })
                     });
+                    callback && callback();
                 });
         },
         onBack() {
-            console.log(this.pos)
             let ps = this.currentPos.split('/').filter(e => { return e !== '' })
             if (ps.length > 0) {
                 let dir = (ps.slice(0, ps.length - 1)).join('/')
