@@ -5,6 +5,7 @@ import os
 import sys
 import shutil
 import subprocess
+import time
 
 log = logging.getLogger(__name__)
 
@@ -20,6 +21,18 @@ class JobAgent(object):
     self.job_id = job_id
     self.tool_id = tool_id
     self.cwd = cwd
+
+  def update_job_status(self, status):
+    now = int(time.time())
+    conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
+    cur = conn.cursor()
+    sql = "update custom_jobs set status = %d, update_time = %d where id = %d" % (
+      status, now, self.job_id)
+    log.info("sql = %s", sql)
+    cur.execute(sql)
+    conn.commit()
+    conn.close()
+    return 
     
   def run(self, *args):
     commands = ["python", self.tool_id]
@@ -28,6 +41,10 @@ class JobAgent(object):
     log.info("commands = %s", commands)
     process = subprocess.run(commands, cwd=self.cwd, check=True)
     log.info("returncode = %d", process.returncode)
+    if process.returncode == 0:
+      self.update_job_status(2)
+    else:
+      self.update_job_status(3)
 
 if __name__ == "__main__":
   job_id = sys.argv[1]

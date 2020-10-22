@@ -56,7 +56,6 @@ class CustomJobsAPIController(BaseAPIController):
     return job_id
   
   def list_job(self, user_id, galaxy_session, page=1, size=10):
-    now = int(time.time())
     conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     total = 0
@@ -79,6 +78,16 @@ class CustomJobsAPIController(BaseAPIController):
       log.info("job = %s", job)
     conn.close()
     return (total, [job for job in jobs])
+
+  def get_job(self, job_id):
+    conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    sql = "select * from custom_jobs where id = " + str(job_id)
+    log.info("sql = %s", sql)
+    cur.execute(sql)
+    job = cur.fetchone()
+    conn.close()
+    return job
 
   def make_sure_root(self, trans):
     file_path = trans.app.config.ftp_upload_dir
@@ -165,8 +174,6 @@ class CustomJobsAPIController(BaseAPIController):
       "real_output": real_path + "/output"
     }
     job_id = self.add_job(**params)
-
-
     commandstr = "python job_agent.py %d args.py %s -i %s -f %s" % (
       job_id, job_cwd, real_path, suffix)
     log.info("command = %s", commandstr)
@@ -197,17 +204,18 @@ class CustomJobsAPIController(BaseAPIController):
     :rtype:     dict
     :returns:   an okay message
     """
-    missing_arguments = []
-    job = {
-      "job_id": 1,
-      "job_name": "args-1",
-      "status": 1,
-      "params": "",
-      "output": "",
-      "create_time": 1603346662,
-      "update_time": 1603346662
+    log.info("job_id = %s", id)
+    job = self.get_job(id)
+    data = {
+      "job_id": job["id"],
+      "job_name": job["tool_name"],
+      "status": job["status"],
+      "params": job["params"],
+      "output": job["output"],
+      "create_time": job["create_time"],
+      "update_time": job["udpate_time"]
     }
-    return job
+    return data
 
   @expose_api
   def on_job_list(self, trans, **kwargs):
