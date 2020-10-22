@@ -1,0 +1,5 @@
+chr1 10  100 geneA
+chr2 200 300 geneB
+chr2 400 500 geneCchr1 10  100 geneA
+chr2 200 300 geneB
+chr2 400 500 geneC

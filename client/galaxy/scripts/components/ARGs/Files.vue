@@ -12,8 +12,9 @@
         <b-table :fields="fields" :items="items" :bordered="true">
             <template v-slot:cell(name)="data">
                 <b-icon icon="folder" font-scale="1.5" v-if="data.item.type === 'dir'"></b-icon>
-                <a class="text-info" v-if="data.item.type === 'dir'" href="#" @click="setCurrentPos(currentPos + (currentPos.substr(currentPos.length - 1, 1) === '/' ? '' : '/') + data.value)">{{ data.value }}</a>
-                <a class="text-info" v-else>{{ data.value }}</a>
+                <b-icon icon="document-text" font-scale="1.5" v-else></b-icon>
+                <a v-if="data.item.type === 'dir'" href="#" @click="setCurrentPos(currentPos + (currentPos.substr(currentPos.length - 1, 1) === '/' ? '' : '/') + data.value)"><b>{{ data.value }}</b></a>
+                <a v-else>{{ data.value }}</a>
             </template>
 
             <template v-slot:cell(time)="data">
