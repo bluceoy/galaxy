@@ -105,12 +105,6 @@ class CustomJobsAPIController(BaseAPIController):
   def on_run_job(self, trans, payload, **kwargs):
     """
     * POST /api/custom/job
-    :type  trans: galaxy.web.framework.webapp.GalaxyWebTransaction
-    :param trans: Galaxy web transaction
-    :param kwargs:
-
-    :rtype:  dictionary
-    :return: a dictionary containing a `summary` view of the datasets copied from the given cloud-based storage.
     """
     missing_arguments = []
     tool_id = payload.get("tool_id", None)
@@ -147,7 +141,6 @@ class CustomJobsAPIController(BaseAPIController):
       raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
 
     root_dir = self.make_sure_root(trans)
-    #real_path = os.path.join(root_dir, input_dir)
     real_path = root_dir + input_dir
     log.info("real_path = %s", real_path)
     if not os.path.isdir(real_path):
@@ -155,14 +148,10 @@ class CustomJobsAPIController(BaseAPIController):
 
     agent_cwd = trans.app.config.tool_path + "/custom"
     job_cwd = trans.app.config.tool_path + "/args"
-    log.info("user => %s", trans.user)
     
-    #values = "'%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s',%d,%d" % (kwargs['tool_id'],kwargs['tool_name'],kwargs['tool_version'],
-    #kwargs['galaxy_version'],kwargs['cwd'],kwargs['params'],kwargs['session_id'],kwargs['user_id'],kwargs['status'],kwargs['output'],
-    #kwargs['create_time'],kwargs['update_time'])
     params = {
       "tool_id": tool_id,
-      "tool_name": tool_id,
+      "tool_name": "args",
       "tool_version": tool_version,
       "galaxy_version": trans.app.config.version_major,
       "cwd": job_cwd,
@@ -187,28 +176,12 @@ class CustomJobsAPIController(BaseAPIController):
   def on_job_detail(self, trans, id, **kwargs):
     """
     * GET /api/custom/job/detail/{job_id}
-        Populate an output file (formal dataset, task split part, working
-        directory file (such as those related to metadata)). This should be
-        a multipart post with a 'file' parameter containing the contents of
-        the actual file to create.
-
-    :type   payload:    dict
-    :param  payload:    dictionary structure containing::
-        'job_key'   = Key authenticating
-        'path'      = Path to file to create.
-
-    ..note:
-        This API method is intended only for consumption by job runners,
-        not end users.
-
-    :rtype:     dict
-    :returns:   an okay message
     """
     log.info("job_id = %s", id)
     job = self.get_job(id)
     data = {
       "job_id": job["id"],
-      "job_name": job["tool_name"],
+      "job_name": job["tool_name"]+"-"+str(job["id"]),
       "status": job["status"],
       "params": job["params"],
       "output": job["output"],
@@ -221,22 +194,6 @@ class CustomJobsAPIController(BaseAPIController):
   def on_job_list(self, trans, **kwargs):
     """
     * GET /api/custom/job/list
-        Populate an output file (formal dataset, task split part, working
-        directory file (such as those related to metadata)). This should be
-        a multipart post with a 'file' parameter containing the contents of
-        the actual file to create.
-
-    :type   payload:    dict
-    :param  payload:    dictionary structure containing::
-        'job_key'   = Key authenticating
-        'path'      = Path to file to create.
-
-    ..note:
-        This API method is intended only for consumption by job runners,
-        not end users.
-
-    :rtype:     dict
-    :returns:   an okay message
     """
     try:
       page = int(kwargs.get("page_no", 1))
@@ -256,6 +213,7 @@ class CustomJobsAPIController(BaseAPIController):
     for job in jobs:
       item = {
         "job_id": job["id"],
+        "job_name": job["tool_name"]+"-"+str(job["id"]),
         "status": job["status"],
         "params": job["params"],
         "output": job["output"],
