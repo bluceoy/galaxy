@@ -21,17 +21,14 @@ class JobAgent(object):
     self.cwd = cwd
     
   def run(self, *args):
-    commands = []
-    commands.append("python")
-    commands.append(self.tool_id)
+    commands = ["python", self.tool_id]
     if len(args) > 0:
       commands.append(*args)
-    print("commands = %s" % (commands))
+    log.info("commands = %s", commands)
     process = subprocess.run(commands, cwd=self.cwd, check=True)
     log.info("returncode = %d", process.returncode)
 
 if __name__ == "__main__":
-  print(sys.argv)
   job_id = sys.argv[1]
   tool_id = sys.argv[2]
   cwd = sys.argv[3]
