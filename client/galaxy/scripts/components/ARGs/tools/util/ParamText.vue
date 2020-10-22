@@ -2,22 +2,23 @@
     <div class="util-wrap">
         <div class="title">{{ title }}</div>
         <div>
-            <b-form-input v-model="value" @input="$emit('parent-event', $event.target.value)"></b-form-input>
+            <b-form-input v-model="inputValue"></b-form-input>
         </div>
         <div class="tip">{{ tip }}</div>
     </div>
 </template>
 
 <script>
-import Vue from "vue";
-import BootstrapVue from "bootstrap-vue";
-Vue.use(BootstrapVue);
 export default {
     model: {
       prop: 'value',
       event: 'parent-event'
     },
     props: {
+        value: {
+            type: String,
+            default: '',
+        },
         title: {
             type: String,
             default: '',
@@ -29,7 +30,16 @@ export default {
     },
     data() {
         return {
+            inputValue: '',
         };
+    },
+    watch: {
+        inputValue: function() {
+            this.$emit('parent-event', this.inputValue);
+        }
+    },
+    created() {
+        this.inputValue = this.value
     },
     methods: {
     }

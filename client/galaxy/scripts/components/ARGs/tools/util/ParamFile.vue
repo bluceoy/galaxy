@@ -2,7 +2,7 @@
     <div class="util-wrap">
         <div class="title">{{ title }}</div>
         <div class="value-wrap">
-            <b-form-input v-model="inputValue" @input="$emit('parent-event', $event.target.value)" @click="onFocus" readonly></b-form-input>
+            <b-form-input v-model="inputValue" @click="onFocus" readonly></b-form-input>
             <div v-show="showOption" class="select-wrap">
                 <div class="head">
                     <b-input-group>
@@ -41,7 +41,6 @@
 
 <script>
 import axios from "axios";
-import Vue from "vue";
 import { getGalaxyInstance } from "app";
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 export default {
@@ -50,6 +49,10 @@ export default {
       event: 'parent-event'
     },
     props: {
+        value: {
+            type: String,
+            default: '',
+        },
         title: {
             type: String,
             default: '',
@@ -72,8 +75,13 @@ export default {
             currentPos: '/'
         };
     },
+    watch: {
+        inputValue: function() {
+            this.$emit('parent-event', this.inputValue);
+        }
+    },
     created() {
-        const Galaxy = getGalaxyInstance();
+        this.inputValue = this.value;
         this.getCurrentList(this.currentPos);
     },
     methods: {

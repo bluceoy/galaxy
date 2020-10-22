@@ -11,11 +11,11 @@
         <ul class="collapsible">
             <li>
                 <div @click="click(0)" class="collapsible-header">ARGs-OAP</div>
-                <div class="collapsible-body container-fluid"><ARGsOAP @analysis="onOpen"/></div>
+                <div class="collapsible-body container-fluid"><ARGsOAP @analysis="onOpen" @exec="onExec"/></div>
             </li>
             <li>
                 <div @click="click(1)" class="collapsible-header">SARGFAM</div>
-                <div class="collapsible-body"><SARGFAM @analysis="onOpen"/></div>
+                <div class="collapsible-body"><SARGFAM @analysis="onOpen" @exec="onExec"/></div>
             </li>
         </ul>
 
@@ -30,13 +30,11 @@
 
 <script>
 import $ from "jquery";
-import Vue from "vue";
-import BootstrapVue from "bootstrap-vue";
+import axios from "axios";
 import { getGalaxyInstance } from "app";
 import ToolForm from "mvc/tool/tool-form";
 import ARGsOAP from "./tools/ARGsOAP";
 import SARGFAM from "./tools/SARGFAM";
-Vue.use(BootstrapVue);
 export default {
     components: {
         ARGsOAP,
@@ -66,6 +64,20 @@ export default {
             const Galaxy = getGalaxyInstance();
             e.preventDefault();
             Galaxy.upload.show('/');
+        },
+        onExec(tool, params) {
+            const galaxy = getGalaxyInstance();
+            const url = `${galaxy.root}api/custom/job`;
+            const d = {
+                tool_id: tool.id,
+                version: tool.version,
+                params: params
+            }
+            axios
+                .post(url, d)
+                .then((response) => {
+                    console.log(response)
+                });
         },
         onOpen(evt, tool) {
             console.log(evt, tool);
