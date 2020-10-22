@@ -14,11 +14,11 @@
                 <div class="collapsible-body container-fluid"><DEMO @exec="onExec"/></div>
             </li>
             <li>
-                <div @click="click(0)" class="collapsible-header">ARGs-OAP</div>
+                <div @click="click(1)" class="collapsible-header">ARGs-OAP</div>
                 <div class="collapsible-body container-fluid"><ARGsOAP @exec="onExec"/></div>
             </li>
             <li>
-                <div @click="click(1)" class="collapsible-header">SARGFAM</div>
+                <div @click="click(2)" class="collapsible-header">SARGFAM</div>
                 <div class="collapsible-body"><SARGFAM @exec="onExec"/></div>
             </li>
         </ul>
