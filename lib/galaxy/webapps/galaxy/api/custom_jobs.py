@@ -121,6 +121,7 @@ class CustomJobsAPIController(BaseAPIController):
 
     agent_cwd = trans.app.config.tool_path + "/custom"
     job_cwd = trans.app.config.tool_path + "/args"
+    log.info("user => %s", trans.user)
     
     #values = "'%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s',%d,%d" % (kwargs['tool_id'],kwargs['tool_name'],kwargs['tool_version'],
     #kwargs['galaxy_version'],kwargs['cwd'],kwargs['params'],kwargs['session_id'],kwargs['user_id'],kwargs['status'],kwargs['output'],
