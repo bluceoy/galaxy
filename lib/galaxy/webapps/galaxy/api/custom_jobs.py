@@ -201,7 +201,6 @@ class CustomJobsAPIController(BaseAPIController):
     except:
       page = 1
       size = 10
-    size = 2
 
     session_id = trans.galaxy_session.id
     user_id =  trans.user.id
@@ -224,5 +223,5 @@ class CustomJobsAPIController(BaseAPIController):
 
     data = {}
     data["total"] = total
-    data["items"] = item
+    data["items"] = items
     return data
