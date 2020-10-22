@@ -368,7 +368,8 @@ def populate_api_routes(webapp, app):
     webapp.mapper.connect('/api/upload_v2/', action='create_v2', controller='uploads', conditions=dict(method=["POST"]))
 
     webapp.mapper.connect('/api/custom/job', action='on_run_job', controller='custom_jobs', conditions=dict(method=["POST"]))
-    webapp.mapper.connect('/api/custom/job/{job_id}', action='on_get_job', controller='custom_jobs', conditions=dict(method=["get"]))
+    webapp.mapper.connect('/api/custom/job/detail/{job_id}', action='on_job_detail', controller='custom_jobs', conditions=dict(method=["get"]))
+    webapp.mapper.connect('/api/custom/job/list', action='on_job_list', controller='custom_jobs', conditions=dict(method=["get"]))
 
     webapp.mapper.connect('/api/tools/fetch', action='fetch', controller='tools', conditions=dict(method=["POST"]))
     webapp.mapper.connect('/api/tools/all_requirements', action='all_requirements', controller="tools")

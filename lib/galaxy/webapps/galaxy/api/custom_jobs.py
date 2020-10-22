@@ -112,10 +112,9 @@ class CustomJobsAPIController(BaseAPIController):
     return {"message": "ok", "job_id": job_id}
 
   @expose_api
-  def on_get_job(self, trans, id, **kwargs):
+  def on_job_detail(self, trans, id, **kwargs):
     """
-    create( self, trans, payload, **kwargs )
-    * GET /api/custom/job/{job_id}
+    * GET /api/custom/job/detail/{job_id}
         Populate an output file (formal dataset, task split part, working
         directory file (such as those related to metadata)). This should be
         a multipart post with a 'file' parameter containing the contents of
@@ -135,3 +134,31 @@ class CustomJobsAPIController(BaseAPIController):
     """
     missing_arguments = []
     return {"message":"ok"}
+
+  @expose_api
+  def on_job_list(self, trans, **kwargs):
+    """
+    * GET /api/custom/job/list
+        Populate an output file (formal dataset, task split part, working
+        directory file (such as those related to metadata)). This should be
+        a multipart post with a 'file' parameter containing the contents of
+        the actual file to create.
+
+    :type   payload:    dict
+    :param  payload:    dictionary structure containing::
+        'job_key'   = Key authenticating
+        'path'      = Path to file to create.
+
+    ..note:
+        This API method is intended only for consumption by job runners,
+        not end users.
+
+    :rtype:     dict
+    :returns:   an okay message
+    """
+    missing_arguments = []
+    
+    data = {}
+    data["total"] = 0
+    data["items"] = []
+    return data
