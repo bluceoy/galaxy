@@ -697,6 +697,7 @@ class DefaultToolAction(object):
         # FIXME: Don't need all of incoming here, just the defined parameters
         #        from the tool. We need to deal with tools that pass all post
         #        parameters to the command as a special case.
+        log.info("_record_inputs, incoming = %s", incoming)
         reductions = {}
         for name, dataset_collection_info_pairs in inp_dataset_collections.items():
             for (dataset_collection, reduced) in dataset_collection_info_pairs:
@@ -736,6 +737,7 @@ class DefaultToolAction(object):
         self._record_input_datasets(trans, job, inp_data)
 
     def _record_outputs(self, job, out_data, output_collections):
+        log.info("_record_outputs, output_collections = %s", output_collections)
         out_collections = output_collections.out_collections
         out_collection_instances = output_collections.out_collection_instances
         for name, dataset in out_data.items():

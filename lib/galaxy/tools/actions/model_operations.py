@@ -14,6 +14,7 @@ class ModelOperationToolAction(DefaultToolAction):
     produces_real_jobs = False
 
     def check_inputs_ready(self, tool, trans, incoming, history, execution_cache=None, collection_info=None):
+        log.info("check_inputs_ready, tool = %s, incoming = %s", tool, incoming)
         if execution_cache is None:
             execution_cache = ToolExecutionCache(trans)
 
@@ -24,6 +25,8 @@ class ModelOperationToolAction(DefaultToolAction):
 
     def execute(self, tool, trans, incoming={}, set_output_hid=False, overwrite=True, history=None, job_params=None, execution_cache=None, collection_info=None, **kwargs):
         trans.check_user_activation()
+
+        log.info("ModelOperationToolAction::execute, incoming = %s", incoming)
 
         if execution_cache is None:
             execution_cache = ToolExecutionCache(trans)

@@ -42,7 +42,7 @@
                 <h4 v-else-if="modalMod === 2" class="title" tabindex="0">Register</h4>
             </template>
             <login v-if="modalMod === 1" :show_welcome_with_login="show_welcome_with_login" :welcome_url="welcome_url"/>
-            <register v-else-if="modalMod === 2" :registration_warning_message="registration_warning_message" :mailing_join_addr="mailing_join_addr" :server_mail_configured="server_mail_configured" :terms_url="terms_url"/>
+            <register v-else-if="modalMod === 2" :redirect="redirect" :registration_warning_message="registration_warning_message" :mailing_join_addr="mailing_join_addr" :server_mail_configured="server_mail_configured" :terms_url="terms_url"/>
         </b-modal>
     </div>
 </template>
@@ -77,7 +77,7 @@ export default {
         return {
             Galaxy: undefined,
             loginStatus: false,
-            tab: 'home',
+            tab: 'tool',
             leftShow: true,
             rightShow: true,
             modalShow: false,
@@ -86,6 +86,7 @@ export default {
             show_welcome_with_login: false,
             welcome_url: '',
             // register
+            redirect: '/args/index',
             registration_warning_message: '',
             mailing_join_addr: '',
             server_mail_configured: '',
@@ -151,11 +152,6 @@ export default {
                 })
                 .then((response) => {
                     window.location = '/args/index'
-                    // if (response.data && response.data.redirect_uri) {
-                    //     window.top.location.href = response.data.redirect_uri;
-                    // } else {
-                    //     window.top.location.href = `${galaxy.root}root/login?is_logout_redirect=true`;
-                    // }
                 });
         }
     }

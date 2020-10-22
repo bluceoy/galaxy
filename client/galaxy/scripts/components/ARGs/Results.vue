@@ -1,106 +1,129 @@
 <template>
     <div class="file-wrap">
-
-        <!-- <b-table :fields="fields" :items="items" :bordered="true">
-            <template v-slot:cell(job_name)="data">
-                <b class="text-info">{{ data.value }}</b>
+        <b-table :fields="fields" :items="items" :bordered="true">
+            <template v-slot:cell(name)="data">
+                <a href="#">{{ data.value }}</a>
+            </template>
+            <template v-slot:cell(create_time)="data">
+                {{ moment(data.value * 1000).format('YYYY/MM/DD HH:mm:ss') }}
+            </template>
+            <template v-slot:cell(update_time)="data">
+                {{ moment(data.value * 1000).format('YYYY/MM/DD HH:mm:ss') }}
+            </template>
+            <template v-slot:cell(status)="data">
+                {{ statusMap[data.value] }}
             </template>
             <template v-slot:cell(action)="data">
-                <i>View</i>
-                <i>Edit</i>
-                <i>Remove</i>
+                <a @click="onView(data.item.job_id)">View</a>
+                |
+                <a>Rerun</a>
+                |
+                <a @click="onDownload(data.item.output)">Download</a>
             </template>
         </b-table>
-        <b-pagination-nav v-model="pageNo" :number-of-pages="pageTotal"></b-pagination-nav> -->
-        <template v-if="loginStatus">
-            <div class="history" v-show="showMode === 1"></div>
-            <div v-show="showMode === 2"><b-button @click="load">Back</b-button></div>
-            <div class="one-history" v-show="showMode === 2"></div>
-        </template>
-        <template v-else>
-            <div class="current-history"></div>
-        </template>
+
+        <b-modal v-model="modalShow" static no-enforce-focus hide-footer>
+            <template v-slot:modal-header>
+                <h4 class="title" tabindex="0">Job Detail</h4>
+            </template>
+            <div class="my-tool-wrap">
+                <div>Job Id: {{ job.job_id }}</div>
+                <div>Job Status: {{ statusMap[job.status] }}</div>
+                <div>Tool Id: {{ job.tool_id }}</div>
+                <div>Tool Version: {{ job.tool_version }}</div>
+                <div>Tool Name: {{ job.tool_name }}</div>
+                <div>Input Params: {{ job.parmas }}</div>
+                <div>Output File: {{ job.output }}</div>
+                <h4>Visualize: </h4>
+                <div>
+                    // chart
+                </div>
+            </div>
+        </b-modal>
     </div>
 </template>
 
 <script>
+import axios from "axios";
 import $ from "jquery";
-import Vue from "vue";
-import BootstrapVue from "bootstrap-vue";
 import { getGalaxyInstance } from "app";
-import HistoryList from "./history/history-list";
-import HistoryView from "components/HistoryView.vue";
-
-Vue.use(BootstrapVue);
+import moment from "moment";
 
 export default {
     components: {
     },
     data() {
         return {
+            statusMap: {
+                1: 'running',
+                2: 'done',
+                3: 'error'
+            },
+            modalShow: false,
             loginStatus: false,
-            showMode: 1, // 1集合2列表3详细
-            pageNo: 1,
-            pageSize: 10,
-            pageTotal: 1,
             fields: [
-                { key: 'job_no', label: 'Job No.' },
-                { key: 'job_name', label: 'Job Name' },
-                { key: 'time', label: 'Time' },
+                { key: 'job_id', label: 'Job Id' },
+                { key: 'tool_id', label: 'Tool' },
+                { key: 'tool_version', label: 'Version' },
+                { key: 'params', label: 'Parmas' },
+                { key: 'output', label: 'Output' },
                 { key: 'status', label: 'Status' },
+                { key: 'create_time', label: 'Create Time' },
+                { key: 'update_time', label: 'Finish Time' },
                 'action'
             ],
-            items: [
-                { job_no: 40, job_name: 'work-001', time: 0, status: 1 },
-                { job_no: 21, job_name: 'work-002', time: 0, status: 2 },
-                { job_no: 89, job_name: 'work-003', time: 0, status: 2 },
-                { job_no: 89, job_name: 'work-004', time: 0, status: 2 },
-                { job_no: 39, job_name: 'work-005', time: 0, status: 2 }
-            ],
+            items: [],
+            job: {},
+            pageNo: 1,
+            pageSize: 100,
+            total: 0
         };
     },
     methods: {
+        moment,
         load() {
             const Galaxy = getGalaxyInstance();
-            if(Galaxy.user.id) {
-                this.loginStatus = true
-            }
-            if (this.loginStatus) {
-                this.$nextTick(() => {
-                    const view = new HistoryList.View({ action_id: 'list', select_callback: this.onSelect });
-                    $(".history")
-                        .empty()
-                        .scrollTop(0)
-                        .append(view.$el || view)
-                        .show();
-                    Galaxy.trigger("center-panel:load", view);
-                    this.showMode = 1
+            axios
+                .get(`${Galaxy.root}api/custom/job/list?page_no=${this.pageNo}&page_size=${this.pageSize}`)
+                .then((response) => {
+                    this.items = response.data.items
                 })
-            } else {
-                this.$nextTick(() => {
-                    $(".current-history")
-                        .empty()
-                        .scrollTop(0)
-                        .append(Galaxy.currHistoryPanel.$el)
-                        .show();
-                })
-            }
+                .catch((error) => {
+                    const message = error.response.data && error.response.data.err_msg;
+                    this.errorMessage = message;
+                });
         },
-        onSelect(id) {
+        onView(id) {
             const Galaxy = getGalaxyInstance();
-            const historyInstance = Vue.extend(HistoryView);
-            const vm = document.createElement("div");
-            $(".one-history")
-                .empty()
-                .scrollTop(0)
-                .append(vm.$el || vm)
-                .show();
-            Galaxy.trigger("center-panel:load", vm);
-            new historyInstance({ propsData: { id: id } }).$mount(vm);
-            this.showMode = 2;
+            axios
+                .get(`${Galaxy.root}api/custom/job/detail/${id}`)
+                .then((response) => {
+                    this.job = response.data
+                    this.modalShow = true
+                })
+                .catch((error) => {
+                    const message = error.response.data && error.response.data.err_msg;
+                    this.errorMessage = message;
+                });
+        },
+        onDownload(path) {
+            const Galaxy = getGalaxyInstance();
+            axios
+                .post(`${Galaxy.root}api/file/download`, { path: path })
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch((error) => {
+                    const message = error.response.data && error.response.data.err_msg;
+                    this.errorMessage = message;
+                });
         }
     },
     mounted: function() {
+        const Galaxy = getGalaxyInstance();
+        if(Galaxy.user.id) {
+            this.loginStatus = true
+        }
         this.load()
     }
 }

@@ -67,3 +67,42 @@ class UploadsAPIController(BaseAPIController):
         #fh.close()
         session_chunk.file.close()
         return {"message": "Successful."}
+
+    @legacy_expose_api_anonymous
+    def create_v2(self, trans, payload, **kwd):
+        """
+        POST /api/uploads_v2/
+        """
+        session_id = payload.get("relativePath")
+        session_chunk = payload.get("file")
+        # if re.match(r'^[\w-]+$', session_id) is None:
+        #     raise exceptions.MessageException("Requires a session id.")
+        #     pass
+        # if not hasattr(session_chunk, "file"):
+        #     raise exceptions.MessageException("Requires a session chunk.")
+        file_path = trans.app.config.ftp_upload_dir
+        if trans.user:
+            current_dir = trans.galaxy_session.work_dir
+            if not current_dir:
+                current_dir = "/"
+            root_dir = file_path + "/" + trans.user.email + current_dir
+        else:
+            root_dir = file_path + "/tmp/session-" + str(trans.galaxy_session.id)
+        log.info("uploadv2, root_dir = %s", root_dir)
+        target_file = os.path.join(root_dir, session_id)
+        log.info('uploadv2, target = %s', target_file)
+        dirname = os.path.dirname(target_file)
+        if not os.path.exists(dirname):
+            log.info("create dirname = %s", dirname)
+            os.makedirs(dirname)
+        chunk_size = os.fstat(session_chunk.file.fileno()).st_size
+        if chunk_size > trans.app.config.chunk_upload_size:
+            raise exceptions.MessageException("Invalid chunk size.")
+        with open(target_file, "ab") as f:
+            while True:
+                read_chunk = session_chunk.file.read(self.READ_CHUNK_SIZE)
+                if not read_chunk:
+                    break
+                f.write(read_chunk)
+        session_chunk.file.close()
+        return {"message": "Successful."}

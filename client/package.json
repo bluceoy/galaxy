@@ -56,6 +56,7 @@
     "vue-multiselect": "^2.1.0",
     "vue-router": "^3.1.5",
     "vue-rx": "^6.2.0",
+    "vue-simple-uploader": "^0.7.5",
     "vueisotope": "^3.1.2",
     "vuex": "^3.1.2",
     "vuex-cache": "^3.1.0"

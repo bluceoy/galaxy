@@ -3,25 +3,28 @@
         <h2>
             Availible Tools
             <span style="float:right;">
-            <a v-if="!login" @click="onUploadDialog" style="font-size:1rem;color: #2196F3;cursor: pointer;margin-right:20px;"># Upload</a>
-            <a @click="onShowResult" style="font-size:1rem;color: #2196F3;cursor: pointer;"># Rusult</a>
+            <a @click="onShowResult" style="font-size:1rem;color: #2196F3;cursor: pointer;"># Result</a>
             </span>
         </h2>
         
         <ul class="collapsible">
             <li>
-                <div @click="click(0)" class="collapsible-header">ARGs-OAP</div>
-                <div class="collapsible-body container-fluid"><ARGsOAP @analysis="onOpen"/></div>
+                <div @click="click(0)" class="collapsible-header">DEMO</div>
+                <div class="collapsible-body container-fluid"><DEMO @exec="onExec"/></div>
             </li>
-            <li>
-                <div @click="click(1)" class="collapsible-header">SARGFAM</div>
-                <div class="collapsible-body"><SARGFAM @analysis="onOpen"/></div>
+            <li v-if="login" >
+                <div @click="click(1)" class="collapsible-header">ARGs-OAP</div>
+                <div class="collapsible-body container-fluid"><ARGsOAP @exec="onExec"/></div>
+            </li>
+            <li v-if="login" >
+                <div @click="click(2)" class="collapsible-header">SARGFAM</div>
+                <div class="collapsible-body"><SARGFAM @exec="onExec"/></div>
             </li>
         </ul>
 
         <b-modal v-model="modalShow" static no-enforce-focus hide-footer>
             <template v-slot:modal-header>
-                <h4 class="title" tabindex="0">Online Analysis</h4>
+                <h4 class="title" tabindex="0">Job Submit</h4>
             </template>
             <div class="my-tool-wrap"></div>
         </b-modal>
@@ -30,15 +33,15 @@
 
 <script>
 import $ from "jquery";
-import Vue from "vue";
-import BootstrapVue from "bootstrap-vue";
+import axios from "axios";
 import { getGalaxyInstance } from "app";
 import ToolForm from "mvc/tool/tool-form";
+import DEMO from "./tools/DEMO";
 import ARGsOAP from "./tools/ARGsOAP";
 import SARGFAM from "./tools/SARGFAM";
-Vue.use(BootstrapVue);
 export default {
     components: {
+        DEMO,
         ARGsOAP,
         SARGFAM
     },
@@ -61,32 +64,19 @@ export default {
             console.log('xxx')
             this.$emit('result', 'result')
         },
-        onUploadDialog(e) {
-            console.log(e)
-            const Galaxy = getGalaxyInstance();
-            e.preventDefault();
-            Galaxy.upload.show('/');
-        },
-        onOpen(evt, tool) {
-            console.log(evt, tool);
-            this.modalShow = true;
-            const Galaxy = getGalaxyInstance();
-            if (tool.id === "upload1") {
-                evt.preventDefault();
-                Galaxy.upload.show();
-            } else if (tool.form_style === "regular") {
-                evt.preventDefault();
-                let params = {
-                    id: tool.id,
-                    tool_id: tool.id
-                }
-                let view = new ToolForm.View(params);
-                $(".my-tool-wrap")
-                    .empty()
-                    .scrollTop(0)
-                    .append(view.$el || view)
-                    .show();
+        onExec(tool, params) {
+            const galaxy = getGalaxyInstance();
+            const url = `${galaxy.root}api/custom/job`;
+            const d = {
+                tool_id: tool.id,
+                tool_version: tool.version,
+                ...params
             }
+            axios
+                .post(url, d)
+                .then((response) => {
+                    console.log(response)
+                });
         }
     }
 }

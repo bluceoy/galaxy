@@ -26,12 +26,19 @@ class FileUtilController(BaseAPIController):
         super(FileUtilController, self).__init__(app)
 
     def make_sure_root(self, trans):
+      file_path = trans.app.config.ftp_upload_dir
       if trans.user:
-        file_path = trans.app.config.new_file_path
         root_dir = file_path + "/" + trans.user.email 
-        if not os.path.exists(root_dir):
-          log.info("create root_dir = %s", trans.user.email)
-          os.makedirs(root_dir)
+      else:
+        root_dir = file_path + "/tmp/session-" + str(trans.galaxy_session.id)
+      if not os.path.exists(root_dir):
+        log.info("create root_dir = %s", trans.user.email)
+        os.makedirs(root_dir)
+      log.info("root_dir = %s", root_dir)
+      return root_dir
+
+    def ge_relative_root(self, trans):
+      pass
 
     @expose_api
     def get_dir(self, trans, **kwargs):
@@ -99,21 +106,24 @@ class FileUtilController(BaseAPIController):
                             **  `error`:                    A descriptive error message.
 
         """
-        if not trans.user:
-          log.info("please login first")
-          raise ActionInputError("please login first")
-
+        # if not trans.user:
+        #   log.info("please login first")
+        #   raise ActionInputError("please login first")
+        log.info("kwargs = %s", kwargs)
         def sort_func(item):
           return item["type"]
 
-        self.make_sure_root(trans)
-
+        root_dir = self.make_sure_root(trans)
         work_dir = trans.galaxy_session.work_dir
         if work_dir == "" or work_dir is None:
           work_dir = "/"
-        file_path = trans.app.config.new_file_path
-        dir = file_path + "/" + trans.user.email + work_dir
-        log.info("ftp_dir = %s, work_dir = %s, dir = %s", file_path, work_dir, dir)
+        if "dir" in kwargs:
+          work_dir = kwargs["dir"]
+        if work_dir == "/":
+          dir = root_dir
+        else:
+          dir = root_dir + work_dir
+        log.info("listdir, root_dir = %s, work_dir = %s, dir = %s", root_dir, work_dir, dir)
         files = os.listdir(dir)
         items = []
         for file in files:
@@ -122,6 +132,10 @@ class FileUtilController(BaseAPIController):
           item = {
             "file": file
           }
+          if work_dir == "/":
+            item["real_path"] = work_dir + file
+          else:
+            item["real_path"] = work_dir + "/" + file
           file_path = dir + "/" + file
           ctime = int(os.path.getctime(file_path))
           item["ctime"] = ctime
@@ -158,9 +172,66 @@ class FileUtilController(BaseAPIController):
         if len(missing_arguments) > 0:
             raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
 
-        file_path = trans.app.config.new_file_path
+        file_path = trans.app.config.ftp_upload_dir
         dir = file_path + "/" + trans.user.email + work_dir
         if not os.path.exists(dir):
           os.makedirs(dir)
         
         return {'work_dir': work_dir}
+
+    @expose_api
+    def remove(self, trans, payload, **kwargs):
+        """
+        * POST /api/file/remove
+        :type  trans: galaxy.web.framework.webapp.GalaxyWebTransaction
+        :param trans: Galaxy web transaction
+        :param kwargs:
+
+        :rtype:  dictionary
+        :return: a dictionary containing a `summary` view of the datasets copied from the given cloud-based storage.
+        """
+        if not isinstance(payload, dict):
+          raise ActionInputError('Invalid payload data type. The payload is expected to be a dictionary, '
+                                   'but received data of type `{}`.'.format(str(type(payload))))
+
+        missing_arguments = []
+        path = payload.get("path", None)
+
+        if path is None:
+          missing_arguments.append("path")
+
+        if len(missing_arguments) > 0:
+          raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
+
+        root_dir = self.make_sure_root(trans)
+        real_path = os.path.join(root_dir, path)
+
+        if not os.path.exists(real_path):
+          raise ActionInputError("path: %s not found" % (path))
+
+        if os.path.isdir(real_path):
+          os.removedirs(real_path)
+        else:
+          os.remove(real_path)
+
+        return {'message': 'Successful.'}
+
+    @expose_api
+    def download(self, trans, **kwargs):
+      """
+      * GET /api/file/download
+      """
+      missing_arguments = []
+      path = kwargs.get("path", None)
+
+      root_dir = self.make_sure_root(trans)
+      target_file = root_dir + path
+      if not os.path.isfile(target_file):
+        raise ActionInputError("file = %s, not found" % (path))
+      
+      basename = os.path.basename(target_file)
+      trans.response.set_content_type('application/octet-stream')
+      download_file = open(target_file, "rb")
+      trans.response.headers["Content-Disposition"] = 'attachment; filename="%s"' % (basename)
+  
+      return download_file
