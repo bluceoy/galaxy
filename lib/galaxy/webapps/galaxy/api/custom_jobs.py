@@ -230,8 +230,12 @@ class CustomJobsAPIController(BaseAPIController):
     :rtype:     dict
     :returns:   an okay message
     """
-    page = kwargs.get("page_no", 1)
-    size = kwargs.get("page_size", 10)
+    try:
+      page = int(kwargs.get("page_no", 1))
+      size = int(kwargs.get("page_size", 10))
+    except:
+      page = 1
+      size = 10
 
     session_id = trans.galaxy_session.id
     user_id =  trans.user.id
