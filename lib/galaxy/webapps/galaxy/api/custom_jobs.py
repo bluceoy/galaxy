@@ -57,21 +57,11 @@ class CustomJobsAPIController(BaseAPIController):
   @expose_api
   def on_run_job(self, trans, payload, **kwargs):
     """
-    create( self, trans, payload, **kwargs )
     * POST /api/custom/job
         Populate an output file (formal dataset, task split part, working
         directory file (such as those related to metadata)). This should be
         a multipart post with a 'file' parameter containing the contents of
         the actual file to create.
-
-    :type   payload:    dict
-    :param  payload:    dictionary structure containing::
-        'job_key'   = Key authenticating
-        'path'      = Path to file to create.
-
-    ..note:
-        This API method is intended only for consumption by job runners,
-        not end users.
 
     :rtype:     dict
     :returns:   an okay message
