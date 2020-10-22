@@ -49,7 +49,7 @@ class CustomJobsAPIController(BaseAPIController):
     sql = "insert into custom_jobs(%s) values(%s) returning id" % (fields, values)
     log.info("sql = %s", sql)
     cur.execute(sql)
-    job_id, _ = cur.fetchone()
+    job_id = cur.fetchone()
     log.info("sql = %s, job_id = %d", sql, job_id)
     cur.commit()
     conn.close()
