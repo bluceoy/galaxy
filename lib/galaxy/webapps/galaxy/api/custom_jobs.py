@@ -26,14 +26,10 @@ log = logging.getLogger(__name__)
 class CustomJobsAPIController(BaseAPIController):
   """ This job files controller allows remote job running mechanisms to
   read and modify the current state of files for queued and running jobs.
-  It is certainly not meant to represent part of Galaxy's stable, user
-  facing API.
-
-  Furthermore, even if a user key corresponds to the user running the job,
-  it should not be accepted for authorization - this API allows access to
-  low-level unfiltered files and such authorization would break Galaxy's
-  security model for tool execution.
   """
+
+  def __init__(self, app):
+    super(FileUtilController, self).__init__(app)
 
   def initialize(self):
     self.host = '192.168.0.184'
