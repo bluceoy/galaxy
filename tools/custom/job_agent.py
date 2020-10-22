@@ -23,7 +23,8 @@ class JobAgent(object):
   def run(self, *args):
     commands = []
     commands.append("python")
-    commands.append(*args)
+    if len(args) > 0:
+      commands.append(*args)
     process = subprocess.run(commands, cwd=self.cwd, check=True)
     log.info("returncode = %d", process.returncode)
 
@@ -33,4 +34,7 @@ if __name__ == "__main__":
   cwd = sys.argv[3]
   args = sys.argv[4:]
   job = JobAgent(job_id, tool_id, cwd)
-  job.run(*args)
+  if len(sys.argv) > 4:
+    job.run(*sys.argv[4:])
+  else:
+    job.run()
