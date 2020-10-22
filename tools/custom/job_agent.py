@@ -23,7 +23,7 @@ class JobAgent(object):
   def run(self, *args):
     commands = ["python", self.tool_id]
     if len(args) > 0:
-      commands.append(*args)
+      commands.extend(*args)
     log.info("commands = %s", commands)
     process = subprocess.run(commands, cwd=self.cwd, check=True)
     log.info("returncode = %d", process.returncode)
