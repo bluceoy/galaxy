@@ -14,7 +14,6 @@ from galaxy import (
 from galaxy.webapps.base.controller import BaseAPIController
 from galaxy.exceptions import ActionInputError
 from galaxy.web import expose_api
-import psycopg2
 import subprocess
 
 log = logging.getLogger(__name__)
