@@ -51,7 +51,7 @@ class CustomJobsAPIController(BaseAPIController):
     cur.execute(sql)
     job_id = cur.fetchone()
     log.info("sql = %s, job_id = %d", sql, job_id)
-    cur.commit()
+    conn.commit()
     conn.close()
     return job_id
 
