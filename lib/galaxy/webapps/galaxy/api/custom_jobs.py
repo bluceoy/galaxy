@@ -89,6 +89,7 @@ class CustomJobsAPIController(BaseAPIController):
 
     root_dir = self.make_sure_root(trans)
     real_path = os.path.join(root_dir, input_dir)
+    log.info("real_path = %s", real_path)
     if not os.path.isdir(real_path):
       raise ActionInputError("input not exist")
     
