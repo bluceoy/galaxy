@@ -5,7 +5,10 @@
                 <a href="#">{{ data.value }}</a>
             </template>
             <template v-slot:cell(create_time)="data">
-                {{ moment.utc(data.value).format() }}
+                {{ moment(data.value * 1000).format('YYYY/MM/DD HH:mm:ss') }}
+            </template>
+            <template v-slot:cell(update_time)="data">
+                {{ moment(data.value * 1000).format('YYYY/MM/DD HH:mm:ss') }}
             </template>
             <template v-slot:cell(action)="data">
                 <a @click="onView(data.item.job_id)">View</a>
@@ -32,11 +35,13 @@ export default {
             loginStatus: false,
             fields: [
                 { key: 'job_id', label: 'Job Id' },
-                { key: 'tool', label: 'Tool' },
-                { key: 'version', label: 'Version' },
-                { key: 'state', label: 'State' },
+                { key: 'tool_id', label: 'Tool' },
+                { key: 'tool_version', label: 'Version' },
+                { key: 'params', label: 'Parmas' },
+                { key: 'output', label: 'Output' },
+                { key: 'status', label: 'Status' },
                 { key: 'create_time', label: 'Create Time' },
-                { key: 'finish_time', label: 'Finish Time' },
+                { key: 'update_time', label: 'Finish Time' },
                 'action'
             ],
             items: [],
@@ -47,6 +52,7 @@ export default {
         };
     },
     methods: {
+        moment,
         load() {
             const Galaxy = getGalaxyInstance();
             axios
