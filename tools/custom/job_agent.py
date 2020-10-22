@@ -26,8 +26,8 @@ class JobAgent(object):
     now = int(time.time())
     conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
     cur = conn.cursor()
-    sql = "update custom_jobs set status = %d, update_time = %d where id = %d" % (
-      status, now, self.job_id)
+    sql = "update custom_jobs set status = %d, update_time = %d where id = %s" % (
+      status, now, str(self.job_id))
     log.info("sql = %s", sql)
     cur.execute(sql)
     conn.commit()
