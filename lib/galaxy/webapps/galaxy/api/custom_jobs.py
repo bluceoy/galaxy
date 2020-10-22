@@ -15,6 +15,8 @@ from galaxy.webapps.base.controller import BaseAPIController
 from galaxy.exceptions import ActionInputError
 from galaxy.web import expose_api
 import subprocess
+import psycopg2
+import time
 
 log = logging.getLogger(__name__)
 
@@ -33,6 +35,23 @@ class CustomJobsAPIController(BaseAPIController):
     self.user = 'postgres'
     self.password = '123456'
     self.db = 'postgres'
+
+  def add_job(self, **kwargs):
+    now = int(time.time())
+    conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
+    cur = conn.cursor()
+    fields = "tool_id,tool_name,tool_version,galaxy_version,cwd,params,session_id,user_id,status,output,real_output,create_time,update_time"
+    values = "'%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s',%d,%d" % (kwargs['tool_id'],kwargs['tool_name'],kwargs['tool_version'],
+    kwargs['galaxy_version'],kwargs['cwd'],kwargs['params'],kwargs['session_id'],kwargs['user_id'],kwargs['status'],kwargs['output'],
+    kwargs['real_output'],now,now)
+    sql = "insert into custom_jobs(%s) values(%s) returning id" % (fields, values)
+    log.info("sql = %s", sql)
+    cur.execute(sql)
+    job_id, _ = cur.fetchone()
+    log.info("sql = %s, job_id = %d", sql, job_id)
+    cur.commit()
+    conn.close()
+    return job_id
 
   def make_sure_root(self, trans):
     file_path = trans.app.config.ftp_upload_dir
@@ -75,6 +94,10 @@ class CustomJobsAPIController(BaseAPIController):
     tool_id = payload.get("tool_id", None)
     if not tool_id:
       missing_arguments.append("tool_id")
+
+    tool_version = payload.get("tool_version", None)
+    if not tool_version:
+      missing_arguments.append("tool_version")
     
     input_dir = payload.get("input", None)
     if not input_dir:
@@ -93,21 +116,35 @@ class CustomJobsAPIController(BaseAPIController):
     log.info("real_path = %s", real_path)
     if not os.path.isdir(real_path):
       raise ActionInputError("input not exist")
-    
-    job_id = 1
+
     agent_cwd = trans.app.config.tool_path + "/custom"
     job_cwd = trans.app.config.tool_path + "/args"
+    
+    #values = "'%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s',%d,%d" % (kwargs['tool_id'],kwargs['tool_name'],kwargs['tool_version'],
+    #kwargs['galaxy_version'],kwargs['cwd'],kwargs['params'],kwargs['session_id'],kwargs['user_id'],kwargs['status'],kwargs['output'],
+    #kwargs['create_time'],kwargs['update_time'])
+    params = {
+      "tool_id": tool_id,
+      "tool_name": tool_id,
+      "tool_version": tool_version,
+      "galaxy_version": trans.app.galaxy_version,
+      "cwd": job_cwd,
+      "params": "-i %s -f %s" % (input_dir, suffix),
+      "session_id": trans.galaxy_session.id,
+      "user_id": trans.user.id,
+      "status": 1,
+      "output": input_dir + "/output",
+      "real_output": real_path + "/output"
+    }
+    job_id = self.add_job(**params)
+
+
     commandstr = "python job_agent.py %d args.py %s -i %s -f %s" % (
       job_id, job_cwd, real_path, suffix)
     log.info("command = %s", commandstr)
 
     command = commandstr.split(" ")
     subprocess.Popen(command, cwd=agent_cwd)
-
-
-    # conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
-    # cur = conn.cursor()
-    # cur.execute("")
 
     return {"message": "ok", "job_id": job_id}
 
@@ -134,9 +171,9 @@ class CustomJobsAPIController(BaseAPIController):
     """
     missing_arguments = []
     job = {
-      "job_id":1,
+      "job_id": 1,
       "job_name": "args-1",
-      "status":1,
+      "status": 1,
       "params": "",
       "output": "",
       "create_time": 1603346662,
