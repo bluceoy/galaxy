@@ -188,7 +188,7 @@ class CustomJobsAPIController(BaseAPIController):
       "params": job["params"],
       "output": job["output"],
       "create_time": job["create_time"],
-      "update_time": job["udpate_time"]
+      "update_time": job["update_time"]
     }
     return data
 
