@@ -117,6 +117,8 @@ class FileUtilController(BaseAPIController):
         work_dir = trans.galaxy_session.work_dir
         if work_dir == "" or work_dir is None:
           work_dir = "/"
+        if "dir" in kwargs:
+          work_dir = kwargs["dir"]
         if work_dir == "/":
           dir = root_dir
         else:
