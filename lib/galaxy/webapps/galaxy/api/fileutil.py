@@ -37,6 +37,9 @@ class FileUtilController(BaseAPIController):
       log.info("root_dir = %s", root_dir)
       return root_dir
 
+    def ge_relative_root(self, trans):
+      pass
+
     @expose_api
     def get_dir(self, trans, **kwargs):
         """
@@ -106,7 +109,7 @@ class FileUtilController(BaseAPIController):
         # if not trans.user:
         #   log.info("please login first")
         #   raise ActionInputError("please login first")
-
+        log.info("kwargs = %s", kwargs)
         def sort_func(item):
           return item["type"]
 
@@ -126,7 +129,7 @@ class FileUtilController(BaseAPIController):
             continue
           item = {
             "file": file,
-            "real_path": dir + '/' + file
+            "real_path": work_dir + '/' + file
           }
           file_path = dir + "/" + file
           ctime = int(os.path.getctime(file_path))
