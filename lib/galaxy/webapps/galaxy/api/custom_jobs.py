@@ -10,10 +10,7 @@ from galaxy import (
   model,
   util
 )
-from galaxy.web import (
-  expose_api_anonymous_and_sessionless,
-  expose_api_raw_anonymous_and_sessionless,
-)
+
 from galaxy.webapps.base.controller import BaseAPIController
 from galaxy.exceptions import ActionInputError
 from galaxy.web import expose_api
