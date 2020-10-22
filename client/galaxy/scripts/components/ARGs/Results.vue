@@ -1,6 +1,5 @@
 <template>
     <div class="file-wrap">
-
         <b-table :fields="fields" :items="items" :bordered="true">
             <template v-slot:cell(name)="data">
                 <a href="#">{{ data.value }}</a>
@@ -9,11 +8,11 @@
                 {{ moment.utc(data.value).format() }}
             </template>
             <template v-slot:cell(action)="data">
-                <a>View</a>
+                <a @click="onView(data.item.job_id)">View</a>
                 |
-                <a>Edit</a>
+                <a>Rerun</a>
                 |
-                <a>Remove</a>
+                <a>Download</a>
             </template>
         </b-table>
     </div>
@@ -23,8 +22,6 @@
 import axios from "axios";
 import $ from "jquery";
 import { getGalaxyInstance } from "app";
-import HistoryList from "./history/history-list";
-import HistoryView from "components/HistoryView.vue";
 import moment from "moment";
 
 export default {
@@ -62,7 +59,7 @@ export default {
                     this.errorMessage = message;
                 });
         },
-        detail(id) {
+        onView(id) {
             const Galaxy = getGalaxyInstance();
             if(Galaxy.user.id) {
                 this.loginStatus = true
@@ -76,9 +73,6 @@ export default {
                     const message = error.response.data && error.response.data.err_msg;
                     this.errorMessage = message;
                 });
-        },
-        onSelect(id) {
-            this.detail(id)
         }
     },
     mounted: function() {

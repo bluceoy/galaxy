@@ -3,7 +3,6 @@
         <h2>
             Availible Tools
             <span style="float:right;">
-            <a v-if="!login" @click="onUploadDialog" style="font-size:1rem;color: #2196F3;cursor: pointer;margin-right:20px;"># Upload</a>
             <a @click="onShowResult" style="font-size:1rem;color: #2196F3;cursor: pointer;"># Result</a>
             </span>
         </h2>
@@ -13,11 +12,11 @@
                 <div @click="click(0)" class="collapsible-header">DEMO</div>
                 <div class="collapsible-body container-fluid"><DEMO @exec="onExec"/></div>
             </li>
-            <li>
+            <li v-if="login" >
                 <div @click="click(1)" class="collapsible-header">ARGs-OAP</div>
                 <div class="collapsible-body container-fluid"><ARGsOAP @exec="onExec"/></div>
             </li>
-            <li>
+            <li v-if="login" >
                 <div @click="click(2)" class="collapsible-header">SARGFAM</div>
                 <div class="collapsible-body"><SARGFAM @exec="onExec"/></div>
             </li>
@@ -25,7 +24,7 @@
 
         <b-modal v-model="modalShow" static no-enforce-focus hide-footer>
             <template v-slot:modal-header>
-                <h4 class="title" tabindex="0">Online Analysis</h4>
+                <h4 class="title" tabindex="0">Job Submit</h4>
             </template>
             <div class="my-tool-wrap"></div>
         </b-modal>
@@ -64,12 +63,6 @@ export default {
         onShowResult() {
             console.log('xxx')
             this.$emit('result', 'result')
-        },
-        onUploadDialog(e) {
-            console.log(e)
-            const Galaxy = getGalaxyInstance();
-            e.preventDefault();
-            Galaxy.upload.show('/');
         },
         onExec(tool, params) {
             const galaxy = getGalaxyInstance();

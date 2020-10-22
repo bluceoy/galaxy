@@ -152,11 +152,6 @@ export default {
                 })
                 .then((response) => {
                     window.location = '/args/index'
-                    // if (response.data && response.data.redirect_uri) {
-                    //     window.top.location.href = response.data.redirect_uri;
-                    // } else {
-                    //     window.top.location.href = `${galaxy.root}root/login?is_logout_redirect=true`;
-                    // }
                 });
         }
     }
