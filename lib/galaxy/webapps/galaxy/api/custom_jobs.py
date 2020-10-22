@@ -133,7 +133,16 @@ class CustomJobsAPIController(BaseAPIController):
     :returns:   an okay message
     """
     missing_arguments = []
-    return {"message":"ok"}
+    job = {
+      "job_id":1,
+      "job_name": "args-1",
+      "status":1,
+      "params": "",
+      "output": "",
+      "create_time": 1603346662,
+      "update_time": 1603346662
+    }
+    return job
 
   @expose_api
   def on_job_list(self, trans, **kwargs):
@@ -157,7 +166,7 @@ class CustomJobsAPIController(BaseAPIController):
     :returns:   an okay message
     """
     missing_arguments = []
-    
+
     data = {}
     data["total"] = 0
     data["items"] = []
