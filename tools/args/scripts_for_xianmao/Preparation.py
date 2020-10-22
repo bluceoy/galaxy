@@ -21,7 +21,6 @@ search_path = args.i + '/output'
 
 ################################################### Programme #######################################################
 # check the format of ORF, genbank parsing or prodigal prediction
-fot=open(args.i + '/output/ORF_format.log','w')
 a=0
 for file_name in list_data:
     # check orf file

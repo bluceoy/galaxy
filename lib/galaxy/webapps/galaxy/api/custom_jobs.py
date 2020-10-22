@@ -159,8 +159,8 @@ class CustomJobsAPIController(BaseAPIController):
       "session_id": trans.galaxy_session.id,
       "user_id": trans.user.id,
       "status": 1,
-      "output": input_dir + "/output",
-      "real_output": real_path + "/output"
+      "output": input_dir + "/output/final.out",
+      "real_output": real_path + "/output/final.out"
     }
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d args.py %s -i %s -f %s" % (
