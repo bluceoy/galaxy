@@ -77,4 +77,7 @@ export default {
 </script>
 
 <style scoped>
+.my-tool-wrap {
+    height: 100vh;
+}
 </style>

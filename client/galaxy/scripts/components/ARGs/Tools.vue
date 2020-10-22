@@ -77,7 +77,7 @@ export default {
             const d = {
                 tool_id: tool.id,
                 tool_version: tool.version,
-                inputs: params
+                ...params
             }
             axios
                 .post(url, d)
