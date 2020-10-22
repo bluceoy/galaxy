@@ -40,7 +40,6 @@ class CustomJobsAPIController(BaseAPIController):
     self.user = 'postgres'
     self.password = '123456'
     self.db = 'postgres'
-    self.cwd = '/home/oyq/galaxy/tools/custom'
 
   def make_sure_root(self, trans):
     file_path = trans.app.config.ftp_upload_dir
@@ -99,6 +98,10 @@ class CustomJobsAPIController(BaseAPIController):
     if not input_dir:
       missing_arguments.append("input_dir")
 
+    suffix = payload.get("suffix", ".orf")
+    if not suffix:
+      missing_arguments.append("suffix")
+
     if len(missing_arguments) > 0:
       raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
 
@@ -106,19 +109,22 @@ class CustomJobsAPIController(BaseAPIController):
     real_path = os.path.join(root_dir, input_dir)
     if not os.path.isdir(real_path):
       raise ActionInputError("input not exist")
-
-    commandstr = "python %s/args/main.py -i %s -f .orf" % (trans.app.config.tool_path, real_path)
+    
+    job_id = 1
+    agent_cwd = trans.app.config.tool_path + "/custom"
+    job_cwd = trans.app.config.tool_path + "/args"
+    commandstr = "python job_agent.py %d args.py %s -i %s -f %s" % (
+      job_id, job_cwd, real_path, suffix)
     log.info("command = %s", commandstr)
 
     command = commandstr.split(" ")
-    subprocess.Popen(command, cwd=self.cwd)
+    subprocess.Popen(command, cwd=agent_cwd)
 
 
     # conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
     # cur = conn.cursor()
     # cur.execute("")
 
-    job_id = 1
     return {"message": "ok", "job_id": job_id}
 
   @expose_api_anonymous_and_sessionless
