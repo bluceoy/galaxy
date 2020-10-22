@@ -76,9 +76,9 @@ class CustomJobsAPIController(BaseAPIController):
     if not tool_id:
       missing_arguments.append("tool_id")
     
-    input_dir = payload.get("input_dir", None)
+    input_dir = payload.get("input", None)
     if not input_dir:
-      missing_arguments.append("input_dir")
+      missing_arguments.append("input")
 
     suffix = payload.get("suffix", ".orf")
     if not suffix:

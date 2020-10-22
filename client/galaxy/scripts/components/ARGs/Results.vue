@@ -3,7 +3,7 @@
 
         <b-table :fields="fields" :items="items" :bordered="true">
             <template v-slot:cell(name)="data">
-                <b class="text-info">{{ data.value }}</b>
+                <a href="#">{{ data.value }}</a>
             </template>
             <template v-slot:cell(action)="data">
                 <i>View</i>

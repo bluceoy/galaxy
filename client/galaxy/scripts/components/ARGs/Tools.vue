@@ -10,12 +10,16 @@
         
         <ul class="collapsible">
             <li>
+                <div @click="click(0)" class="collapsible-header">DEMO</div>
+                <div class="collapsible-body container-fluid"><DEMO @exec="onExec"/></div>
+            </li>
+            <li>
                 <div @click="click(0)" class="collapsible-header">ARGs-OAP</div>
-                <div class="collapsible-body container-fluid"><ARGsOAP @analysis="onOpen" @exec="onExec"/></div>
+                <div class="collapsible-body container-fluid"><ARGsOAP @exec="onExec"/></div>
             </li>
             <li>
                 <div @click="click(1)" class="collapsible-header">SARGFAM</div>
-                <div class="collapsible-body"><SARGFAM @analysis="onOpen" @exec="onExec"/></div>
+                <div class="collapsible-body"><SARGFAM @exec="onExec"/></div>
             </li>
         </ul>
 
@@ -33,10 +37,12 @@ import $ from "jquery";
 import axios from "axios";
 import { getGalaxyInstance } from "app";
 import ToolForm from "mvc/tool/tool-form";
+import DEMO from "./tools/DEMO";
 import ARGsOAP from "./tools/ARGsOAP";
 import SARGFAM from "./tools/SARGFAM";
 export default {
     components: {
+        DEMO,
         ARGsOAP,
         SARGFAM
     },
@@ -70,35 +76,14 @@ export default {
             const url = `${galaxy.root}api/custom/job`;
             const d = {
                 tool_id: tool.id,
-                version: tool.version,
-                params: params
+                tool_version: tool.version,
+                inputs: params
             }
             axios
                 .post(url, d)
                 .then((response) => {
                     console.log(response)
                 });
-        },
-        onOpen(evt, tool) {
-            console.log(evt, tool);
-            this.modalShow = true;
-            const Galaxy = getGalaxyInstance();
-            if (tool.id === "upload1") {
-                evt.preventDefault();
-                Galaxy.upload.show();
-            } else if (tool.form_style === "regular") {
-                evt.preventDefault();
-                let params = {
-                    id: tool.id,
-                    tool_id: tool.id
-                }
-                let view = new ToolForm.View(params);
-                $(".my-tool-wrap")
-                    .empty()
-                    .scrollTop(0)
-                    .append(view.$el || view)
-                    .show();
-            }
         }
     }
 }
