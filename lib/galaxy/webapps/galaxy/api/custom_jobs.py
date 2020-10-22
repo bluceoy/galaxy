@@ -29,7 +29,7 @@ class CustomJobsAPIController(BaseAPIController):
   """
 
   def __init__(self, app):
-    super(FileUtilController, self).__init__(app)
+    super(CustomJobsAPIController, self).__init__(app)
 
   def initialize(self):
     self.host = '192.168.0.184'
