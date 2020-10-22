@@ -73,58 +73,38 @@ export default {
             showOption: false,
             searching: '',
             items: [],
-            currentPos: '',
+            currentPos: '/',
             pos: []
         };
     },
     created() {
         const Galaxy = getGalaxyInstance();
-        this.getCurrentPos()
+        this.getCurrentList()
     },
     methods: {
-        getCurrentPos() {
-            const galaxy = getGalaxyInstance();
-            const url = `${galaxy.root}api/file/getdir`;
-            axios
-                .get(url)
-                .then((response) => {
-                    console.log(response)
-                    this.currentPos = response.data.current_dir
-                    let ps = this.currentPos.split('/').filter(e => { return e !== '' })
-                    console.log(ps)
-                    this.pos = []
-                    for (let i = 0; i < ps.length; i ++) {
-                        this.pos.push({
-                            text: ps[i],
-                            path: (i === 0 ? '/' : this.pos[i - 1].path + '/') + ps[i]
-                        })
-                    }
-                    let idx = this.pos.length
-                    if (idx > 0) {
-                        this.pos[idx - 1].active = true
-                    }
-                    this.getCurrentList()
-                });
-        },
         setCurrentPos(dir) {
             // 进入某个目录
-            const galaxy = getGalaxyInstance();
-            axios
-                .post(`${galaxy.root}api/file/setdir`, { path: dir })
-                .then((response) => {
-                    console.log(response)
-                    this.getCurrentPos()
+            this.currentPos = dir
+            let ps = this.currentPos.split('/').filter(e => { return e !== '' })
+            console.log(ps)
+            this.pos = []
+            for (let i = 0; i < ps.length; i ++) {
+                this.pos.push({
+                    text: ps[i],
+                    path: (i === 0 ? '/' : this.pos[i - 1].path + '/') + ps[i]
                 })
-                .catch((error) => {
-                    const message = error.response.data && error.response.data.err_msg;
-                    this.errorMessage = message;
-                });
+            }
+            let idx = this.pos.length
+            if (idx > 0) {
+                this.pos[idx - 1].active = true
+            }
+            this.getCurrentList()
         },
         getCurrentList() {
             const galaxy = getGalaxyInstance();
             const url = `${galaxy.root}api/file/list`;
             axios
-                .get(url)
+                .get(url + '?dir=' + this.currentPos)
                 .then((response) => {
                     console.log(response)
                     this.items = []
@@ -192,7 +172,8 @@ export default {
 }
 .util-wrap .select-wrap {
     position: absolute;
-    top: 34px;
+    z-index: 9;
+    top: 35px;
     left: 0;
     width: 100%;
     padding: 10px;
