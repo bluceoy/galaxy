@@ -215,3 +215,23 @@ class FileUtilController(BaseAPIController):
           os.remove(real_path)
 
         return {'message': 'Successful.'}
+
+    @expose_api
+    def download(self, trans, **kwargs):
+      """
+      * GET /api/file/download
+      """
+      missing_arguments = []
+      path = kwargs.get("path", None)
+
+      root_dir = self.make_sure_root(trans)
+      target_file = root_dir + path
+      if not os.path.isfile(target_file):
+        raise ActionInputError("file = %s, not found" % (path))
+      
+      basename = os.path.basename(target_file)
+      trans.response.set_content_type('application/octet-stream')
+      download_file = open(target_file, "rb")
+      trans.response.headers["Content-Disposition"] = 'attachment; filename="%s"' % (basename)
+  
+      return download_file
