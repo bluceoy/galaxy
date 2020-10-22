@@ -43,7 +43,7 @@ class CustomJobsAPIController(BaseAPIController):
     conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
     cur = conn.cursor()
     fields = "tool_id,tool_name,tool_version,galaxy_version,cwd,params,session_id,user_id,status,output,real_output,create_time,update_time"
-    values = "'%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s',%d,%d" % (kwargs['tool_id'],kwargs['tool_name'],kwargs['tool_version'],
+    values = "'%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s',%d,%d" % (kwargs['tool_id'],kwargs['tool_name'],kwargs['tool_version'],
     kwargs['galaxy_version'],kwargs['cwd'],kwargs['params'],kwargs['session_id'],kwargs['user_id'],kwargs['status'],kwargs['output'],
     kwargs['real_output'],now,now)
     sql = "insert into custom_jobs(%s) values(%s) returning id" % (fields, values)
