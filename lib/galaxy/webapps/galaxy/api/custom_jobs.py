@@ -181,7 +181,9 @@ class CustomJobsAPIController(BaseAPIController):
     job = self.get_job(id)
     data = {
       "job_id": job["id"],
-      "job_name": job["tool_name"]+"-"+str(job["id"]),
+      "tool_id": job["tool_id"],
+      "tool_version": job["tool_version"],
+      "tool_name": job["tool_name"]+"-"+str(job["id"]),
       "status": job["status"],
       "params": job["params"],
       "output": job["output"],
@@ -212,7 +214,9 @@ class CustomJobsAPIController(BaseAPIController):
     for job in jobs:
       item = {
         "job_id": job["id"],
-        "job_name": job["tool_name"]+"-"+str(job["id"]),
+        "tool_id": job["tool_id"],
+        "tool_version": job["tool_version"],
+        "tool_name": job["tool_name"]+"-"+str(job["id"]),
         "status": job["status"],
         "params": job["params"],
         "output": job["output"],
