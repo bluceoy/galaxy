@@ -53,7 +53,7 @@ class CustomJobsAPIController(BaseAPIController):
     log.info("root_dir = %s", root_dir)
     return root_dir
 
-  @expose_api_anonymous_and_sessionless
+  @expose_api
   def on_run_job(self, trans, payload, **kwargs):
     """
     create( self, trans, payload, **kwargs )
@@ -127,7 +127,7 @@ class CustomJobsAPIController(BaseAPIController):
 
     return {"message": "ok", "job_id": job_id}
 
-  @expose_api_anonymous_and_sessionless
+  @expose_api
   def on_get_job(self, trans, id, **kwargs):
     """
     create( self, trans, payload, **kwargs )
