@@ -28,9 +28,11 @@ class CustomJobsAPIController(BaseAPIController):
 
   def __init__(self, app):
     super(CustomJobsAPIController, self).__init__(app)
+    self.initialize()
 
   def initialize(self):
-    self.host = '192.168.0.184'
+    #self.host = '192.168.0.184'
+    self.host = '47.106.136.96'
     self.port = 5432
     self.user = 'postgres'
     self.password = '123456'
