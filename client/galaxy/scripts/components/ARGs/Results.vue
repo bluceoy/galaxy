@@ -5,24 +5,27 @@
             <template v-slot:cell(name)="data">
                 <a href="#">{{ data.value }}</a>
             </template>
+            <template v-slot:cell(create_time)="data">
+                {{ moment.utc(data.value).format() }}
+            </template>
             <template v-slot:cell(action)="data">
-                <i>View</i>
-                <i>Edit</i>
-                <i>Remove</i>
+                <a>View</a>
+                |
+                <a>Edit</a>
+                |
+                <a>Remove</a>
             </template>
         </b-table>
     </div>
 </template>
 
 <script>
+import axios from "axios";
 import $ from "jquery";
-import Vue from "vue";
-import BootstrapVue from "bootstrap-vue";
 import { getGalaxyInstance } from "app";
 import HistoryList from "./history/history-list";
 import HistoryView from "components/HistoryView.vue";
-
-Vue.use(BootstrapVue);
+import moment from "moment";
 
 export default {
     components: {
@@ -30,45 +33,59 @@ export default {
     data() {
         return {
             loginStatus: false,
-            showMode: 1, // 1集合2列表3详细
             fields: [
-                { key: 'dataset_id', label: 'Dataset Id' },
-                { key: 'name', label: 'Name' },
+                { key: 'job_id', label: 'Job Id' },
+                { key: 'tool', label: 'Tool' },
+                { key: 'version', label: 'Version' },
                 { key: 'state', label: 'State' },
                 { key: 'create_time', label: 'Create Time' },
+                { key: 'finish_time', label: 'Finish Time' },
                 'action'
             ],
             items: [],
+            job: {},
+            pageNo: 1,
+            pageSize: 100,
+            total: 0
         };
     },
     methods: {
         load() {
             const Galaxy = getGalaxyInstance();
+            axios
+                .get(`${Galaxy.root}api/custom/job/list?page_no=${this.pageNo}&page_size=${this.pageSize}`)
+                .then((response) => {
+                    this.items = response.data.items
+                })
+                .catch((error) => {
+                    const message = error.response.data && error.response.data.err_msg;
+                    this.errorMessage = message;
+                });
+        },
+        detail(id) {
+            const Galaxy = getGalaxyInstance();
             if(Galaxy.user.id) {
                 this.loginStatus = true
             }
-
-            console.log(Galaxy);
-            this.items = [];
-            Galaxy.currHistoryPanel.model.contents.models.forEach(e => {
-                this.items.push(e.attributes)
-            });
+            axios
+                .get(`${Galaxy.root}api/custom/job/detail/${id}`)
+                .then((response) => {
+                    this.job = response.data.items
+                })
+                .catch((error) => {
+                    const message = error.response.data && error.response.data.err_msg;
+                    this.errorMessage = message;
+                });
         },
         onSelect(id) {
-            const Galaxy = getGalaxyInstance();
-            const historyInstance = Vue.extend(HistoryView);
-            const vm = document.createElement("div");
-            $(".one-history")
-                .empty()
-                .scrollTop(0)
-                .append(vm.$el || vm)
-                .show();
-            Galaxy.trigger("center-panel:load", vm);
-            new historyInstance({ propsData: { id: id } }).$mount(vm);
-            this.showMode = 2;
+            this.detail(id)
         }
     },
     mounted: function() {
+        const Galaxy = getGalaxyInstance();
+        if(Galaxy.user.id) {
+            this.loginStatus = true
+        }
         this.load()
     }
 }
