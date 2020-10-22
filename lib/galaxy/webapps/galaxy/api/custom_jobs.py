@@ -127,7 +127,7 @@ class CustomJobsAPIController(BaseAPIController):
       "tool_id": tool_id,
       "tool_name": tool_id,
       "tool_version": tool_version,
-      "galaxy_version": trans.app.config.galaxy_version,
+      "galaxy_version": trans.app.config.version_major,
       "cwd": job_cwd,
       "params": "-i %s -f %s" % (input_dir, suffix),
       "session_id": trans.galaxy_session.id,
