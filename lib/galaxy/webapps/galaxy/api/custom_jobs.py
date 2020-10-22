@@ -58,13 +58,12 @@ class CustomJobsAPIController(BaseAPIController):
   def on_run_job(self, trans, payload, **kwargs):
     """
     * POST /api/custom/job
-        Populate an output file (formal dataset, task split part, working
-        directory file (such as those related to metadata)). This should be
-        a multipart post with a 'file' parameter containing the contents of
-        the actual file to create.
+    :type  trans: galaxy.web.framework.webapp.GalaxyWebTransaction
+    :param trans: Galaxy web transaction
+    :param kwargs:
 
-    :rtype:     dict
-    :returns:   an okay message
+    :rtype:  dictionary
+    :return: a dictionary containing a `summary` view of the datasets copied from the given cloud-based storage.
     """
     missing_arguments = []
     tool_id = payload.get("tool_id", None)
