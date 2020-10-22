@@ -21,7 +21,7 @@ uwsgi:
   # The address and port on which to listen.  By default, only listen to
   # localhost (galaxy will not be accessible over the network).  Use
   # ':8080' to listen on all available network interfaces.
-  http: :80
+  http: :8080
 
   # By default uWSGI allocates a very small buffer (4096 bytes) for the
   # headers of each request. If you start receiving "invalid request
@@ -126,7 +126,7 @@ galaxy:
   # string to specify an external database instead.
   # Sample default
   # 'sqlite:///<data_dir>/universe.sqlite?isolation_level=IMMEDIATE'
-  database_connection: postgresql://postgres:123456@localhost/postgres
+  database_connection: postgresql://postgres:123456@47.106.136.96/postgres
 
   # If the server logs errors about not having enough database pool
   # connections, you will want to increase these values, or consider
@@ -216,7 +216,7 @@ galaxy:
   # Where temporary files are stored. It must be accessible at the same
   # path on any cluster nodes that will run Galaxy jobs, unless using
   # Pulsar.
-  new_file_path: /mnt/disk2/galaxy/database/ftp
+  new_file_path: /home/oyq/galaxy/database/ftp
 
   # Tool config files, defines what tools are available in Galaxy. Tools
   # can be locally developed or installed from Galaxy tool sheds.
@@ -1575,7 +1575,7 @@ galaxy:
   # options. This should point to a directory containing subdirectories
   # matching users' identifier (defaults to e-mail), where Galaxy will
   # look for files.
-  ftp_upload_dir: /mnt/disk2/galaxy/database/ftp
+  ftp_upload_dir: /home/oyq/galaxy/database/ftp
 
   # This should be the hostname of your FTP server, which will be
   # provided to users in the help text.
