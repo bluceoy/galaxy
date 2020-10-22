@@ -34,7 +34,9 @@
                 <ParamText v-model="params.input3" title="Your Email here" tip="[*] Please enter your official email here, no gaps are allowed"></ParamText>
                 <ParamText v-model="params.input4" title="Task name for this run" tip="[*] Please enter a unique task name for this runnning, No gaps are allowed in the name"></ParamText>
 
-                <button @click="onExecute">Execute</button>
+                <b-button variant="primary" @click="onExecute">
+                    <b-icon icon="check"></b-icon> Execute
+                </b-button>
             </div>
         </b-modal>
     </div>
@@ -45,7 +47,8 @@ import * as U from './util/index.js'
 export default {
     components: {
 	    ParamText: U.ParamText,
-	    ParamFile: U.ParamFile
+        ParamFile: U.ParamFile,
+        ParamSelect: U.ParamSelect
   	},
     data() {
         return {

@@ -16,17 +16,21 @@
                 </div>
                 <div class="main">
                     <ul>
-                        <li v-for="(item, idx) in items" :key="idx" @click="onSelect(item)">
+                        <li v-for="(item, idx) in items" :key="idx" @click="onSelect(item, idx)">
                             <b-icon icon="folder" font-scale="1.2" v-if="item.type === 'dir'"></b-icon>
+                            <b-icon icon="document-text" font-scale="1.2" v-else></b-icon>
                             {{ item.name }}
                         </li>
                     </ul>
                 </div>
                 <div class="foot">
                     <div class="back">
-                        <button @click="onBack" :disabled="currentPos === '/'">Back</button>
+                        <b-button @click="onBack" :disabled="currentPos === '/'">
+                            <b-icon icon="arrow-left"></b-icon> Back
+                        </b-button>
                         {{ currentPos }}
                     </div>
+                    <button @click="onChoose" v-show="folder">Choose Current Folder</button>
                     <button @click="onBlur">Cancel</button>
                 </div>
             </div>
@@ -38,11 +42,8 @@
 <script>
 import axios from "axios";
 import Vue from "vue";
-import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
 import { getGalaxyInstance } from "app";
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-Vue.use(BootstrapVue);
-Vue.use(BootstrapVueIcons);
 export default {
     model: {
       prop: 'value',
@@ -60,6 +61,10 @@ export default {
         tip: {
             type: String,
             default: '',
+        },
+        folder: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -144,13 +149,20 @@ export default {
                 this.setCurrentPos('/' + dir)
             }
         },
-        onSelect(item) {
+        onSelect(item, idx) {
             console.log(item)
             if (item.type === 'dir') {
                 this.setCurrentPos(this.currentPos + (this.currentPos.substr(this.currentPos.length - 1, 1) === '/' ? '' : '/') + item.name)
             } else {
-                this.inputValue = item.path
+                if (!this.folder) {
+                    this.inputValue = item.path
+                    this.onBlur()
+                }
             }
+        },
+        onChoose() {
+            this.inputValue = this.currentPos
+            this.onBlur()
         },
         onFocus() {
             console.log(this.showOption)
