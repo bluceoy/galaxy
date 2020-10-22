@@ -54,6 +54,31 @@ class CustomJobsAPIController(BaseAPIController):
     conn.commit()
     conn.close()
     return job_id
+  
+  def list_job(self, user_id, galaxy_session, page=1, size=10):
+    now = int(time.time())
+    conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    total = 0
+    cond = ""
+    if user_id != "":
+      cond = " user_id = '%s'"  % (user_id)
+    else:
+      cond = " session_id = '%s'" % (galaxy_session)
+    sql = "select count(*) as total from custom_jobs where " + cond
+    cur.execute(sql)
+    row = cur.fetchone()
+    total = row["total"]
+
+    limit = " limit %d offset %d" % (size, (page-1)*size)
+    sql = "select * from custom_jobs where " + cond + limit
+    log.info("sql = %s", sql)
+    cur.execute(sql)
+    jobs = cur.fetchall()
+    for job in jobs:
+      log.info("job = %s", job)
+    conn.close()
+    return (total, [job for job in jobs])
 
   def make_sure_root(self, trans):
     file_path = trans.app.config.ftp_upload_dir
@@ -205,9 +230,28 @@ class CustomJobsAPIController(BaseAPIController):
     :rtype:     dict
     :returns:   an okay message
     """
-    missing_arguments = []
+    page = kwargs.get("page_no", 1)
+    size = kwargs.get("page_size", 10)
+
+    session_id = trans.galaxy_session.id
+    user_id =  trans.user.id
+    if user_id == "Anonymous":
+      user_id = ""
+    
+    items = []
+    total, jobs = self.list_job(user_id, session_id, page, size)
+    for job in jobs:
+      item = {
+        "job_id": job["id"],
+        "status": job["status"],
+        "params": job["params"],
+        "output": job["output"],
+        "create_time": job["create_time"],
+        "update_time": job["update_time"]
+      }
+      items.append(item)
 
     data = {}
-    data["total"] = 0
-    data["items"] = []
+    data["total"] = total
+    data["items"] = item
     return data
