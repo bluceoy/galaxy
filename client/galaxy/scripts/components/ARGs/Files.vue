@@ -74,8 +74,13 @@ export default {
             options: {
                 // https://github.com/simple-uploader/Uploader/tree/develop/samples/Node.js
                 target: '/api/upload_v2/',
-                query: {},
-                testChunks: false
+                testChunks: false,
+                processParams: (params) => {
+                    params.dir = this.currentPos;
+                    console.log(params);
+                    return params;
+                },
+                
             },
             status: "",
             percentage: 0,
@@ -140,10 +145,6 @@ export default {
                     let idx = this.pos.length
                     if (idx > 0) {
                         this.pos[idx - 1].active = true
-                    }
-                    this.options.target = ''
-                    this.options.query = {
-                        dir: this.currentPos
                     }
                     this.getCurrentList()
                 });
