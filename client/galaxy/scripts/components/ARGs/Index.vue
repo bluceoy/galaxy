@@ -77,7 +77,7 @@ export default {
         return {
             Galaxy: undefined,
             loginStatus: false,
-            tab: 'tool',
+            tab: 'result',
             leftShow: true,
             rightShow: true,
             modalShow: false,
