@@ -23,7 +23,7 @@
             </template>
         </b-table>
 
-        <b-modal v-model="modalShow" static no-enforce-focus hide-footer size="lg">
+        <b-modal v-model="modalShow" static no-enforce-focus hide-footer dialog-class="result-dialog">
             <template v-slot:modal-header>
                 <h4 class="title" tabindex="0">Job Detail</h4>
             </template>
@@ -47,7 +47,10 @@
             <div class="result-visualize">
                 <h4>Visualize: </h4>
                 <div>
-                    
+                    // params
+                </div>
+                <div>
+                    <img src="http://147.8.134.246:40000/static/args/visitor-map-2018-11-17.png"/>
                 </div>
             </div>
         </b-modal>
@@ -146,7 +149,12 @@ export default {
     }
 }
 </script>
-
+<style>
+.result-wrap .result-dialog {
+    width: 960px;
+    max-width: 1200px;
+}
+</style>
 <style scoped>
 .result-wrap {
     margin-bottom: 40px;
@@ -165,6 +173,9 @@ export default {
 }
 .result-wrap .result-visualize {
     margin-top: 30px;
+    width: 100%;
+}
+.result-wrap .result-visualize img {
     width: 100%;
 }
 </style>
