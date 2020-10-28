@@ -216,7 +216,7 @@ class FileUtilController(BaseAPIController):
 
         return {'message': 'Successful.'}
 
-    @expose_api(func=download,to_json=False)
+    @expose_api_raw
     def download(self, trans, payload, **kwargs):
       """
       * POST /api/file/download
