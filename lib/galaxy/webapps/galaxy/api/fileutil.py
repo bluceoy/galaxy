@@ -217,12 +217,12 @@ class FileUtilController(BaseAPIController):
         return {'message': 'Successful.'}
 
     @expose_api
-    def download(self, trans, **kwargs):
+    def download(self, trans, payload, **kwargs):
       """
-      * GET /api/file/download
+      * POST /api/file/download
       """
       missing_arguments = []
-      path = kwargs.get("path", None)
+      path = payload.get("path", None)
 
       root_dir = self.make_sure_root(trans)
       target_file = root_dir + path
