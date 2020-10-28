@@ -78,6 +78,6 @@ export default {
 
 <style scoped>
 .my-tool-wrap {
-    height: 100vh;
+    min-height: 480px;
 }
 </style>
