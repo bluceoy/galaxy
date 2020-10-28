@@ -224,6 +224,8 @@ class FileUtilController(BaseAPIController):
       missing_arguments = []
       path = payload.get("path", None)
 
+      log.info("path = %s", path)
+
       root_dir = self.make_sure_root(trans)
       target_file = root_dir + path
       if not os.path.isfile(target_file):
