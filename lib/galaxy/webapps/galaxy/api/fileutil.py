@@ -235,5 +235,5 @@ class FileUtilController(BaseAPIController):
       trans.response.set_content_type('application/octet-stream')
       download_file = open(target_file, "rb")
       trans.response.headers["Content-Disposition"] = 'attachment; filename="%s"' % (basename)
-  
+      log.info("target = %s", target_file)
       return download_file.read()
