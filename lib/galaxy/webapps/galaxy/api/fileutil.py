@@ -216,7 +216,7 @@ class FileUtilController(BaseAPIController):
 
         return {'message': 'Successful.'}
 
-    @expose_api
+    @expose_api(to_json=False)
     def download(self, trans, payload, **kwargs):
       """
       * POST /api/file/download
@@ -236,4 +236,4 @@ class FileUtilController(BaseAPIController):
       download_file = open(target_file, "rb")
       trans.response.headers["Content-Disposition"] = 'attachment; filename="%s"' % (basename)
   
-      return download_file
+      return download_file.read()
