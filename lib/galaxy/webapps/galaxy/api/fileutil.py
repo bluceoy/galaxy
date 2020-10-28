@@ -11,7 +11,7 @@ from galaxy.managers import (
     cloud,
     datasets
 )
-from galaxy.web import expose_api
+from galaxy.web import expose_api,expose_api_raw
 from galaxy.webapps.base.controller import BaseAPIController
 
 log = logging.getLogger(__name__)
