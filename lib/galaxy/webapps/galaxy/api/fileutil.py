@@ -11,7 +11,7 @@ from galaxy.managers import (
     cloud,
     datasets
 )
-from galaxy.web import expose_api
+from galaxy.web import expose_api,expose_api_raw
 from galaxy.webapps.base.controller import BaseAPIController
 
 log = logging.getLogger(__name__)
@@ -216,13 +216,15 @@ class FileUtilController(BaseAPIController):
 
         return {'message': 'Successful.'}
 
-    @expose_api
-    def download(self, trans, **kwargs):
+    @expose_api_raw
+    def download(self, trans, payload, **kwargs):
       """
-      * GET /api/file/download
+      * POST /api/file/download
       """
       missing_arguments = []
-      path = kwargs.get("path", None)
+      path = payload.get("path", None)
+
+      log.info("path = %s", path)
 
       root_dir = self.make_sure_root(trans)
       target_file = root_dir + path
@@ -233,5 +235,5 @@ class FileUtilController(BaseAPIController):
       trans.response.set_content_type('application/octet-stream')
       download_file = open(target_file, "rb")
       trans.response.headers["Content-Disposition"] = 'attachment; filename="%s"' % (basename)
-  
-      return download_file
+      log.info("target = %s", target_file)
+      return download_file.read()
