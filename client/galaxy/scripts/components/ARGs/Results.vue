@@ -76,7 +76,7 @@ export default {
                 3: 'error'
             },
             outputTypeMap: {
-                '__args_index__': 2
+                '__args_index__': 1
             },
             modalShow: false,
             loginStatus: false,
