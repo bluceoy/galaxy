@@ -136,12 +136,18 @@ export default {
         onDownload(path) {
             const Galaxy = getGalaxyInstance();
             axios
-                .post(`${Galaxy.root}api/file/download`, { path: path }, { responseType: 'arraybuffer' })
+                .post(`${Galaxy.root}api/file/download`, { path: path }, { responseType: 'blob' })
                 .then((response) => {
+                    let _that = this
                     if (this.vData.type === 1) {
-                        this.vData.data = response.data
+                        let reader = new FileReader()
+                        reader.onload = function(event) {
+                            let content = reader.result
+                            _that.vData.data = content
+                        }
+                        reader.readAsText(response.data)
                     } else if (this.vData.type === 2) {
-                        this.vData.url = window.URL.createObjectURL(new Blob([response.data]))
+                        this.vData.url = window.URL.createObjectURL(response.data)
                     }
                 })
                 .catch((error) => {
