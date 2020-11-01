@@ -41,16 +41,18 @@
                     <div><span>Input Params:</span> {{ job.params }}</div>
                 </div>
                 <div class="line">
-                    <div><span>Output File:</span> {{ job.output }}</div>
+                    <div><span>Output File:</span> <a href="#" @click="onDownload(job.output)">{{ job.output }}</a></div>
                 </div>
             </div>
             <div class="result-visualize">
                 <h4>Visualize: </h4>
                 <div>
-                    // params
-                </div>
-                <div>
-                    <img src="http://147.8.134.246:40000/static/args/visitor-map-2018-11-17.png"/>
+                    <div v-if="vData.type === 1">
+                        <pre>{{ vData.data }}</pre>
+                    </div>
+                    <div v-else-if="vData.type === 2">
+                        <img :src="vData.url"/>
+                    </div>
                 </div>
             </div>
         </b-modal>
@@ -73,6 +75,9 @@ export default {
                 2: 'done',
                 3: 'error'
             },
+            outputTypeMap: {
+                '__args_index__': 1
+            },
             modalShow: false,
             loginStatus: false,
             fields: [
@@ -91,7 +96,7 @@ export default {
             vData: {
                 type: 1, // 1:txt, 2:pdf, 3:jpg, 4:other
                 url: '',
-                data: {}
+                data: undefined
             },
             pageNo: 1,
             pageSize: 100,
@@ -118,9 +123,10 @@ export default {
                 .get(`${Galaxy.root}api/custom/job/detail/${id}`)
                 .then((response) => {
                     this.job = response.data
-                    // 获取结果，如果支持可视化，则进行渲染
-                    this.onDownload(this.job.output)
                     this.modalShow = true
+                    this.vData.type = this.outputTypeMap[this.job.tool_id]
+                    this.vData.url = '',
+                    this.vData.data = undefined
                 })
                 .catch((error) => {
                     const message = error.response.data && error.response.data.err_msg;
@@ -130,9 +136,19 @@ export default {
         onDownload(path) {
             const Galaxy = getGalaxyInstance();
             axios
-                .post(`${Galaxy.root}api/file/download`, { path: path })
+                .post(`${Galaxy.root}api/file/download`, { path: path }, { responseType: 'blob' })
                 .then((response) => {
-                    this.vData.data = response.data
+                    let _that = this
+                    if (this.vData.type === 1) {
+                        let reader = new FileReader()
+                        reader.onload = function(event) {
+                            let content = reader.result
+                            _that.vData.data = content
+                        }
+                        reader.readAsText(response.data)
+                    } else if (this.vData.type === 2) {
+                        this.vData.url = window.URL.createObjectURL(response.data)
+                    }
                 })
                 .catch((error) => {
                     const message = error.response.data && error.response.data.err_msg;
