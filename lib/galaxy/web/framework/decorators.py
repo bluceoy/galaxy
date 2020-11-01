@@ -390,7 +390,7 @@ def expose_api_anonymous(func, to_json=True):
     """
     return expose_api(func, to_json=to_json, user_required=False)
 
-def expose_api_anonymous_v2(func, to_json=False):
+def expose_api_anonymous_v2(func, to_json=True):
     """
     Expose this function via the API but don't require a set user.
     """
