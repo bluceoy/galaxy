@@ -11,7 +11,7 @@ from galaxy.managers import (
     cloud,
     datasets
 )
-from galaxy.web import expose_api,expose_api_raw
+from galaxy.web import expose_api,expose_api_raw,expose_api_anonymous_v2
 from galaxy.webapps.base.controller import BaseAPIController
 
 log = logging.getLogger(__name__)
@@ -40,7 +40,7 @@ class FileUtilController(BaseAPIController):
     def ge_relative_root(self, trans):
       pass
 
-    @expose_api
+    @expose_api_anonymous_v2
     def get_dir(self, trans, **kwargs):
         """
         * GET /api/file/getdir
@@ -53,7 +53,7 @@ class FileUtilController(BaseAPIController):
           work_dir = "/"
         return {"current_dir": work_dir}
 
-    @expose_api
+    @expose_api_anonymous_v2
     def set_dir(self, trans, payload, **kwargs):
         """
         * POST /api/file/setdir
@@ -81,7 +81,7 @@ class FileUtilController(BaseAPIController):
         trans.sa_session.flush()
         return {'work_dir': work_dir}
 
-    @expose_api
+    @expose_api_anonymous_v2
     def list_dir(self, trans, **kwargs):
         """
         * GET /api/file/list
@@ -149,7 +149,7 @@ class FileUtilController(BaseAPIController):
         items.sort(key=sort_func)
         return {'files': items}
 
-    @expose_api
+    @expose_api_anonymous_v2
     def create_dir(self, trans, payload, **kwargs):
         """
         * POST /api/file/addfolder
@@ -172,8 +172,10 @@ class FileUtilController(BaseAPIController):
         if len(missing_arguments) > 0:
             raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
 
-        file_path = trans.app.config.ftp_upload_dir
-        dir = file_path + "/" + trans.user.email + work_dir
+        # file_path = trans.app.config.ftp_upload_dir
+        # dir = file_path + "/" + trans.user.email + work_dir
+        root_dir = self.make_sure_root(trans)
+        dir = os.path.join(root_dir, work_dir)
         if not os.path.exists(dir):
           os.makedirs(dir)
         
