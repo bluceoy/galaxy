@@ -205,8 +205,11 @@ class CustomJobsAPIController(BaseAPIController):
       size = 10
 
     session_id = trans.galaxy_session.id
-    user_id =  trans.user.id
-    if user_id == "Anonymous":
+    if trans.user:
+      user_id =  trans.user.id
+      if user_id == "Anonymous":
+        user_id = ""
+    else:
       user_id = ""
     
     items = []
