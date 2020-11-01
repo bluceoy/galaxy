@@ -13,7 +13,7 @@ from galaxy import (
 
 from galaxy.webapps.base.controller import BaseAPIController
 from galaxy.exceptions import ActionInputError
-from galaxy.web import expose_api
+from galaxy.web import expose_api,expose_api_anonymous_v2
 import subprocess
 import psycopg2
 import time
@@ -101,7 +101,7 @@ class CustomJobsAPIController(BaseAPIController):
     log.info("root_dir = %s", root_dir)
     return root_dir
 
-  @expose_api
+  @expose_api_anonymous_v2
   def on_run_job(self, trans, payload, **kwargs):
     """
     * POST /api/custom/job
@@ -172,7 +172,7 @@ class CustomJobsAPIController(BaseAPIController):
 
     return {"message": "ok", "job_id": job_id}
 
-  @expose_api
+  @expose_api_anonymous_v2
   def on_job_detail(self, trans, id, **kwargs):
     """
     * GET /api/custom/job/detail/{job_id}
@@ -192,7 +192,7 @@ class CustomJobsAPIController(BaseAPIController):
     }
     return data
 
-  @expose_api
+  @expose_api_anonymous_v2
   def on_job_list(self, trans, **kwargs):
     """
     * GET /api/custom/job/list
