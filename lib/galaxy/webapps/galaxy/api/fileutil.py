@@ -32,7 +32,6 @@ class FileUtilController(BaseAPIController):
       else:
         root_dir = file_path + "/tmp/session-" + str(trans.galaxy_session.id)
       if not os.path.exists(root_dir):
-        log.info("create root_dir = %s", trans.user.email)
         os.makedirs(root_dir)
       log.info("root_dir = %s", root_dir)
       return root_dir
