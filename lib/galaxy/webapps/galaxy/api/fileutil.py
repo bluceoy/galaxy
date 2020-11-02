@@ -174,7 +174,7 @@ class FileUtilController(BaseAPIController):
         # file_path = trans.app.config.ftp_upload_dir
         # dir = file_path + "/" + trans.user.email + work_dir
         root_dir = self.make_sure_root(trans)
-        dir = os.path.join(root_dir, work_dir)
+        dir = root_dir + work_dir
         log.info("dir = %s", dir)
         if not os.path.exists(dir):
           os.makedirs(dir)
