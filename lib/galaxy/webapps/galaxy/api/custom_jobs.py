@@ -148,6 +148,10 @@ class CustomJobsAPIController(BaseAPIController):
 
     agent_cwd = trans.app.config.tool_path + "/custom"
     job_cwd = trans.app.config.tool_path + "/args"
+
+    user_id = 0
+    if trans.user:
+      user_id = trans.user.id
     
     params = {
       "tool_id": tool_id,
@@ -157,7 +161,7 @@ class CustomJobsAPIController(BaseAPIController):
       "cwd": job_cwd,
       "params": "-i %s -f %s" % (input_dir, suffix),
       "session_id": trans.galaxy_session.id,
-      "user_id": trans.user.id,
+      "user_id": user_id,
       "status": 1,
       "output": input_dir + "/output/final.out",
       "real_output": real_path + "/output/final.out"
