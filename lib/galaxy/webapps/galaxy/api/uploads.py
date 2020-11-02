@@ -73,8 +73,17 @@ class UploadsAPIController(BaseAPIController):
         """
         POST /api/uploads_v2/
         """
+        missing_arguments = []
         session_id = payload.get("relativePath")
         session_chunk = payload.get("file")
+        dir = payload.get("dir")
+        if not session_id:
+            missing_arguments.append(session_id)
+        if not dir:
+            missing_arguments.append(dir)
+        if len(missing_arguments) > 0:
+            raise exceptions.MessageException("Requires a session id")
+
         # if re.match(r'^[\w-]+$', session_id) is None:
         #     raise exceptions.MessageException("Requires a session id.")
         #     pass
@@ -82,12 +91,13 @@ class UploadsAPIController(BaseAPIController):
         #     raise exceptions.MessageException("Requires a session chunk.")
         file_path = trans.app.config.ftp_upload_dir
         if trans.user:
-            current_dir = trans.galaxy_session.work_dir
-            if not current_dir:
-                current_dir = "/"
-            root_dir = file_path + "/" + trans.user.email + current_dir
+            #current_dir = trans.galaxy_session.work_dir
+            #current_dir = dir
+            #if not current_dir:
+            #    current_dir = "/"
+            root_dir = file_path + "/" + trans.user.email + dir
         else:
-            root_dir = file_path + "/tmp/session-" + str(trans.galaxy_session.id)
+            root_dir = file_path + "/tmp/session-" + str(trans.galaxy_session.id) + dir
         log.info("uploadv2, root_dir = %s", root_dir)
         target_file = os.path.join(root_dir, session_id)
         log.info('uploadv2, target = %s', target_file)
