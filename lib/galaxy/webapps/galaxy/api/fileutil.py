@@ -175,7 +175,7 @@ class FileUtilController(BaseAPIController):
         # dir = file_path + "/" + trans.user.email + work_dir
         root_dir = self.make_sure_root(trans)
         dir = root_dir + work_dir
-        log.info("dir = %s", dir)
+        log.info("root = %s, dir = %s", root_dir, dir)
         if not os.path.exists(dir):
           os.makedirs(dir)
         
