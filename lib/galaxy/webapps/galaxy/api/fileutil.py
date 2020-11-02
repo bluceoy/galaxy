@@ -181,7 +181,7 @@ class FileUtilController(BaseAPIController):
         
         return {'work_dir': work_dir}
 
-    @expose_api
+    @expose_api_anonymous_v2
     def remove(self, trans, payload, **kwargs):
         """
         * POST /api/file/remove
