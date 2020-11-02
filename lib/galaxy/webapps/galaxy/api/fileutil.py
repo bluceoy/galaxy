@@ -4,6 +4,7 @@ API operations on Cloud-based storages, such as Amazon Simple Storage Service (S
 
 import os
 import logging
+import shutil
 
 from galaxy import exceptions
 from galaxy.exceptions import ActionInputError
@@ -212,7 +213,7 @@ class FileUtilController(BaseAPIController):
           raise ActionInputError("path: %s not found" % (path))
 
         if os.path.isdir(real_path):
-          os.removedirs(real_path)
+          shutil.rmtree(real_path, ignore_errors=True)
         else:
           os.remove(real_path)
 
