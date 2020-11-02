@@ -13,6 +13,7 @@ from .framework.decorators import (
     expose_api_anonymous_v2,
     expose_api_anonymous_and_sessionless,
     expose_api_raw,
+    expose_api_raw_v2,
     expose_api_raw_anonymous,
     expose_api_raw_anonymous_and_sessionless,
     format_return_as_json,
@@ -28,7 +29,7 @@ from .framework.decorators import (
 
 __all__ = ('FormBuilder', 'do_not_cache', 'error', 'expose', 'expose_api',
         'expose_api_anonymous', 'expose_api_anonymous_and_sessionless',
-        'expose_api_raw', 'expose_api_raw_anonymous', 'expose_api_anonymous_v2',
+        'expose_api_raw', 'expose_api_raw_v2', 'expose_api_raw_anonymous', 'expose_api_anonymous_v2',
         'expose_api_raw_anonymous_and_sessionless', 'form',
         'format_return_as_json', 'httpexceptions', 'json', 'json_pretty',
         'legacy_expose_api', 'legacy_expose_api_anonymous',

@@ -11,7 +11,7 @@ from galaxy.managers import (
     cloud,
     datasets
 )
-from galaxy.web import expose_api,expose_api_raw,expose_api_anonymous_v2
+from galaxy.web import expose_api, expose_api_raw, expose_api_raw_v2, expose_api_anonymous_v2
 from galaxy.webapps.base.controller import BaseAPIController
 
 log = logging.getLogger(__name__)
@@ -218,7 +218,7 @@ class FileUtilController(BaseAPIController):
 
         return {'message': 'Successful.'}
 
-    @expose_api_raw
+    @expose_api_raw_v2
     def download(self, trans, payload, **kwargs):
       """
       * POST /api/file/download
