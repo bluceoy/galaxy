@@ -4,6 +4,7 @@ API operations on Cloud-based storages, such as Amazon Simple Storage Service (S
 
 import os
 import logging
+import shutil
 
 from galaxy import exceptions
 from galaxy.exceptions import ActionInputError
@@ -11,7 +12,7 @@ from galaxy.managers import (
     cloud,
     datasets
 )
-from galaxy.web import expose_api,expose_api_raw
+from galaxy.web import expose_api, expose_api_raw, expose_api_raw_v2, expose_api_anonymous_v2
 from galaxy.webapps.base.controller import BaseAPIController
 
 log = logging.getLogger(__name__)
@@ -32,7 +33,6 @@ class FileUtilController(BaseAPIController):
       else:
         root_dir = file_path + "/tmp/session-" + str(trans.galaxy_session.id)
       if not os.path.exists(root_dir):
-        log.info("create root_dir = %s", trans.user.email)
         os.makedirs(root_dir)
       log.info("root_dir = %s", root_dir)
       return root_dir
@@ -40,7 +40,7 @@ class FileUtilController(BaseAPIController):
     def ge_relative_root(self, trans):
       pass
 
-    @expose_api
+    @expose_api_anonymous_v2
     def get_dir(self, trans, **kwargs):
         """
         * GET /api/file/getdir
@@ -53,7 +53,7 @@ class FileUtilController(BaseAPIController):
           work_dir = "/"
         return {"current_dir": work_dir}
 
-    @expose_api
+    @expose_api_anonymous_v2
     def set_dir(self, trans, payload, **kwargs):
         """
         * POST /api/file/setdir
@@ -81,7 +81,7 @@ class FileUtilController(BaseAPIController):
         trans.sa_session.flush()
         return {'work_dir': work_dir}
 
-    @expose_api
+    @expose_api_anonymous_v2
     def list_dir(self, trans, **kwargs):
         """
         * GET /api/file/list
@@ -149,7 +149,7 @@ class FileUtilController(BaseAPIController):
         items.sort(key=sort_func)
         return {'files': items}
 
-    @expose_api
+    @expose_api_anonymous_v2
     def create_dir(self, trans, payload, **kwargs):
         """
         * POST /api/file/addfolder
@@ -172,14 +172,17 @@ class FileUtilController(BaseAPIController):
         if len(missing_arguments) > 0:
             raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
 
-        file_path = trans.app.config.ftp_upload_dir
-        dir = file_path + "/" + trans.user.email + work_dir
+        # file_path = trans.app.config.ftp_upload_dir
+        # dir = file_path + "/" + trans.user.email + work_dir
+        root_dir = self.make_sure_root(trans)
+        dir = root_dir + work_dir
+        log.info("root = %s, dir = %s", root_dir, dir)
         if not os.path.exists(dir):
           os.makedirs(dir)
         
         return {'work_dir': work_dir}
 
-    @expose_api
+    @expose_api_anonymous_v2
     def remove(self, trans, payload, **kwargs):
         """
         * POST /api/file/remove
@@ -204,19 +207,19 @@ class FileUtilController(BaseAPIController):
           raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
 
         root_dir = self.make_sure_root(trans)
-        real_path = os.path.join(root_dir, path)
+        real_path = root_dir + path
 
         if not os.path.exists(real_path):
           raise ActionInputError("path: %s not found" % (path))
 
         if os.path.isdir(real_path):
-          os.removedirs(real_path)
+          shutil.rmtree(real_path, ignore_errors=True)
         else:
           os.remove(real_path)
 
         return {'message': 'Successful.'}
 
-    @expose_api_raw
+    @expose_api_raw_v2
     def download(self, trans, payload, **kwargs):
       """
       * POST /api/file/download

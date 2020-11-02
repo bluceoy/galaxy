@@ -13,7 +13,7 @@ from galaxy import (
 
 from galaxy.webapps.base.controller import BaseAPIController
 from galaxy.exceptions import ActionInputError
-from galaxy.web import expose_api
+from galaxy.web import expose_api,expose_api_anonymous_v2
 import subprocess
 import psycopg2
 import time
@@ -101,7 +101,7 @@ class CustomJobsAPIController(BaseAPIController):
     log.info("root_dir = %s", root_dir)
     return root_dir
 
-  @expose_api
+  @expose_api_anonymous_v2
   def on_run_job(self, trans, payload, **kwargs):
     """
     * POST /api/custom/job
@@ -148,6 +148,10 @@ class CustomJobsAPIController(BaseAPIController):
 
     agent_cwd = trans.app.config.tool_path + "/custom"
     job_cwd = trans.app.config.tool_path + "/args"
+
+    user_id = 0
+    if trans.user:
+      user_id = trans.user.id
     
     params = {
       "tool_id": tool_id,
@@ -157,11 +161,14 @@ class CustomJobsAPIController(BaseAPIController):
       "cwd": job_cwd,
       "params": "-i %s -f %s" % (input_dir, suffix),
       "session_id": trans.galaxy_session.id,
-      "user_id": trans.user.id,
+      "user_id": user_id,
       "status": 1,
       "output": input_dir + "/output/final.out",
       "real_output": real_path + "/output/final.out"
     }
+    if input_dir == "/":
+      params["output"] = "/output/final.out"
+      params["real_output"] = root_dir + "/output/final.out"
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d args.py %s -i %s -f %s" % (
       job_id, job_cwd, real_path, suffix)
@@ -172,7 +179,7 @@ class CustomJobsAPIController(BaseAPIController):
 
     return {"message": "ok", "job_id": job_id}
 
-  @expose_api
+  @expose_api_anonymous_v2
   def on_job_detail(self, trans, id, **kwargs):
     """
     * GET /api/custom/job/detail/{job_id}
@@ -192,7 +199,7 @@ class CustomJobsAPIController(BaseAPIController):
     }
     return data
 
-  @expose_api
+  @expose_api_anonymous_v2
   def on_job_list(self, trans, **kwargs):
     """
     * GET /api/custom/job/list
@@ -205,8 +212,11 @@ class CustomJobsAPIController(BaseAPIController):
       size = 10
 
     session_id = trans.galaxy_session.id
-    user_id =  trans.user.id
-    if user_id == "Anonymous":
+    if trans.user:
+      user_id =  trans.user.id
+      if user_id == "Anonymous":
+        user_id = ""
+    else:
       user_id = ""
     
     items = []

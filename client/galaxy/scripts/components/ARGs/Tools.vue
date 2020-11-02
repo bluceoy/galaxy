@@ -12,13 +12,21 @@
                 <div @click="click(0)" class="collapsible-header">DEMO</div>
                 <div class="collapsible-body container-fluid"><DEMO @exec="onExec"/></div>
             </li>
-            <li v-if="login" >
+            <li>
                 <div @click="click(1)" class="collapsible-header">ARGs-OAP</div>
                 <div class="collapsible-body container-fluid"><ARGsOAP @exec="onExec"/></div>
             </li>
-            <li v-if="login" >
+            <li>
                 <div @click="click(2)" class="collapsible-header">SARGFAM</div>
                 <div class="collapsible-body"><SARGFAM @exec="onExec"/></div>
+            </li>
+            <li>
+                <div @click="click(3)" class="collapsible-header">ARGPORE</div>
+                <div class="collapsible-body"><ARGPORE @exec="onExec"/></div>
+            </li>
+            <li>
+                <div @click="click(4)" class="collapsible-header">Microbial source tracking v1.0</div>
+                <div class="collapsible-body"><MicrobialSourceTrackingV_1_0 @exec="onExec"/></div>
             </li>
         </ul>
 
@@ -39,11 +47,15 @@ import ToolForm from "mvc/tool/tool-form";
 import DEMO from "./tools/DEMO";
 import ARGsOAP from "./tools/ARGsOAP";
 import SARGFAM from "./tools/SARGFAM";
+import ARGPORE from "./tools/ARGPORE";
+import MicrobialSourceTrackingV_1_0 from "./tools/MicrobialSourceTrackingV_1_0";
 export default {
     components: {
         DEMO,
         ARGsOAP,
-        SARGFAM
+        SARGFAM,
+        ARGPORE,
+        MicrobialSourceTrackingV_1_0
     },
     props: {
         login: {
