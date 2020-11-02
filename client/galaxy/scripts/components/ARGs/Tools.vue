@@ -28,6 +28,14 @@
                 <div @click="click(4)" class="collapsible-header">Microbial source tracking v1.0</div>
                 <div class="collapsible-body"><MicrobialSourceTrackingV_1_0 @exec="onExec"/></div>
             </li>
+            <li>
+                <div @click="click(5)" class="collapsible-header">ARGs-OSP</div>
+                <div class="collapsible-body"><ARGsOSP @exec="onExec"/></div>
+            </li>
+            <li>
+                <div @click="click(6)" class="collapsible-header">I-VIP</div>
+                <div class="collapsible-body"><IVIP @exec="onExec"/></div>
+            </li>
         </ul>
 
         <b-modal v-model="modalShow" static no-enforce-focus hide-footer>
@@ -49,13 +57,17 @@ import ARGsOAP from "./tools/ARGsOAP";
 import SARGFAM from "./tools/SARGFAM";
 import ARGPORE from "./tools/ARGPORE";
 import MicrobialSourceTrackingV_1_0 from "./tools/MicrobialSourceTrackingV_1_0";
+import ARGsOSP from "./tools/ARGsOSP";
+import IVIP from "./tools/IVIP";
 export default {
     components: {
         DEMO,
         ARGsOAP,
         SARGFAM,
         ARGPORE,
-        MicrobialSourceTrackingV_1_0
+        MicrobialSourceTrackingV_1_0,
+        ARGsOSP,
+        IVIP
     },
     props: {
         login: {
