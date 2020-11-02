@@ -166,6 +166,9 @@ class CustomJobsAPIController(BaseAPIController):
       "output": input_dir + "/output/final.out",
       "real_output": real_path + "/output/final.out"
     }
+    if input_dir == "/":
+      params["output"] = "/output/final.out"
+      params["real_output"] = root_dir + "/output/final.out"
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d args.py %s -i %s -f %s" % (
       job_id, job_cwd, real_path, suffix)
