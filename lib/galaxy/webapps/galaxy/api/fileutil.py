@@ -206,7 +206,7 @@ class FileUtilController(BaseAPIController):
           raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
 
         root_dir = self.make_sure_root(trans)
-        real_path = os.path.join(root_dir, path)
+        real_path = root_dir + path
 
         if not os.path.exists(real_path):
           raise ActionInputError("path: %s not found" % (path))
