@@ -124,8 +124,8 @@ class CustomJobsAPIController(BaseAPIController):
     log.info("outputdir = %s", outputdir)
     return outputdir
 
-  def make_output_file(self, outputdir, num):
-    output = outputdir + "/output-" + str(num) + ".txt"
+  def make_output_file(self, outputdir, num, ext=".txt"):
+    output = outputdir + "/output-" + str(num) + ext
     return output
 
   def check_args(self, *args):
@@ -225,59 +225,55 @@ class CustomJobsAPIController(BaseAPIController):
     return {"message": "ok", "job_id": job_id}
 
   def __on_sargfam(self, trans, payload, **kwargs):
-    missing_arguments = []
+    tool_name = "sargfam"
+    tool_dir = "sargfam"
+    script = "sargfam.py"
     tool_id = payload.get("tool_id", None)
-    if not tool_id:
-      missing_arguments.append("tool_id")
-
     tool_version = payload.get("tool_version", None)
-    if not tool_version:
-      missing_arguments.append("tool_version")
-    
     input1 = payload.get("input1", None)
-    if not input1:
-      missing_arguments.append("input1")
 
-    if len(missing_arguments) > 0:
-      raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
 
-    input_dir = os.path.dirname(input1)
-    log.info("input1 = %s, input_dir = %s", input1, input_dir)
+    self.check_args(tool_id, tool_version, input1)
+
     root_dir = self.make_sure_root(trans)
-    real_path = root_dir + input1
-    log.info("real_path = %s", real_path)
-    if not os.path.isfile(real_path):
-      raise ActionInputError("input not exist")
 
-    inputdir = os.path.dirname(real_path)
-    output_path = inputdir + "/output/final.txt"
+    real_path1 = root_dir + input1
+    if not os.path.isfile(real_path1):
+      raise ActionInputError("input1 not exist")
+
+    input1_dir = os.path.dirname(input1)
+    output_dir = self.make_sure_output_dir(tool_name, root_dir, input1_dir)
+    output1 = self.make_output_file(output_dir, 1)
+
+    abspath_output1 = root_dir + output1
 
     agent_cwd = trans.app.config.tool_path + "/custom"
-    job_cwd = trans.app.config.tool_path + "/sargfam"
+    job_cwd = trans.app.config.tool_path + "/" + tool_dir
 
     user_id = 0
     if trans.user:
       user_id = trans.user.id
+
+    args = [input1, output1]
+    xargs = [real_path1, abspath_output1]
     
     params = {
       "tool_id": tool_id,
-      "tool_name": "sargfam",
+      "tool_name": tool_name,
       "tool_version": tool_version,
       "galaxy_version": trans.app.config.version_major,
       "cwd": job_cwd,
-      "params": "-i %s" % (input1),
+      "params": " ".join(args),
       "session_id": trans.galaxy_session.id,
       "user_id": user_id,
       "status": 1,
-      "output": input_dir + "/output/final.txt",
-      "real_output": inputdir + "/output/final.txt"
+      "output": output1,
+      "real_output": abspath_output1
     }
-    if input_dir == "/":
-      params["output"] = "/output/final.txt"
-      params["real_output"] = root_dir + "/output/final.txt"
+
     job_id = self.add_job(**params)
-    commandstr = "python job_agent.py %d sargfam.py %s -i %s -o %s" % (
-      job_id, job_cwd, real_path, output_path)
+    commandstr = "python job_agent.py %d %s %s %s" % (
+      job_id, script, job_cwd, " ".join(xargs))
     log.info("command = %s", commandstr)
 
     command = commandstr.split(" ")
