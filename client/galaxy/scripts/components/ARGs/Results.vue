@@ -38,7 +38,10 @@
                 <div class="line">
                     <div>
                         <p><span>Output File:</span></p>
-                        <p v-for="(out, i) in job.output" :key="i"><a href="#" @click="onDownload(out)">{{ out }}</a></p>
+                        <p v-for="(out, i) in job.output" :key="i">
+                            <a href="#" @click="onDownload(out, false)">{{ out }}</a>
+                            (<a href="#" @click="onDownload(out)">download</a>)
+                        </p>
                     </div>
                 </div>
             </div>
