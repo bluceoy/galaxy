@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div v-if="tab === 'home'" class="header">
+    <div id="index-wrap">
+        <div v-if="!miniHeader" class="header">
             <h1>Welcome to ARGs-OAP Galaxy!</h1>
             <div class="login-info">
                 <a v-if="!loginStatus" href="#" @click="onModalShow(1)">Login</a>
@@ -18,7 +18,7 @@
                 <a v-if="loginStatus" href="#" @click="logoutClick">Logout</a>
             </div>
         </div>
-        <div class="flex" :class="{mini: tab !== 'home'}">
+        <div class="flex" :class="{mini: miniHeader}">
             <Nav v-show="leftShow" :login="loginStatus" :tab="tab" @change="onChange"/>
             <div v-if="tab === 'home'" class="main-wrap main-wrap-left">
                 <AboutInfo/>
@@ -83,6 +83,7 @@ export default {
     },
     data() {
         return {
+            scrollTop: 0,
             Galaxy: undefined,
             loginStatus: false,
             tab: 'home',
@@ -101,6 +102,11 @@ export default {
             terms_url: ''
         };
     },
+    computed: {
+        miniHeader: function () {
+            return this.tab !== 'home'
+        }
+    },
     mounted() {
         let recaptchaScript = document.createElement('script')
         recaptchaScript.setAttribute('src', 'https://platform.twitter.com/widgets.js')
@@ -111,8 +117,14 @@ export default {
             this.loginStatus = true
         }
         this.onChange(this.tab)
+        window.addEventListener('scroll', this.handleScroll, true)
+    },
+    destroyed () {
+        window.removeEventListener('scroll', this.handleScroll)
     },
     methods: {
+        handleScroll () {
+        },
         onModalShow(val) {
             this.modalShow = true
             this.modalMod = val
