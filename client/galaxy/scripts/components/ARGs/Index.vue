@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="header">
+        <div v-if="tab === 'home'" class="header">
             <h1>Welcome to ARGs-OAP Galaxy!</h1>
             <div class="login-info">
                 <a v-if="!loginStatus" href="#" @click="onModalShow(1)">Login</a>
@@ -10,7 +10,15 @@
             </div>
             <img src="/static/args/landing.png" alt="">
         </div>
-        <div class="flex">
+        <div v-else class="mini-header">
+            <div class="login-info">
+                <a v-if="!loginStatus" href="#" @click="onModalShow(1)">Login</a>
+                <a v-if="!loginStatus" href="#" @click="onModalShow(2)">Register</a>
+                <a v-if="loginStatus" href="#">Welcome, {{ Galaxy.user.attributes.email }}</a>
+                <a v-if="loginStatus" href="#" @click="logoutClick">Logout</a>
+            </div>
+        </div>
+        <div class="flex" :class="{mini: tab !== 'home'}">
             <Nav v-show="leftShow" :login="loginStatus" :tab="tab" @change="onChange"/>
             <div v-if="tab === 'home'" class="main-wrap main-wrap-left">
                 <AboutInfo/>
@@ -190,9 +198,31 @@ body, html {
     z-index: 10;
     line-height: 250px;
 }
+.mini-header {
+    height: 48px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: url(/static/args/landing.png);
+}
+.mini-header .login-info {
+    position: absolute;
+    z-index: 20;
+    top: 10px;
+    right: 80px;
+}
+.mini-header .login-info a {
+    color: #eee;
+    font-size: 1rem;
+    margin: 0 5px;
+}
 .flex {
     display: flex;
     justify-content: space-between;
+}
+.flex.mini {
+    margin-top: 48px;
 }
 .flex .twitter-wrap {
     width: 25%;
