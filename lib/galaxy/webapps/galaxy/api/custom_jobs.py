@@ -253,8 +253,8 @@ class CustomJobsAPIController(BaseAPIController):
       "real_output": inputdir + "/output/final.txt"
     }
     if input_dir == "/":
-      params["output"] = "/output/final.out"
-      params["real_output"] = root_dir + "/output/final.out"
+      params["output"] = "/output/final.txt"
+      params["real_output"] = root_dir + "/output/final.txt"
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d sargfam.py %s -i %s -o %s" % (
       job_id, job_cwd, real_path, output_path)
@@ -331,10 +331,10 @@ class CustomJobsAPIController(BaseAPIController):
       "real_output2": input1dir + "/output/output2.txt"
     }
     if input1_dir == "/":
-      params["output"] = "/output/output1.out"
-      params["real_output"] = root_dir + "/output/output1.out"
-      params["output2"] = "/output/output2.out"
-      params["real_output2"] = root_dir + "/output/output2.out"
+      params["output"] = "/output/output1.txt"
+      params["real_output"] = root_dir + "/output/output1.txt"
+      params["output2"] = "/output/output2.txt"
+      params["real_output2"] = root_dir + "/output/output2.txt"
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d mst.py %s %s %s %s %s %s %s" % (
       job_id, job_cwd, real_path1, input2, input3, input4, output1_path, output2_path)
@@ -408,10 +408,10 @@ class CustomJobsAPIController(BaseAPIController):
       "real_output4": input1dir + "/output/output4.txt"
     }
     if input1_dir == "/":
-      params["output"] = "/output/output1.out"
-      params["real_output"] = root_dir + "/output/output1.out"
-      params["output2"] = "/output/output2.out"
-      params["real_output2"] = root_dir + "/output/output2.out"
+      params["output"] = "/output/output1.txt"
+      params["real_output"] = root_dir + "/output/output1.txt"
+      params["output2"] = "/output/output2.txt"
+      params["real_output2"] = root_dir + "/output/output2.txt"
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d oap.py %s %s %s %s %s %s %s" % (
       job_id, job_cwd, real_path1, output1_path, output2_path, output3_path, output4_path)
@@ -528,16 +528,16 @@ class CustomJobsAPIController(BaseAPIController):
       "real_output5": input1dir + "/output/output5.txt"
     }
     if input1_dir == "/":
-      params["output"] = "/output/output1.out"
-      params["real_output"] = root_dir + "/output/output1.out"
-      params["output2"] = "/output/output2.out"
-      params["real_output2"] = root_dir + "/output/output2.out"
-      params["output3"] = "/output/output3.out"
-      params["real_output3"] = root_dir + "/output/output3.out"
-      params["output4"] = "/output/output4.out"
-      params["real_output4"] = root_dir + "/output/output4.out"
-      params["output5"] = "/output/output5.out"
-      params["real_output5"] = root_dir + "/output/output5.out"
+      params["output"] = "/output/output1.txt"
+      params["real_output"] = root_dir + "/output/output1.txt"
+      params["output2"] = "/output/output2.txt"
+      params["real_output2"] = root_dir + "/output/output2.txt"
+      params["output3"] = "/output/output3.txt"
+      params["real_output3"] = root_dir + "/output/output3.txt"
+      params["output4"] = "/output/output4.txt"
+      params["real_output4"] = root_dir + "/output/output4.txt"
+      params["output5"] = "/output/output5.txt"
+      params["real_output5"] = root_dir + "/output/output5.txt"
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d oap.py %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s" % (
       job_id, job_cwd, real_path1, real_path2, input3, input4, input5, input6, input7, input8, input9,
@@ -655,16 +655,16 @@ class CustomJobsAPIController(BaseAPIController):
       "real_output5": input1dir + "/output/output5.txt"
     }
     if input1_dir == "/":
-      params["output"] = "/output/output1.out"
-      params["real_output"] = root_dir + "/output/output1.out"
-      params["output2"] = "/output/output2.out"
-      params["real_output2"] = root_dir + "/output/output2.out"
-      params["output3"] = "/output/output3.out"
-      params["real_output3"] = root_dir + "/output/output3.out"
-      params["output4"] = "/output/output4.out"
-      params["real_output4"] = root_dir + "/output/output4.out"
-      params["output5"] = "/output/output5.out"
-      params["real_output5"] = root_dir + "/output/output5.out"
+      params["output"] = "/output/output1.txt"
+      params["real_output"] = root_dir + "/output/output1.txt"
+      params["output2"] = "/output/output2.txt"
+      params["real_output2"] = root_dir + "/output/output2.txt"
+      params["output3"] = "/output/output3.txt"
+      params["real_output3"] = root_dir + "/output/output3.txt"
+      params["output4"] = "/output/output4.txt"
+      params["real_output4"] = root_dir + "/output/output4.txt"
+      params["output5"] = "/output/output5.txt"
+      params["real_output5"] = root_dir + "/output/output5.txt"
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d oap.py %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s" % (
       job_id, job_cwd, real_path1, real_path2, input3, input4, input5, input6, input7, input8, input9,
@@ -782,16 +782,16 @@ class CustomJobsAPIController(BaseAPIController):
       "real_output5": input1dir + "/output/output5.txt"
     }
     if input1_dir == "/":
-      params["output"] = "/output/output1.out"
-      params["real_output"] = root_dir + "/output/output1.out"
-      params["output2"] = "/output/output2.out"
-      params["real_output2"] = root_dir + "/output/output2.out"
-      params["output3"] = "/output/output3.out"
-      params["real_output3"] = root_dir + "/output/output3.out"
-      params["output4"] = "/output/output4.out"
-      params["real_output4"] = root_dir + "/output/output4.out"
-      params["output5"] = "/output/output5.out"
-      params["real_output5"] = root_dir + "/output/output5.out"
+      params["output"] = "/output/output1.txt"
+      params["real_output"] = root_dir + "/output/output1.txt"
+      params["output2"] = "/output/output2.txt"
+      params["real_output2"] = root_dir + "/output/output2.txt"
+      params["output3"] = "/output/output3.txt"
+      params["real_output3"] = root_dir + "/output/output3.txt"
+      params["output4"] = "/output/output4.txt"
+      params["real_output4"] = root_dir + "/output/output4.txt"
+      params["output5"] = "/output/output5.txt"
+      params["real_output5"] = root_dir + "/output/output5.txt"
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d oap.py %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s" % (
       job_id, job_cwd, real_path1, real_path2, input3, input4, input5, input6, input7, input8, input9,
