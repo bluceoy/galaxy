@@ -230,6 +230,9 @@ class CustomJobsAPIController(BaseAPIController):
       "output": input_dir + "/output/final.txt",
       "real_output": inputdir + "/output/final.txt"
     }
+    if input_dir == "/":
+      params["output"] = "/output/final.out"
+      params["real_output"] = root_dir + "/output/final.out"
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d sargfam.py %s -i %s -o %s" % (
       job_id, job_cwd, real_path, output_path)
