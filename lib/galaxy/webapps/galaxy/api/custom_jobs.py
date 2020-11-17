@@ -443,7 +443,7 @@ class CustomJobsAPIController(BaseAPIController):
     return {"message": "ok", "job_id": job_id}
 
   def __on_argsoap(self, trans, payload, **kwargs):
-    tool_name = "oapv1.0"
+    tool_name = "args_oap_v1.0"
     tool_dir = "args_oap"
     script = "oap.py"
     tool_id = payload.get("tool_id", None)
