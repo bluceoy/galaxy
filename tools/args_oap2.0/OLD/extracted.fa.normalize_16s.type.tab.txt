@@ -1,0 +1,29 @@
+
+Type level results
+	STAS	SWHAS104
+aminoglycoside	0	0.066756501375085
+bacitracin	0.027537769190682	0.0317723104801573
+beta-lactam	0	0.142535489376582
+bleomycin	0	0
+carbomycin	0	0
+chloramphenicol	0	0.0211404006046863
+fosfomycin	0	0
+fosmidomycin	0	0
+fusaric-acid	0	0
+fusidic-acid	0	0
+kasugamycin	0	0
+macrolide-lincosamide-streptogramin	0.0319219691138359	0.0274254337049959
+multidrug	0.059526165220188	0.0574704599582183
+polymyxin	0	0
+puromycin	0	0
+quinolone	0.146225407322788	0.0413940163111539
+rifamycin	0.0293486405348995	0
+spectinomycin	0	0
+sulfonamide	0.0147284690507245	0.0642061752710249
+tetracenomycin_C	0	0
+tetracycline	0	0.0715141322356687
+trimethoprim	0	0
+unclassified	0.035167335452314	0
+vancomycin	0	0
+
+Subtype ARGs abundance merge with other environmental samples

@@ -1,0 +1,435 @@
+#!/usr/bin/perl -w
+use strict;
+
+##Authur Xiao-Tao Jiang
+##Email biofuture.jiang@gmail.com.
+
+##Description
+##This pipeline is designed to process multisamples ARG identification, this is the part two pipeline
+
+#die " perl $0 <Extracted_fasta> <Meta_data_info> <Catergory> <> <PcoA.figure> <type mother.table> <subtyp mothor table><subtype merge table>\n Authur: Xiao-Tao Jiang\n Email: biofuture.jiang\@gmail.com\n" unless (@ARGV == 7);
+die " perl $0 <Extracted_fasta> <Meta_data_info> <Catergory> <lenth> <e-value> <identity> <PcoA_16S> <PCoA_cellnumber> <16s_normalization.zip> <cellnumber_normalize.zip>\n Authur: Xiao-Tao Jiang\n Email: biofuture.jiang\@gmail.com\n" unless (@ARGV == 10);
+#-------------------------------------------------------------------------------------------------
+#blastx aginst ARG database for accurately identification of reads for antibiotic resistence gene
+my $efa = $ARGV[0];
+my $blast6out = "$efa.blast6out.txt";
+my $ARDB_PATH = "/workhome/JXT/GitProject/ublastxv1.1/DB/SARDBBLASTX";
+my $ARDB_STRUCTURE = "/workhome/JXT/GitProject/ublastxv1.1/subtype_structure_list_ARGDB_20160202.txt";
+my $ARDBFA = "/workhome/JXT/GitProject/ublastxv1.1/DB/SARDB_20160202.fasta";
+my $opt_n |= 4;
+my $lenmatch = $ARGV[3];
+my $evaluematch = $ARGV[4];
+my $identitymatch = "$ARGV[5]";
+
+my $envtable16s = "/workhome/JXT/UBLASTX/ublastxv1.1/All_OTHER_ENV_45.PcoA.mother.tab_20160202.txt";
+#my $envtablecellnumber = "/workhome/JXT/UBLASTX/ublastxv1.1/All_OTHER_ENV_CellNumber_47.PcoA.mothertable";
+my $envtablecellnumber = "/workhome/JXT/UBLASTX/ublastxv1.1/All_OTHER_ENV_45_PCOA_CELL_mothertab_20160213.txt";
+#my $pcoa16s = "$efa.pcoa16s.pdf";
+#my $pcoacellnumber = "$efa.pcoacellnumber.pdf";
+
+#for 16s normalization
+my $subtype16s = "$efa.normalize_16s.subtype.tab.txt";
+my $type16s = "$efa.normalize_16s.type.tab.txt";
+my $subtypemerge16s = "$efa.normalize_16s.mergesubtype.tab.txt";
+
+#for cell number normalization
+my $subtypecellnumber = "$efa.normalize_cellnumber.subtype.tab.txt";
+my $typecellnumber = "$efa.normalize_cellnumber.type.tab.txt";
+my $subtypemergecellnumber = "$efa.normalize_cellnumber.mergesubtype.tab.txt";
+
+##output
+#my $z = "$efa.pcoa1.pdf";
+#my $zipcellnumber = "$efa.pcoa2.pdf";
+
+
+#print "blastx begain";
+`/home/lg209ws3/ncbi-blast-2.2.28+/bin/blastx -query $efa -out $blast6out -db $ARDB_PATH -evalue $evaluematch -num_threads $opt_n -outfmt 6 -max_target_seqs 1`;
+
+##process blastx results and the structure information of arg database 
+
+##process meta data-------------------------------------------------------------------------------
+die "$!\n" unless open(Meta,"$ARGV[1]");
+my %sample2reads;
+my %sample216s;
+my %sample2cellnumber;
+my %sample2cater;
+
+my $headmeta = <Meta>;
+my @hmeta = split(/\t/,$headmeta);
+my $index = $ARGV[2];
+
+while(<Meta>){
+	chomp;
+	my @tt = split(/\t/,$_);
+	$sample2reads{$tt[1]} = $tt[-3];
+	$sample216s{$tt[1]} = $tt[-2];
+	$sample2cellnumber{$tt[1]} = $tt[-1];
+	$sample2cater{$tt[1]} = $tt[$index-1];
+}
+close Meta;
+
+#process ARDB to get the length information 
+my %len;
+die "$!\n" unless open(LEN, "$ARDBFA");
+while(my $name = <LEN>){
+	chomp($name);
+	$name =~ s/^>//;
+	my $seq = <LEN>; chomp($seq);
+	my $idsarg = (split(/\s+/,$name))[0];
+	my $le = length($seq);
+	$len{$idsarg} = $le;
+}
+close LEN;
+
+
+##process ARDB structure files------------------------------------------------------------------- 
+die "$!\n" unless open(STRU, "$ARDB_STRUCTURE");
+my %type;
+my %subtype;
+my %typelist;
+my %subtypelist;
+
+<STRU>;
+while(<STRU>){
+	chomp;
+	my @tem = split /\t/;
+	my @stem = split("__", $tem[0]);
+	#print "$tem[0]\t$stem[0]\n";
+	$tem[1] =~ s/^\[//;
+	$tem[1] =~ s/\]$//;
+	my @ids = split(", ", $tem[1]);
+	##for each ids identify their type and subtype
+	for(my $i = 0; $i <=$#ids; $i++){
+		$ids[$i] =~ s/^\'//;
+		$ids[$i] =~ s/\'$//;
+		#print "$ids[$i]\n";
+		$subtype{$ids[$i]} = $tem[0];
+		$type{$ids[$i]} = $stem[0]; 
+	}
+
+	#including all type and subtype
+	$typelist{$stem[0]} = 1;
+	$subtypelist{$tem[0]} = 1;
+}
+close STRU;
+
+##parse blast6out results-----------------------------------------------------------------------
+die "$!\n" unless open(BLAST6, "$blast6out"); 
+my %samplehit; #Hash->Hash  sample->ARGs type/subtype->number of this ARG
+while(<BLAST6>){
+	chomp;
+	my @tem = split /\t/;
+	if($tem[3] > $lenmatch && $tem[2] > $identitymatch){
+		$tem[0] =~ s/\_\d+$//g;
+
+		die "$tem[0] $tem[1]\t $!\n" unless($type{$tem[1]} && $subtype{$tem[1]});
+		die "$tem[1]" unless(exists $len{$tem[1]});
+		my $ratio = 1 / $len{$tem[1]};
+		
+		if(exists $samplehit{$tem[0]}){
+			$samplehit{$tem[0]}{$type{$tem[1]}} += $ratio;
+			$samplehit{$tem[0]}{$subtype{$tem[1]}} += $ratio;
+		}else{
+			##type
+			$samplehit{$tem[0]}{$type{$tem[1]}} = $ratio;
+			##subtype
+			$samplehit{$tem[0]}{$subtype{$tem[1]}} = $ratio;
+
+		}
+	}
+
+}
+close BLAST6;
+
+
+#-------------------------------------------------------16S Normalization-------Cell Number Normalization--------
+##For each ARG type subtype generate mothor tables------------------------------------------------
+##Hash -> Hash
+
+
+die "$!\n" unless open(SUBM, ">$subtype16s");
+die "$!\n" unless open(TYPEM, ">$type16s");
+#------
+
+die "$!\n" unless open(SUBC, ">$subtypecellnumber");
+die "$!\n" unless open(TYPEC, ">$typecellnumber");
+#------
+print SUBM "ARGs abundance normalization aganist 16S\tSubtype level results\n";
+print SUBC "ARGs abundance normalization aganist Cell number\tSubtype level results\n";
+print TYPEM "\nType level results\n";
+print TYPEC "\nType level results\n";
+
+for my $id (sort keys %sample2reads){
+	print SUBM "\t$id";
+	print TYPEM "\t$id";
+	#------
+	print SUBC "\t$id";
+	print TYPEC "\t$id";
+
+}
+print SUBM "\n";
+print TYPEM "\n";
+#-------
+print SUBC "\n";
+print TYPEC "\n";
+
+
+
+##output subtype mothor table
+for my $sub (sort keys %subtypelist){
+	print SUBM "$sub";
+	print SUBC "$sub";
+	for my $sam(sort keys %sample2reads){
+		if(exists $samplehit{$sam}{$sub}){
+			##normalize the abundance with sample size and 16s copies
+			#my $value = 1000000 * $samplehit{$sam}{$sub} * 1432 /  ($sample216s{$sam} * $sample2reads{$sam});
+			my $value = $samplehit{$sam}{$sub} /  $sample216s{$sam};
+
+			my $valuecls = $samplehit{$sam}{$sub} / $sample2cellnumber{$sam};
+
+			print SUBM "\t$value";
+			print SUBC "\t$valuecls";
+		}else{
+			print SUBM "\t0";
+			print SUBC "\t0";
+		}
+	}
+	print SUBM "\n";
+	print SUBC "\n";
+}
+close SUBM;
+close SUBC;
+
+for my $ty (sort keys %typelist){
+
+	print TYPEM "$ty";
+	print TYPEC"$ty";
+
+	for my $sam(sort keys %sample2reads){
+		if(exists $samplehit{$sam}{$ty}){
+			##normalize the abundance with sample size and 16s copies
+			#my $value = 1000000*$samplehit{$sam}{$ty} * 1432/ ($sample216s{$sam} * $sample2reads{$sam});
+			my $value = $samplehit{$sam}{$ty} * 1432/ $sample216s{$sam};
+			print TYPEM "\t$value";
+
+			my $valuecls = $samplehit{$sam}{$ty} / $sample2cellnumber{$sam};
+			print TYPEC "\t$valuecls";
+		}else{
+			print TYPEM "\t0";
+			print TYPEC "\t0";
+		}
+	}
+	print TYPEM "\n";
+	print TYPEC "\n";
+}
+print TYPEM "\nSubtype ARGs abundance merge with other environmental samples\n";
+print TYPEC "\nSubtype ARGs abundance merge with other environmental samples\n";
+close TYPEM;
+close TYPEC;
+
+#Merge users table with other environment samples ARGs table----------------------------------------
+die "$!\n" unless open(SUBT, "$subtype16s");
+die "$!\n" unless open(ENV, "$envtable16s");
+die "$!\n" unless open(Merge, ">$subtypemerge16s");
+#----------------------------------------------------------
+<SUBT>;
+my $h1 = <SUBT>;
+my $h2 = <ENV>;
+chomp($h1); chomp($h2);
+my @h2 = split(/\t/, $h2, 2);
+print Merge "$h1\t$h2[1]\n";
+
+my %subt;
+my %env;
+while(<SUBT>){
+	chomp;
+	my @tem = split(/\t/, $_,2);
+	#print "$tem[0]\n";
+	$subt{$tem[0]} = $tem[1];
+}
+close SUBT;
+
+my $envn = 0;
+while(<ENV>){
+	chomp;
+	my @tem = split(/\t/,$_,2);
+	$env{$tem[0]} = $tem[1];
+	my @ts = split("\t", $tem[1]);
+	$envn = $#ts;
+}
+close ENV;
+
+my @addzero;
+for(my $i = 0; $i <= $envn; $i++){
+	push @addzero, 0;
+}
+my $addz = join("\t", @addzero);
+
+for my $subts (sort keys %subt){
+	if(exists $env{$subts}){
+		print Merge "$subts\t$subt{$subts}\t$env{$subts}\n";
+	}else{
+		print Merge "$subts\t$subt{$subts}\t$addz\n";
+		print  "$subts\t$subt{$subts}\t$addz\n";
+		#die "wrong $subts\n";
+	}
+}
+close Merge;
+#-------------------------------------------------------------------
+
+#-----------------
+die "$!\n" unless open(SUBTC, "$subtypecellnumber");
+die "$!\n" unless open(ENVC, "$envtablecellnumber");
+die "$!\n" unless open(MergeC, ">$subtypemergecellnumber");
+
+<SUBTC>;
+my $h1c = <SUBTC>;
+my $h2c = <ENVC>;
+chomp($h1c); chomp($h2c);
+my @h2c = split(/\t/, $h2c, 2);
+print MergeC "$h1c\t$h2c[1]\n";
+
+my %subtc;
+my %envc;
+while(<SUBTC>){
+	chomp;
+	my @tem = split(/\t/, $_,2);
+	#print "$tem[0]\n";
+	$subtc{$tem[0]} = $tem[1];
+}
+close SUBTC;
+
+my $envnc = 0;
+while(<ENVC>){
+	chomp;
+	my @tem = split(/\t/,$_,2);
+	$envc{$tem[0]} = $tem[1];
+	my @ts = split("\t", $tem[1]);
+	$envnc = $#ts;
+}
+close ENVC;
+
+my @addzeroc;
+for(my $i = 0; $i <= $envnc; $i++){
+	push @addzeroc, 0;
+}
+my $addzc = join("\t", @addzeroc);
+
+for my $subtsc (sort keys %subtc){
+	if(exists $envc{$subtsc}){
+		print MergeC "$subtsc\t$subtc{$subtsc}\t$envc{$subtsc}\n";
+	}else{
+		print MergeC "$subtsc\t$subtc{$subtsc}\t$addzc\n";
+		#die "wrong $subts\n";
+	}
+}
+close MergeC;
+#-----------------------------------------------------------------------------------------------------------------
+
+##generate compressed output zip files 
+
+`cat  $subtype16s  $type16s $subtypemerge16s > $ARGV[8]`;
+
+
+#$ARGV[8] = $zip16s;
+`cat  $subtypecellnumber $typecellnumber $subtypemergecellnumber  > $ARGV[9]`;
+#$ARGV[9] = $zipcellnumber;
+
+##----------------------------------------------------------------------------------------------------------------
+
+
+##PcoA analysis of existing environment samples and users samples-------------------------------------------------
+##
+my $rscript = "$efa.tmp.R";
+die "$!\n" unless open(R,">$rscript");
+my @name = split(/\t/, $h1);
+my @caters = ();
+for(my $i =1; $i <=$#name; $i++){
+	if(exists $sample2cater{$name[$i]}){
+		push @caters, "\"$sample2cater{$name[$i]}\"";
+	}else{
+		die "Wrong $name[$i]\n";
+	}
+}
+my $ocater = join(", ", @caters);
+
+
+##16S----------------------------------------------------------------------------
+my $trs = <<RS;
+
+mothertable <- read.table(file="$subtypemerge16s", sep="\\t",header=T,row.names=1,quote = "", stringsAsFactors = FALSE)
+#remove zero line
+mothertable <- mothertable[which(rowSums(mothertable)!=0),]
+mothertable <- t(mothertable)
+mothertable <- mothertable[which(rowSums(mothertable)!=0),]
+dim(mothertable)
+
+library(vegan)
+library(labdsv)
+library(ggplot2)
+library(scales)
+
+cols <- c($ocater, \"DrinkingwaterSystem\", \"DrinkingwaterSystem\", \"DrinkingwaterSystem\", \"DrinkingwaterSystem\", \"DrinkingwaterSystem\", \"DrinkingwaterSystem\", \"DrinkingwaterSystem\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"SewageTreatmentPlant\", \"Sediment\", \"Sediment\", \"Sediment\", \"LiveStock\", \"LiveStock\", \"LiveStock\", \"LiveStock\", \"LiveStock\", \"LiveStock\", \"LiveStock\", \"LiveStock\", \"LiveStock\", \"LiveStock\", \"LiveStock\", \"LiveStock\", \"Ocean\", \"Ocean\", \"Ocean\")
+
+
+pdf("$ARGV[6]")
+vd <- vegdist(mothertable,method="bray")
+vd.pco <- pco(vd, k=10)
+pcoadata <- data.frame(vd.pco\$points[,1], vd.pco\$points[,2], cols)
+EnvironmentType <- pcoadata\$cols
+pc1n <- vd.pco\$eig[1]/sum(vd.pco\$eig)
+pc2n <- vd.pco\$eig[2]/sum(vd.pco\$eig)
+
+xl <- paste("Pco1(",(pc1n*10000)%/%100,"%)",sep="")
+yl <- paste("Pco2(", (pc2n*10000)%/%100,"%)",sep="")
+
+p <- ggplot(pcoadata, aes(x=pcoadata\$vd.pco.points...1., y=pcoadata\$vd.pco.points...2., color=EnvironmentType)) + geom_point(size=5,alpha=.8)
+
+p+theme(legend.position=c(0.2,0.8), panel.border = element_blank(), panel.grid.major = element_blank(), panel.background = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.background = element_rect(fill=alpha('white', 0.2)) ) + labs(fill="Samples Type") + xlab(xl) + ylab(yl)
+
+
+dev.off()
+
+RS
+
+print R $trs;
+#------------------------------------------------------
+
+##Cell number----------------------------------------------------------------------------
+my $rscriptc = "$efa.cellnumber.tmp.R";
+my $trsc = <<RS;
+
+mothertable <- read.table(file="$subtypemergecellnumber", sep="\\t",header=T,row.names=1,quote = "", stringsAsFactors = FALSE)
+#remove zero line
+mothertable <- mothertable[which(rowSums(mothertable)!=0),]
+mothertable <- t(mothertable)
+mothertable <- mothertable[which(rowSums(mothertable)!=0),]
+dim(mothertable)
+
+pdf("$ARGV[7]")
+vd <- vegdist(mothertable,method="bray")
+vd.pco <- pco(vd, k=10)
+pcoadata <- data.frame(vd.pco\$points[,1], vd.pco\$points[,2], cols)
+EnvironmentType <- pcoadata\$cols
+pc1n <- vd.pco\$eig[1]/sum(vd.pco\$eig)
+pc2n <- vd.pco\$eig[2]/sum(vd.pco\$eig)
+
+xl <- paste("Pco1(",(pc1n*10000)%/%100,"%)",sep="")
+yl <- paste("Pco2(", (pc2n*10000)%/%100,"%)",sep="")
+
+p <- ggplot(pcoadata, aes(x=pcoadata\$vd.pco.points...1., y=pcoadata\$vd.pco.points...2., color=EnvironmentType)) + geom_point(size=5,alpha=.8)
+
+p+theme(legend.position=c(0.2,0.8), panel.border = element_blank(), panel.grid.major = element_blank(), panel.background = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.background = element_rect(fill=alpha('white', 0.2)) ) + labs(fill="Samples Type") + xlab(xl) + ylab(yl)
+
+
+dev.off()
+exit()
+
+RS
+
+print R $trsc;
+
+`/home/lg209ws3/qiime_software/r-3.0.2-release/bin/R CMD BATCH --args $rscript`;
+
+__END__
+1;
