@@ -1,0 +1,2065 @@
+# hmmscan :: search sequence(s) against a profile database
+# HMMER 3.1b1 (May 2013); http://hmmer.org/
+# Copyright (C) 2013 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query sequence file:             test.fa
+# target HMM database:             Sargfam.hmm
+# per-seq hits tabular output:     output.tab
+# model-specific thresholding:     GA cutoffs
+# number of worker threads:        32
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       AY223863.1.gene1.p01  [L=286]
+Description: extended-spectrum beta-lactamase. SHV-57 Curated. Encoded by gene blaSHV. ARO:3001113 SHV-57. [Escherichia coli]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (286 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         9  (0.0466321); expected 3.9 (0.02)
+Passed bias filter:                        8  (0.0414508); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.04u 0.01s 00:00:00.05 Elapsed: 00:00:00.05
+# Mc/sec: 436.29
+//
+Query:       AJ866284.2.gene1.p01  [L=286]
+Description: beta-lactamase SHV-61. SHV-61 Curated. Encoded by gene blaSHV-61. ARO:3001116 SHV-61. [Klebsiella pneumoniae]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (286 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         9  (0.0466321); expected 3.9 (0.02)
+Passed bias filter:                        8  (0.0414508); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.03u 0.01s 00:00:00.04 Elapsed: 00:00:00.03
+# Mc/sec: 727.15
+//
+Query:       AF301532.1.gene1.p01  [L=286]
+Description: beta-lactamase SHV-29. SHV-29 Curated. Encoded by gene blaSHV-29. ARO:3001087 SHV-29. [Klebsiella pneumoniae]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (286 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         9  (0.0466321); expected 3.9 (0.02)
+Passed bias filter:                        8  (0.0414508); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.02u 0.01s 00:00:00.03 Elapsed: 00:00:00.04
+# Mc/sec: 545.36
+//
+Query:       NC_011595.7058890.p01  [L=468]
+Description: Outer membrane protein oprM precursor. Encoded by gene ABBFA_003020. Homology: Outer membrane efflux protein (HMMPfam: PF02321, score: 1.4e-25). [MU] COG1538 Outer membrane protein. ARO:3000379 oprM. [Acinetobacter baumannii AB307-0294]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (468 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        18  (0.0932642); expected 3.9 (0.02)
+Passed bias filter:                       12  (0.0621762); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         6  (0.0310881); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.06u 0.02s 00:00:00.08 Elapsed: 00:00:00.08
+# Mc/sec: 446.20
+//
+Query:       U59183.1.gene3.p01  [L=266]
+Description: blaZ beta-lactmase. OXA-13. Encoded by gene bla oxa-13. OXA-13 Curated. ARO:3001408 OXA-13. [Pseudomonas aeruginosa]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (266 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        13  (0.0673575); expected 3.9 (0.02)
+Passed bias filter:                       12  (0.0621762); expected 3.9 (0.02)
+Passed Vit filter:                         8  (0.0414508); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.04u 0.01s 00:00:00.05 Elapsed: 00:00:00.05
+# Mc/sec: 405.78
+//
+Query:       X58272.1.gene1.p01  [L=267]
+Description: blaZ beta-lactmase. OXA-5 Curated. Encoded by gene blaOXA-5. ARO:3001400 OXA-5. [Pseudomonas aeruginosa]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (267 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        11  (0.0569948); expected 3.9 (0.02)
+Passed bias filter:                       10  (0.0518135); expected 3.9 (0.02)
+Passed Vit filter:                         8  (0.0414508); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.02u 0.02s 00:00:00.04 Elapsed: 00:00:00.04
+# Mc/sec: 509.13
+//
+Query:       X65254.1.gene1.p01  [L=286]
+Description: extended spectrum beta-lactamase CAZ-7. TEM-16 Curated. Encoded by gene Bla CAZ-7. ARO:3000887 TEM-16. [Klebsiella pneumoniae]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (286 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         9  (0.0466321); expected 3.9 (0.02)
+Passed bias filter:                        8  (0.0414508); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.04u 0.01s 00:00:00.05 Elapsed: 00:00:00.04
+# Mc/sec: 545.36
+//
+Query:       Z22590.1.gene1.p01  [L=266]
+Description: blaZ beta-lactmase. Encoded by gene beta-lactamase. OXA-11 Curated. Protein encoded differs from OXA-10 (PSE-2) beta-lactamase at only two positions. ARO:3001406 OXA-11. [Pseudomonas aeruginosa]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (266 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        14  (0.0725389); expected 3.9 (0.02)
+Passed bias filter:                       14  (0.0725389); expected 3.9 (0.02)
+Passed Vit filter:                         9  (0.0466321); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.04u 0.01s 00:00:00.05 Elapsed: 00:00:00.04
+# Mc/sec: 507.22
+//
+Query:       AF535129.1.gene1.p01  [L=286]
+Description: beta-lactamase SHV-41. SHV-41 Curated. Encoded by gene blaSHV-41. ARO:3001099 SHV-41. [Klebsiella pneumoniae]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (286 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         9  (0.0466321); expected 3.9 (0.02)
+Passed bias filter:                        8  (0.0414508); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.03u 0.00s 00:00:00.03 Elapsed: 00:00:00.03
+# Mc/sec: 727.15
+//
+Query:       AY079099.1.gene1.p01  [L=286]
+Description: SHV-38 beta-lactamase. SHV-38 Curated. Encoded by gene bla-SHV-38. ARO:3001096 SHV-38. [Klebsiella pneumoniae]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (286 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         9  (0.0466321); expected 3.9 (0.02)
+Passed bias filter:                        8  (0.0414508); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.03u 0.01s 00:00:00.04 Elapsed: 00:00:00.05
+# Mc/sec: 436.29
+//
+Query:       AY156923.1.gene1.p01  [L=291]
+Description: beta-lactamase CTX-M-27. Class A BLSE. Encoded by gene blaCTX-M-27. CTX-M-27 Curated. ARO:3001889 CTX-M-27. [Escherichia coli]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (291 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        12  (0.0621762); expected 3.9 (0.02)
+Passed bias filter:                        9  (0.0466321); expected 3.9 (0.02)
+Passed Vit filter:                         6  (0.0310881); expected 0.2 (0.001)
+Passed Fwd filter:                         6  (0.0310881); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.02u 0.01s 00:00:00.03 Elapsed: 00:00:00.02
+# Mc/sec: 1109.79
+//
+Query:       AY661885.1.gene1.p01  [L=286]
+Description: beta-lactamase SHV-30. SHV-30 Curated. Encoded by gene blaSHV-30. ARO:3001088 SHV-30. [Enterobacter cloacae]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (286 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         9  (0.0466321); expected 3.9 (0.02)
+Passed bias filter:                        8  (0.0414508); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.02u 0.02s 00:00:00.04 Elapsed: 00:00:00.03
+# Mc/sec: 727.15
+//
+Query:       AY570763.1.gene3.p01  [L=280]
+Description: Oxa-58. Oxacillinase. Encoded by gene blaOXA-58. OXA-58 Curated. ARO:3001611 OXA-58. [Acinetobacter baumannii]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (280 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        10  (0.0518135); expected 3.9 (0.02)
+Passed bias filter:                        9  (0.0466321); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.05u 0.00s 00:00:00.05 Elapsed: 00:00:00.06
+# Mc/sec: 355.95
+//
+Query:       DQ408762.1.gene1.p1  [L=291]
+Description: beta-lactamase CTX-M-59. CTX-M-59 Curated. Encoded by gene ABD73290.1. ARO:3001920 CTX-M-59. [Klebsiella pneumoniae]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (291 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        15  (0.0777202); expected 3.9 (0.02)
+Passed bias filter:                       10  (0.0518135); expected 3.9 (0.02)
+Passed Vit filter:                         6  (0.0310881); expected 0.2 (0.001)
+Passed Fwd filter:                         6  (0.0310881); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.01u 0.02s 00:00:00.03 Elapsed: 00:00:00.03
+# Mc/sec: 739.86
+//
+Query:       DQ212986.1.gene6.p01  [L=279]
+Description: VanYG. vanYG Curated. vanYG1 Curated. D,D-carboxypeptidase. Encoded by gene vanYG. ARO:3002959 vanYG1. [Enterococcus faecalis]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                   -----------
+      3e-50  164.5  11.1    3.8e-44  144.5   6.8    2.5  2  vancomycin__vanY_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> vancomycin__vanY_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !   29.5   0.1   2.4e-11   4.6e-09     147     240 ..      33     106 ..      26     106 .. 0.94
+   2 !  144.5   6.8     2e-46   3.8e-44      86     262 ..      95     276 ..      89     279 .] 0.91
+
+  Alignments for each domain:
+  == domain 1  score: 29.5 bits;  conditional E-value: 2.4e-11
+  vancomycin__vanY_train_msa 147 nfivnsGYraedqqtelydEqgkaylvalpkgcsehqlgleidisatsievtynnenelldensykyGFIlRYPydktevtGi 229
+                                 ++++++G+ ++++++++++        ++p++++++ ++++ +i++t +e++y  ++++ +en           + +t+++G+
+        DQ212986.1.gene6.p01  33 SSFLWYGFGNAAKKDSVIE--------EMPFTITQDGMQAKEEIKKTVLETSYGGKQQVAEEN-----------HGNTQNAGT 96 
+                                 6789***************........8***********************************...........6******** PP
+
+  vancomycin__vanY_train_msa 230 ktepwhlryvg 240
+                                 + e+w+l++v+
+        DQ212986.1.gene6.p01  97 D-EAWNLMLVN 106
+                                 9.******996 PP
+
+  == domain 2  score: 144.5 bits;  conditional E-value: 2e-46
+  vancomycin__vanY_train_msa  86 gdtltvnlllinrklpsrneaaktliVntGkellsdnillsqeiikkfsdlvneaakegv.snfivnsGYraedqqtelydE. 166
+                                 g    +nl l+nr ++++ +++++      +  ++ +++++++i + +++++n+a++e   + ++v sGYr++++q++lydE 
+        DQ212986.1.gene6.p01  95 GTDEAWNLMLVNRDNAIPDNYEVN------LVEVEGGERVDERIYEPLMEMLNAAREENWgELPMVVSGYRTQEKQQSLYDEk 171
+                                 66778****************888......666999********************998779*******************99 PP
+
+  vancomycin__vanY_train_msa 167 ...............qgkaylvalpkgcsehqlgleidisatsievtynnenelldensykyGFIlRYPydktevtGiktepw 234
+                                                + ++++va+p g sehqlg ++di+ + +      ++ +l+ensykyGFI RYP  kt++tG++ e w
+        DQ212986.1.gene6.p01 172 iakfkkegysdseavRQAEQWVAVP-GHSEHQLGFAVDINGATYD-----VYLWLQENSYKYGFIFRYPGSKTDITGTAEEVW 248
+                                 999999999888775444559****.**************99985.....689****************************** PP
+
+  vancomycin__vanY_train_msa 235 hlryvglvsaavideknicleeyvdilk 262
+                                 h+ryvg+++a++++e+++cleey++  +
+        DQ212986.1.gene6.p01 249 HYRYVGVEAATEMYENGLCLEEYLEKKQ 276
+                                 ***********************97655 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (279 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         5  (0.0259067); expected 3.9 (0.02)
+Passed bias filter:                        5  (0.0259067); expected 3.9 (0.02)
+Passed Vit filter:                         1  (0.00518135); expected 0.2 (0.001)
+Passed Fwd filter:                         1  (0.00518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.03u 0.01s 00:00:00.04 Elapsed: 00:00:00.03
+# Mc/sec: 709.35
+//
+Query:       AB084246.gene.p01  [L=401]
+Description: tetB protein. Encoded by gene tetB. ARO:3000166 tetB. [Neisseria meningitidis]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (401 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        31  (0.160622); expected 3.9 (0.02)
+Passed bias filter:                       13  (0.0673575); expected 3.9 (0.02)
+Passed Vit filter:                        10  (0.0518135); expected 0.2 (0.001)
+Passed Fwd filter:                        10  (0.0518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.08u 0.01s 00:00:00.09 Elapsed: 00:00:00.09
+# Mc/sec: 339.84
+//
+Query:       AF038993.gene.p01  [L=398]
+Description: tetJ protein. Encoded by gene tetJ. ARO:3000177 tetJ. [Proteus mirabilis]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                     -----------
+   1.2e-278  916.9  26.5   1.4e-278  916.7  26.5    1.0  1  tetracycline__tetJ_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> tetracycline__tetJ_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  916.7  26.5    7e-281  1.4e-278       1     398 []       1     398 []       1     398 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 916.7 bits;  conditional E-value: 7e-281
+  tetracycline__tetJ_train_msa   1 mnksiiiillvtvldaigiglimpvlptllnefvsenrlanhygillalyatmqvifapilgklsdkygrkpillfsllga 81 
+                                   mnksiiiillvtvldaigiglimpvlptllnefvsenrlanhygillalyatmqvifapilgklsdkygrkpill+sllga
+             AF038993.gene.p01   1 MNKSIIIILLVTVLDAIGIGLIMPVLPTLLNEFVSENRLANHYGILLALYATMQVIFAPILGKLSDKYGRKPILLISLLGA 81 
+                                   9******************************************************************************** PP
+
+  tetracycline__tetJ_train_msa  82 aldyllmacstslwmlyigriiagitgatgavcasamtdvthphertryfgflggafgvgliigpmlggllgeisahtpfi 162
+                                   aldyllmac tslwmlyigriiagitgatgavcasamtdvthphertryfgflggafgvgliigpmlggllgeisahtpfi
+             AF038993.gene.p01  82 ALDYLLMACPTSLWMLYIGRIIAGITGATGAVCASAMTDVTHPHERTRYFGFLGGAFGVGLIIGPMLGGLLGEISAHTPFI 162
+                                   ********************************************************************************* PP
+
+  tetracycline__tetJ_train_msa 163 faaishsllfifsllcfqetqttkisteisalnqdtaphsatgfikkslffwliayfiiqligqipatiwvlftqvrfawh 243
+                                   faaishsllfifsllcfqetqttkisteisalnqdtaphs+tgfikkslffwliayfiiqligqipatiwvlftqvrfawh
+             AF038993.gene.p01 163 FAAISHSLLFIFSLLCFQETQTTKISTEISALNQDTAPHSTTGFIKKSLFFWLIAYFIIQLIGQIPATIWVLFTQVRFAWH 243
+                                   ********************************************************************************* PP
+
+  tetracycline__tetJ_train_msa 244 ttevglslaflgvlhiffqavlagklaqkwgerntviismsidafgclllawishvwvmlpaliclaaggmgqpalqgyls 324
+                                   ttevglslaflgvlhiffqavlagklaqkwgerntviismsidafgclllawishvwvmlpaliclaaggmgqpalqgyls
+             AF038993.gene.p01 244 TTEVGLSLAFLGVLHIFFQAVLAGKLAQKWGERNTVIISMSIDAFGCLLLAWISHVWVMLPALICLAAGGMGQPALQGYLS 324
+                                   ********************************************************************************* PP
+
+  tetracycline__tetJ_train_msa 325 ksvdhhvqgqlqgtlvsltnitgivgpllfsfiysysveywdgllwfigamlysgllvasyfkqkspilkkfps 398
+                                   ksvdhhvqgqlqgtlvsltnitgivgpllfsfiysysveywdgllwfigamlysgllvasyfkqkspilkkfps
+             AF038993.gene.p01 325 KSVDHHVQGQLQGTLVSLTNITGIVGPLLFSFIYSYSVEYWDGLLWFIGAMLYSGLLVASYFKQKSPILKKFPS 398
+                                   *************************************************************************8 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (398 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        34  (0.176166); expected 3.9 (0.02)
+Passed bias filter:                       16  (0.0829016); expected 3.9 (0.02)
+Passed Vit filter:                        12  (0.0621762); expected 0.2 (0.001)
+Passed Fwd filter:                        12  (0.0621762); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.10u 0.01s 00:00:00.11 Elapsed: 00:00:00.11
+# Mc/sec: 275.97
+//
+Query:       AF070999.gene.p01  [L=391]
+Description: tetY protein. Encoded by gene tetY. ARO:3000182 tetY. [IncQ plasmid pIE1120]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                     -----------
+   1.6e-269  886.8  30.0   1.8e-269  886.6  30.0    1.0  1  tetracycline__tetY_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> tetracycline__tetY_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  886.6  30.0  9.1e-272  1.8e-269       1     391 []       1     391 []       1     391 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 886.6 bits;  conditional E-value: 9.1e-272
+  tetracycline__tetY_train_msa   1 lskslitalivvaldaiglglimpvvpallnefvpaeqtafhygvflslyafmqvfcapvlgrlsdrygrriillvsflga 81 
+                                   +skslitalivvaldaiglglimpvvpallnefvpaeqtafhygvflslyafmqvfcapvlgrlsdrygrriillvsflga
+             AF070999.gene.p01   1 MSKSLITALIVVALDAIGLGLIMPVVPALLNEFVPAEQTAFHYGVFLSLYAFMQVFCAPVLGRLSDRYGRRIILLVSFLGA 81 
+                                   89******************************************************************************* PP
+
+  tetracycline__tetY_train_msa  82 tidysimaaapvlwvlyigriisgvtgatgaiaasiiadttkqeerarwfgfmgacfgagmiagpaiggvlgdisvhapfv 162
+                                   tidysimaaapvlwvlyigriisgvtgatgaiaasiiadttkqeerarwfgfmgacfgagmiagpaiggvlgdisvhapfv
+             AF070999.gene.p01  82 TIDYSIMAAAPVLWVLYIGRIISGVTGATGAIAASIIADTTKQEERARWFGFMGACFGAGMIAGPAIGGVLGDISVHAPFV 162
+                                   ********************************************************************************* PP
+
+  tetracycline__tetY_train_msa 163 agallnaiafclvafllpkassqppegqpakinlfegfrfnfavqglasffalfflmqligqapaalwviygeqrlnwdig 243
+                                   agallnaiafclvafllpk++sqppegqpakinlfegfrfnfavqglasffalfflmqligqapaalwviygeqrlnwdig
+             AF070999.gene.p01 163 AGALLNAIAFCLVAFLLPKTPSQPPEGQPAKINLFEGFRFNFAVQGLASFFALFFLMQLIGQAPAALWVIYGEQRLNWDIG 243
+                                   ********************************************************************************* PP
+
+  tetracycline__tetY_train_msa 244 tagvslavfgaahtfvqavltgtlskrlgdrgvlllgmgadicgflllafitqswmvlpaifmlatggigmpalqaiisgl 324
+                                   tagvslavfgaahtfvqavltgtlskrlgdrgvlllgmgad+cgflllafitqswmvlpaifmlatggigmpalqaiisgl
+             AF070999.gene.p01 244 TAGVSLAVFGAAHTFVQAVLTGTLSKRLGDRGVLLLGMGADMCGFLLLAFITQSWMVLPAIFMLATGGIGMPALQAIISGL 324
+                                   ********************************************************************************* PP
+
+  tetracycline__tetY_train_msa 325 vrdekqgalqgtltgltnitsiigpvgfttlygltagrwdgwvwlvaaslyliaipllrqsasllrs 391
+                                   v+dekqgalqgtltgltnitsiigpvgfttlygltag+wdgwvwlvaaslyliaipllrqsasllrs
+             AF070999.gene.p01 325 VCDEKQGALQGTLTGLTNITSIIGPVGFTTLYGLTAGQWDGWVWLVAASLYLIAIPLLRQSASLLRS 391
+                                   ******************************************************************8 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (391 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        31  (0.160622); expected 3.9 (0.02)
+Passed bias filter:                       14  (0.0725389); expected 3.9 (0.02)
+Passed Vit filter:                        10  (0.0518135); expected 0.2 (0.001)
+Passed Fwd filter:                        10  (0.0518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.12u 0.00s 00:00:00.12 Elapsed: 00:00:00.12
+# Mc/sec: 248.53
+//
+Query:       AF275256.gene.p01  [L=294]
+Description: blaSME-2 protein. SME-2 Curated. Encoded by gene blaSME-2. ARO:3002380 SME-2. [Serratia marcescens]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (294 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        11  (0.0569948); expected 3.9 (0.02)
+Passed bias filter:                       10  (0.0518135); expected 3.9 (0.02)
+Passed Vit filter:                         8  (0.0414508); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.02u 0.01s 00:00:00.03 Elapsed: 00:00:00.03
+# Mc/sec: 747.49
+//
+Query:       AJ250203.gene.p01  [L=410]
+Description: tet31 protein. Encoded by gene tet31. ARO:3000476 tet31. [Aeromonas salmonicida]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (410 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        33  (0.170984); expected 3.9 (0.02)
+Passed bias filter:                       14  (0.0725389); expected 3.9 (0.02)
+Passed Vit filter:                        11  (0.0569948); expected 0.2 (0.001)
+Passed Fwd filter:                        11  (0.0569948); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.12u 0.02s 00:00:00.13 Elapsed: 00:00:00.13
+# Mc/sec: 240.56
+//
+Query:       M80346.gene.p01  [L=551]
+Description: car(A) protein. carA Curated. Encoded by gene car(A). ARO:3002817 carA. [Streptomyces thermotolerans]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (551 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        10  (0.0518135); expected 3.9 (0.02)
+Passed bias filter:                        7  (0.0362694); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.07u 0.02s 00:00:00.09 Elapsed: 00:00:00.09
+# Mc/sec: 466.97
+//
+Query:       X75761.gene.p01  [L=399]
+Description: TetA protein. Encoded by gene TetA. ARO:3000165 tetA. [Pseudomonas aeruginosa]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (399 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        32  (0.165803); expected 3.9 (0.02)
+Passed bias filter:                       19  (0.0984456); expected 3.9 (0.02)
+Passed Vit filter:                        10  (0.0518135); expected 0.2 (0.001)
+Passed Fwd filter:                        10  (0.0518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.06u 0.01s 00:00:00.06 Elapsed: 00:00:00.07
+# Mc/sec: 434.76
+//
+Query:       Y10282.gene.p01  [L=382]
+Description: blaFOX-2 protein. FOX-2 Curated. Encoded by gene blaFOX-2. ARO:3002156 FOX-2. [Escherichia coli]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (382 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         5  (0.0259067); expected 3.9 (0.02)
+Passed bias filter:                        4  (0.0207254); expected 3.9 (0.02)
+Passed Vit filter:                         2  (0.0103627); expected 0.2 (0.001)
+Passed Fwd filter:                         2  (0.0103627); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.00u 0.02s 00:00:00.02 Elapsed: 00:00:00.02
+# Mc/sec: 1456.83
+//
+Query:       AY123251.gene2.p01  [L=210]
+Description: chloramphenicol acetyltransferase. catB8 Curated. Homology: Bacterial transferase hexapeptide repeat (HMMPfam: PF00132, score: 0.011). Encoded by gene catB8. ARO:3002680 catB8. [Salmonella enterica subsp. enterica serovar Typhi]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                           Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                        -----------
+     8e-143  466.5   0.4   8.9e-143  466.3   0.4    1.0  1  chloramphenicol__catB_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> chloramphenicol__catB_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  466.3   0.4  4.6e-145  8.9e-143       1     210 []       1     210 []       1     210 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 466.3 bits;  conditional E-value: 4.6e-145
+  chloramphenicol__catB_train_msa   1 mknyfdspfkgkllseqvknpnikvgrysyysgyyhghsfddcaryllpdrddvdkliigsfcsigsgasfimagnqg 78 
+                                      mknyf+spfkg+llseqvknpni+vgrysyysgyyhghsfd+caryllpdrddvdkliigsfcsigsgasfimagnqg
+               AY123251.gene2.p01   1 MKNYFNSPFKGELLSEQVKNPNIRVGRYSYYSGYYHGHSFDECARYLLPDRDDVDKLIIGSFCSIGSGASFIMAGNQG 78 
+                                      89**************************************************************************** PP
+
+  chloramphenicol__catB_train_msa  79 hradwassfpffymqeepafssaldafqragdtvigndvwigseamimpgikigdgavigsrslvtkdvepyaivggn 156
+                                      hr+dwassfpffymqeepafs+aldafqragdtvigndvwigseamimpgikigdgavigsrslvtkdvepyai+ggn
+               AY123251.gene2.p01  79 HRHDWASSFPFFYMQEEPAFSRALDAFQRAGDTVIGNDVWIGSEAMIMPGIKIGDGAVIGSRSLVTKDVEPYAIIGGN 156
+                                      ****************************************************************************** PP
+
+  chloramphenicol__catB_train_msa 157 pakkikkrfsdeeislllemewwnwplekikaampllcssdivglykywkelav 210
+                                      pak+ikkrfsdeeisll+emewwnwpl+kik+ampllcss+i+gl+kyw+e+av
+               AY123251.gene2.p01 157 PAKQIKKRFSDEEISLLMEMEWWNWPLDKIKTAMPLLCSSNIFGLHKYWREFAV 210
+                                      ***************************************************986 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (210 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         6  (0.0310881); expected 3.9 (0.02)
+Passed bias filter:                        6  (0.0310881); expected 3.9 (0.02)
+Passed Vit filter:                         4  (0.0207254); expected 0.2 (0.001)
+Passed Fwd filter:                         4  (0.0207254); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.02s 00:00:00.03 Elapsed: 00:00:00.02
+# Mc/sec: 800.88
+//
+Query:       NC_002695.1.913273.p01  [L=110]
+Description: multidrug efflux protein. Encoded by gene emrE. Member of the small MDR (multidrug resistance) family of transporters; in Escherichia coli this protein provides resistance against a number of positively charged compounds including ethidium bromide and erythromycin; proton-dependent secondary transporter which exchanges protons for compound translocation. ARO:3000264 emrE. [Escherichia coli O157:H7 str. Sakai]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                     Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                  -----------
+      1e-66  216.5   6.4    1.1e-66  216.4   6.4    1.0  1  multidrug__emrE_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> multidrug__emrE_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  216.4   6.4   5.7e-69   1.1e-66      13     122 .]       1     110 []       1     110 [] 0.99
+
+  Alignments for each domain:
+  == domain 1  score: 216.4 bits;  conditional E-value: 5.7e-69
+  multidrug__emrE_train_msa  13 lnayiyllgailaeviattllkfsegftrlwPsvgtiigycisfallaltlariptgiayaiWsgvGivlisllsvlflGqrld 96 
+                                +n+yiyl+gailaevi+ttl+kfsegftrlwPsvgtii+yc+sf+lla+tla+iptgiayaiWsgvGivlislls++f+Gqrld
+     NC_002695.1.913273.p01   1 MNPYIYLGGAILAEVIGTTLMKFSEGFTRLWPSVGTIICYCASFWLLAQTLAYIPTGIAYAIWSGVGIVLISLLSWGFFGQRLD 84 
+                                799********************************************************************************* PP
+
+  multidrug__emrE_train_msa  97 lpaiiGllliiaGvlvinllsrsaah 122
+                                lpa+iG++li+aGvlvinllsrs++h
+     NC_002695.1.913273.p01  85 LPAVIGMMLICAGVLVINLLSRSTPH 110
+                                *************************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (110 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        16  (0.0829016); expected 3.9 (0.02)
+Passed bias filter:                        9  (0.0466321); expected 3.9 (0.02)
+Passed Vit filter:                         5  (0.0259067); expected 0.2 (0.001)
+Passed Fwd filter:                         4  (0.0207254); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.02
+# Mc/sec: 419.51
+//
+Query:       AF324833.1.gene1.p01  [L=299]
+Description: extended spectrum beta-lactamase VEB-1a. VEB-9 Curated. Beta-lactamase. Encoded by gene bla. ARO:3002378 VEB-9. [Pseudomonas aeruginosa]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (299 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        19  (0.0984456); expected 3.9 (0.02)
+Passed bias filter:                       12  (0.0621762); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.02u 0.01s 00:00:00.03 Elapsed: 00:00:00.03
+# Mc/sec: 760.20
+//
+Query:       AM051145.1.gene1.p01  [L=286]
+Description: OKP-A beta-lactamase. Encoded by gene blaOKP-A. OKP-A-7 Curated. ARO:3002424 OKP-A-7. [Klebsiella pneumoniae]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                     -----------
+   1.1e-200  658.0   2.2   1.2e-200  657.9   2.2    1.0  1  beta_lactam__OKP_A_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> beta_lactam__OKP_A_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  657.9   2.2  6.5e-203  1.2e-200       1     286 []       1     286 []       1     286 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 657.9 bits;  conditional E-value: 6.5e-203
+  beta_lactam__OKP_A_train_msa   1 mryvrlclisliaalplavfaspqpleqvtrsesqlagrvgyvemdlasgrtlaawraserfplmstfkvllcgavlarvd 81 
+                                   mr+vrlclisliaalplavfaspqpleq+t+sesqlagrvgyvemdlasgrtlaawraserfplmstfkvllcgavlarvd
+          AM051145.1.gene1.p01   1 MRCVRLCLISLIAALPLAVFASPQPLEQITLSESQLAGRVGYVEMDLASGRTLAAWRASERFPLMSTFKVLLCGAVLARVD 81 
+                                   9******************************************************************************** PP
+
+  beta_lactam__OKP_A_train_msa  82 agderldrriryrqqdlvdyspvsekhladgmtvgelcaaaitmsdnsagnlllksvggpagltaflrqigdnvtrldrwe 162
+                                   agderldrriry qqdlvdyspvsekhladgmtvgelcaaaitmsdnsagnlllksvggpagltaflrqigdnvtrldrwe
+          AM051145.1.gene1.p01  82 AGDERLDRRIRYPQQDLVDYSPVSEKHLADGMTVGELCAAAITMSDNSAGNLLLKSVGGPAGLTAFLRQIGDNVTRLDRWE 162
+                                   ********************************************************************************* PP
+
+  beta_lactam__OKP_A_train_msa 163 telnealpgdvrdtttpasmaatlrklltshalsarsqqqllqwmvddqvagpliravlpagwfiadktgagergsrgiva 243
+                                   telnealpgdvrdtttpasmaatlrklltshals+rsqqqllqwmvddqvagpliravlpagwfiadktgagergsrgiva
+          AM051145.1.gene1.p01 163 TELNEALPGDVRDTTTPASMAATLRKLLTSHALSDRSQQQLLQWMVDDQVAGPLIRAVLPAGWFIADKTGAGERGSRGIVA 243
+                                   ********************************************************************************* PP
+
+  beta_lactam__OKP_A_train_msa 244 llgpngkaerivviylrdtpatmaernqqiarigaaliehwqr 286
+                                   llgpngkaerivviylrdtpa+maernqqia+igaaliehwqr
+          AM051145.1.gene1.p01 244 LLGPNGKAERIVVIYLRDTPAAMAERNQQIAKIGAALIEHWQR 286
+                                   ******************************************8 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (286 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         7  (0.0362694); expected 3.9 (0.02)
+Passed bias filter:                        7  (0.0362694); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.02s 00:00:00.03 Elapsed: 00:00:00.02
+# Mc/sec: 1090.72
+//
+Query:       AM850918.2.gene1.p01  [L=286]
+Description: beta-lactamase. OKP-B-16 Curated. Encoded by gene blaOKP-B. ARO:3002438 OKP-B-5. [Klebsiella pneumoniae]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                     -----------
+   6.2e-204  668.8   1.8     7e-204  668.7   1.8    1.0  1  beta_lactam__OKP_B_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> beta_lactam__OKP_B_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  668.7   1.8  3.6e-206    7e-204       1     286 []       1     286 []       1     286 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 668.7 bits;  conditional E-value: 3.6e-206
+  beta_lactam__OKP_B_train_msa   1 mryvrlclisliaalplavfaspqpleqikisesqlagrvgyvemdlasgrtlaawraserfplmstfkvllcgavlarvd 81 
+                                   mryvrlclisliaalplavfaspqpleqikisesqlagrvgyvemdlasgrtlaawraserfplmstfkvllcgavlarvd
+          AM850918.2.gene1.p01   1 MRYVRLCLISLIAALPLAVFASPQPLEQIKISESQLAGRVGYVEMDLASGRTLAAWRASERFPLMSTFKVLLCGAVLARVD 81 
+                                   9******************************************************************************** PP
+
+  beta_lactam__OKP_B_train_msa  82 agdeqldrrihyrqqdlvdyspvsekhladgmtvgelcaaaitmsdnsagnlllkivggpagltaflrqigdnvtrldrwe 162
+                                   agdeqldrrihyrqqdlvdyspvsekhladgmtvgelcaaaitmsdn+agnlllkivggpagltaflrqigdnvtrldrwe
+          AM850918.2.gene1.p01  82 AGDEQLDRRIHYRQQDLVDYSPVSEKHLADGMTVGELCAAAITMSDNTAGNLLLKIVGGPAGLTAFLRQIGDNVTRLDRWE 162
+                                   ********************************************************************************* PP
+
+  beta_lactam__OKP_B_train_msa 163 telnealpgdvrdtttpasmattlrkllttpslsarsqqqllqwmvddrvagpliravlpagwfiadktgagergsrgiva 243
+                                   telnealpgdvrdtttpasmattlrkllttpslsarsqqqllqwmvddrvagpliravlpagwfiadktgagergsrgiva
+          AM850918.2.gene1.p01 163 TELNEALPGDVRDTTTPASMATTLRKLLTTPSLSARSQQQLLQWMVDDRVAGPLIRAVLPAGWFIADKTGAGERGSRGIVA 243
+                                   ********************************************************************************* PP
+
+  beta_lactam__OKP_B_train_msa 244 llgpdgkaerivviylrdtaatmvernqqiagigaaliehwqr 286
+                                   llgpdgkaerivviylrdt+atmvernqqiagigaaliehwqr
+          AM850918.2.gene1.p01 244 LLGPDGKAERIVVIYLRDTPATMVERNQQIAGIGAALIEHWQR 286
+                                   ******************************************8 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (286 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         8  (0.0414508); expected 3.9 (0.02)
+Passed bias filter:                        8  (0.0414508); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.01s 00:00:00.03 Elapsed: 00:00:00.02
+# Mc/sec: 1090.72
+//
+Query:       AM850921.2.gene1.p01  [L=286]
+Description: beta-lactamase. OKP-B-19 Curated. Encoded by gene blaOKP-B. ARO:3002452 OKP-B-19. [Klebsiella pneumoniae]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                     -----------
+   2.9e-203  666.6   1.9   3.2e-203  666.5   1.9    1.0  1  beta_lactam__OKP_B_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> beta_lactam__OKP_B_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  666.5   1.9  1.7e-205  3.2e-203       1     286 []       1     286 []       1     286 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 666.5 bits;  conditional E-value: 1.7e-205
+  beta_lactam__OKP_B_train_msa   1 mryvrlclisliaalplavfaspqpleqikisesqlagrvgyvemdlasgrtlaawraserfplmstfkvllcgavlarvd 81 
+                                   mryvrlclisliaalplavfaspqpleqikise+qlagrvgyvemdlasgr+laawraserfplmstfkvllcgavlarvd
+          AM850921.2.gene1.p01   1 MRYVRLCLISLIAALPLAVFASPQPLEQIKISEGQLAGRVGYVEMDLASGRMLAAWRASERFPLMSTFKVLLCGAVLARVD 81 
+                                   9******************************************************************************** PP
+
+  beta_lactam__OKP_B_train_msa  82 agdeqldrrihyrqqdlvdyspvsekhladgmtvgelcaaaitmsdnsagnlllkivggpagltaflrqigdnvtrldrwe 162
+                                   agdeqldrrihyrqqdlvdyspvsekhladgmtvgelcaaaitmsdn+agnlllkivggpagltaflrqigdnvtrldrwe
+          AM850921.2.gene1.p01  82 AGDEQLDRRIHYRQQDLVDYSPVSEKHLADGMTVGELCAAAITMSDNTAGNLLLKIVGGPAGLTAFLRQIGDNVTRLDRWE 162
+                                   ********************************************************************************* PP
+
+  beta_lactam__OKP_B_train_msa 163 telnealpgdvrdtttpasmattlrkllttpslsarsqqqllqwmvddrvagpliravlpagwfiadktgagergsrgiva 243
+                                   telnealpgdvrdtttpasmattlrkllttpslsarsqqqllqwmvddrvagpliravlpagwfiadktgagergsrgiva
+          AM850921.2.gene1.p01 163 TELNEALPGDVRDTTTPASMATTLRKLLTTPSLSARSQQQLLQWMVDDRVAGPLIRAVLPAGWFIADKTGAGERGSRGIVA 243
+                                   ********************************************************************************* PP
+
+  beta_lactam__OKP_B_train_msa 244 llgpdgkaerivviylrdtaatmvernqqiagigaaliehwqr 286
+                                   llgpdgkaerivviylrdt+atmvernqqiagigaaliehwqr
+          AM850921.2.gene1.p01 244 LLGPDGKAERIVVIYLRDTPATMVERNQQIAGIGAALIEHWQR 286
+                                   ******************************************8 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (286 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         8  (0.0414508); expected 3.9 (0.02)
+Passed bias filter:                        8  (0.0414508); expected 3.9 (0.02)
+Passed Vit filter:                         7  (0.0362694); expected 0.2 (0.001)
+Passed Fwd filter:                         7  (0.0362694); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.03
+# Mc/sec: 727.15
+//
+Query:       FJ666066.1.gene1.p1  [L=397]
+Description: class C beta-lactamase PDC-3. Cephalosporinase; blaAmpC. Encoded by gene ACQ82808.1. PDC-3 Curated. ARO:3002500 PDC-3. [Pseudomonas aeruginosa]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (397 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         4  (0.0207254); expected 3.9 (0.02)
+Passed bias filter:                        4  (0.0207254); expected 3.9 (0.02)
+Passed Vit filter:                         2  (0.0103627); expected 0.2 (0.001)
+Passed Fwd filter:                         2  (0.0103627); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.02
+# Mc/sec: 1514.04
+//
+Query:       AY463797.7.gene32.p01  [L=278]
+Description: StrB. Encoded by gene strB. Streptomycin phosphotransferase. ARO:3002660 APH(6)-Id. [Salmonella enterica subsp. enterica serovar Kentucky]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                              Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                           -----------
+   3.2e-154  505.8   2.0   3.6e-154  505.6   2.0    1.0  1  aminoglycoside__aph_6__I_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> aminoglycoside__aph_6__I_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  505.6   2.0  1.9e-156  3.6e-154       1     278 []       1     275 [.       1     275 [. 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 505.6 bits;  conditional E-value: 1.9e-156
+  aminoglycoside__aph_6__I_train_msa   1 ifvpdvlaesWivslpalvadtvsslvvkvsladGtpailkllkPieeiadelrGadyLvarnGrGavRlldres 75 
+                                         +f+p+v++++W+vs+p+l+adt+sslv+kvsl+dGtpai+k+lkPie+iadelrGadyLv+rnGrGavRll+re+
+               AY463797.7.gene32.p01   1 MFMPPVFPAHWHVSQPVLIADTFSSLVWKVSLPDGTPAIVKGLKPIEDIADELRGADYLVWRNGRGAVRLLGREN 75 
+                                         89************************************************************************* PP
+
+  aminoglycoside__aph_6__I_train_msa  76 sllLlerlagertLasivaeedDdeateilaellarLyaaseePlPsaLrplrdifaalfeearddvdaladtdl 150
+                                         +l+Lle +ager+L++ivae++D++atei+ael+a+LyaaseePlPsaL+p+rd+faalf++ardd++a+++td+
+               AY463797.7.gene32.p01  76 NLMLLE-YAGERMLSHIVAEHGDYQATEIAAELMAKLYAASEEPLPSALLPIRDRFAALFQRARDDQNAGCQTDY 149
+                                         ******.******************************************************************** PP
+
+  aminoglycoside__aph_6__I_train_msa 151 veaasiaaqllseaselrvLhgDLhyenvlfaeRgWLaiDPegLvGevgFdlanlftdpadrddlaldprRvarr 225
+                                         v+aa+ia+q++s+aselr+LhgDLh+en++f++RgWL+iDP+gLvGevgF++an+f+dpadrddl+ldprR+a++
+               AY463797.7.gene32.p01 150 VHAAIIADQMMSNASELRGLHGDLHHENIMFSSRGWLVIDPVGLVGEVGFGAANMFYDPADRDDLCLDPRRIAQM 224
+                                         *************************************************************************** PP
+
+  aminoglycoside__aph_6__I_train_msa 226 adllsealdldprRlldwalaylllsaaWdedGeeeiaqrdlavaaalkkvrq 278
+                                         ad++s+ald+dprRlld+a+ay++lsaaW++dGeee  qrdla+aaa+k+vrq
+               AY463797.7.gene32.p01 225 ADAFSRALDVDPRRLLDQAYAYGCLSAAWNADGEEE--QRDLAIAAAIKQVRQ 275
+                                         ************************************..************986 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (278 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         6  (0.0310881); expected 3.9 (0.02)
+Passed bias filter:                        6  (0.0310881); expected 3.9 (0.02)
+Passed Vit filter:                         1  (0.00518135); expected 0.2 (0.001)
+Passed Fwd filter:                         1  (0.00518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.01
+# Mc/sec: 2120.42
+//
+Query:       AY463797.7.gene13.p01  [L=158]
+Description: aminoglycoside (3) acetyltransferase; AacCA5 or AAC(3)-Ie. Confers resistance to gentamicin and sisomicin. AAC(3)-Ie Curated. Encoded by gene aacCA5. ARO:3002532 AAC(3)-Ie. [Salmonella enterica subsp. enterica serovar Kentucky]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                              Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                           -----------
+    3.5e-78  254.5   3.1      4e-78  254.4   3.1    1.0  1  aminoglycoside__aac_3__I_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> aminoglycoside__aac_3__I_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  254.4   3.1   2.1e-80     4e-78       4     155 ..       1     154 [.       1     155 [. 0.99
+
+  Alignments for each domain:
+  == domain 1  score: 254.4 bits;  conditional E-value: 2.1e-80
+  aminoglycoside__aac_3__I_train_msa   4 giirivrlgpddvkslravldlfGrefedvatysqkqpdsdylgnllrsktfialaaldqeavvGalaayvlpkf 78 
+                                         ++++i++l+ +dv++l++++++fG++f+d+++y++++p+s+yl++ll++++fialaa+d+++v+Ga+aay+l+kf
+               AY463797.7.gene13.p01   1 MSVEIIHLTGNDVALLQSINAMFGEAFNDQDSYARNKPSSSYLQKLLSTSSFIALAAVDEQKVIGAIAAYELQKF 75 
+                                         5799*********************************************************************** PP
+
+  aminoglycoside__aac_3__I_train_msa  79 eqarseiyiydlavsgehrrqGiatalinelkkianalGayviyvqadyG..ddpavalytklGiredvlhfdid 151
+                                         eq+rseiyiydlav++++rr+Giatali++lk+i++a+Gayviyvqad+G  d+pa++ly+klG++edv+hfdi+
+               AY463797.7.gene13.p01  76 EQQRSEIYIYDLAVAATRRREGIATALIKKLKAIGAARGAYVIYVQADKGveDQPAIELYKKLGTIEDVFHFDIA 150
+                                         *************************************************************************** PP
+
+  aminoglycoside__aac_3__I_train_msa 152 psta 155
+                                         ++++
+               AY463797.7.gene13.p01 151 VEQS 154
+                                         9987 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (158 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         8  (0.0414508); expected 3.9 (0.02)
+Passed bias filter:                        2  (0.0103627); expected 3.9 (0.02)
+Passed Vit filter:                         2  (0.0103627); expected 0.2 (0.001)
+Passed Fwd filter:                         2  (0.0103627); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.01
+# Mc/sec: 1205.13
+//
+Query:       AB028210.1.gene2.p01  [L=284]
+Description: aminoglycoside 3-N-acetyltransferase. AAC(3)-Xa Curated. Encoded by gene kan. ARO:3002544 AAC(3)-Xa. [Streptomyces griseus]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (284 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         7  (0.0362694); expected 3.9 (0.02)
+Passed bias filter:                        6  (0.0310881); expected 3.9 (0.02)
+Passed Vit filter:                         4  (0.0207254); expected 0.2 (0.001)
+Passed Fwd filter:                         4  (0.0207254); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.02
+# Mc/sec: 1083.09
+//
+Query:       AF326777.3.gene21.p01  [L=197]
+Description: putative transcriptional regulator TetC. Putative regulator of tet operon; similar to TetC on plasmid R100. Encoded by gene tetC. ARO:3000167 tetC. [Shigella flexneri 2a]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                     -----------
+     3e-139  455.0  10.7   3.4e-139  454.9  10.7    1.0  1  tetracycline__tetC_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> tetracycline__tetC_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  454.9  10.7  1.8e-141  3.4e-139       1     197 []       1     197 []       1     197 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 454.9 bits;  conditional E-value: 1.8e-141
+  tetracycline__tetC_train_msa   1 menknhqqenfkstyqslvnsarilfvekgyqavsideisgkalvtkgafyhhfknkkqllsacykqqlimidayittktd 81 
+                                   menknhqqenfkstyqslvnsarilfvekgyqavsideisgkalvtkgafyhhfknkkqllsacykqqlimidayittktd
+         AF326777.3.gene21.p01   1 MENKNHQQENFKSTYQSLVNSARILFVEKGYQAVSIDEISGKALVTKGAFYHHFKNKKQLLSACYKQQLIMIDAYITTKTD 81 
+                                   9******************************************************************************** PP
+
+  tetracycline__tetC_train_msa  82 ltngwsalesifehyldyiidnnknlipiqevmpiigwnelekisleyitgkvnaivskliqenqlkaydddvlknllngw 162
+                                   ltngwsalesifehyldyiidnnknlipiqevmpiigwnelekisleyitgkvnaivskliqenqlkaydddvlknllngw
+         AF326777.3.gene21.p01  82 LTNGWSALESIFEHYLDYIIDNNKNLIPIQEVMPIIGWNELEKISLEYITGKVNAIVSKLIQENQLKAYDDDVLKNLLNGW 162
+                                   ********************************************************************************* PP
+
+  tetracycline__tetC_train_msa 163 fmhiaihaknlkeladkkgqfiaiyrgfllslkdk 197
+                                   fmhiaihaknlkeladkkgqfiaiyrgfllslkdk
+         AF326777.3.gene21.p01 163 FMHIAIHAKNLKELADKKGQFIAIYRGFLLSLKDK 197
+                                   **********************************8 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (197 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        10  (0.0518135); expected 3.9 (0.02)
+Passed bias filter:                        6  (0.0310881); expected 3.9 (0.02)
+Passed Vit filter:                         4  (0.0207254); expected 0.2 (0.001)
+Passed Fwd filter:                         3  (0.015544); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 1502.60
+//
+Query:       AY238971.1.gene2.p01  [L=228]
+Description: chloramphenicol acetyltransferase. CAT. Encoded by gene cat. cat Curated. ARO:3002670 cat. [Bacillus clausii]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                                                            Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                                                         -----------
+    2.6e-94  308.6   3.4    3.1e-94  308.3   3.4    1.0  1  chloramphenicol__cat_chloramphenicol_acetyltransferase_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> chloramphenicol__cat_chloramphenicol_acetyltransferase_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  308.3   3.4   1.6e-96   3.1e-94       3     215 .]       4     218 ..       2     218 .. 0.99
+
+  Alignments for each domain:
+  == domain 1  score: 308.3 bits;  conditional E-value: 1.6e-96
+  chloramphenicol__cat_chloramphenicol_acetyltransferase_train_msa   3 fkvinleti.drkeyfehYfnqqttysltkelditklkkmlkkkk 46 
+                                                                       ++++ ++t+ +++ ++++Yf+qq t+slt+e++it+l+k+lkkk+
+                                              AY238971.1.gene2.p01   4 LTLLIRDTMgSKRIFLNPYFQQQPTFSLTNEINITILMKNLKKKH 48 
+                                                                       6788899**9*********************************** PP
+
+  chloramphenicol__cat_chloramphenicol_acetyltransferase_train_msa  47 dklyPaliyavvkivnknkvFrmainsegnlGywseliplytifn 91 
+                                                                       +klyPa+i++v+kivn++++Fr+++nsegnlGyw+e++plytif+
+                                              AY238971.1.gene2.p01  49 YKLYPAFIFMVTKIVNAHREFRINFNSEGNLGYWTEICPLYTIFD 93 
+                                                                       ********************************************* PP
+
+  chloramphenicol__cat_chloramphenicol_acetyltransferase_train_msa  92 ketekFsniWtearesftefyksykkdleeykeekelfpkkkipe 136
+                                                                       +++++Fs+iW+++ + f+ef+++y++d+e+y+ +++lfpkk+ip+
+                                              AY238971.1.gene2.p01  94 NKSHTFSGIWSPNLTIFSEFHSKYENDAERYNGTRRLFPKKPIPD 138
+                                                                       ********************************************* PP
+
+  chloramphenicol__cat_chloramphenicol_acetyltransferase_train_msa 137 ntipiSmipwidfasfnlnvgnnsafllpiitigkfleendkiyl 181
+                                                                       n+ipiSmipw++f++fnln++n+ +fllpiit gk+++ nd+++l
+                                              AY238971.1.gene2.p01 139 NPIPISMIPWSSFTAFNLNINNGGDFLLPIITGGKYSQVNDELFL 183
+                                                                       ********************************************* PP
+
+  chloramphenicol__cat_chloramphenicol_acetyltransferase_train_msa 182 pvslqvhhav.cdgyheslflnelqsliekvdewi 215
+                                                                       pvs+q+++++ ++++++s+f+n+lq+l++++++wi
+                                              AY238971.1.gene2.p01 184 PVSIQNASCLfVMATMQSVFINDLQNLVDESEDWI 218
+                                                                       *********99***********************7 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (228 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         2  (0.0103627); expected 3.9 (0.02)
+Passed bias filter:                        2  (0.0103627); expected 3.9 (0.02)
+Passed Vit filter:                         2  (0.0103627); expected 0.2 (0.001)
+Passed Fwd filter:                         2  (0.0103627); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.02
+# Mc/sec: 869.52
+//
+Query:       AB082569.2.gene1.p01  [L=213]
+Description: chloramphenicol acetyltransferase. Encoded by gene CAT. cat Curated. ARO:3002670 cat. [Photobacterium damselae subsp. piscicida]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                           Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                        -----------
+   1.6e-120  394.3   4.3   1.7e-120  394.1   4.3    1.0  1  chloramphenicol__catA_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> chloramphenicol__catA_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  394.1   4.3    9e-123  1.7e-120       1     213 []       1     213 []       1     213 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 394.1 bits;  conditional E-value: 9e-123
+  chloramphenicol__catA_train_msa   1 mnftridlntwsrrehfelyrkrvkctfsltvklditalkkalkesaykfypvliyliatvvnkfeefrmalkdgeli 78 
+                                      mnftridlntw+rrehf+lyr+++kc+fslt+kldital++al+e++ykfypv+iyli++vvn+f+efrma+kd+ li
+             AB082569.2.gene1.p01   1 MNFTRIDLNTWNRREHFALYRQQIKCGFSLTTKLDITALRTALAETDYKFYPVMIYLISRVVNQFPEFRMAMKDNALI 78 
+                                      9***************************************************************************** PP
+
+  chloramphenicol__catA_train_msa  79 vwdsvdPaftvfhketetfsalsaeysedlsrflatyaevlaeykedtklfPkgnlpenalnvsslPwvsfdgfnlnv 156
+                                      +wd++dP+ftvfhketetfsal+++y++d+s+f+a+y++v+aey+++t+lfP+g+lpen+ln+sslPwvsfdgfnln+
+             AB082569.2.gene1.p01  79 YWDQTDPVFTVFHKETETFSALFCRYCPDISEFMAGYNAVMAEYQHNTALFPQGALPENHLNISSLPWVSFDGFNLNI 156
+                                      ****************************************************************************** PP
+
+  chloramphenicol__catA_train_msa 157 aneedylaPvftlakyqkeddrvllPlsvqvhhavcdGfhaarlinelqelcdeklk 213
+                                      ++++dy+aPvft+ak+q+ed+rvllP+svqvhhavcdGfhaar+in+lq++cd++lk
+             AB082569.2.gene1.p01 157 TGNDDYFAPVFTMAKFQQEDNRVLLPVSVQVHHAVCDGFHAARFINTLQMMCDNILK 213
+                                      *****************************************************9986 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (213 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         5  (0.0259067); expected 3.9 (0.02)
+Passed bias filter:                        5  (0.0259067); expected 3.9 (0.02)
+Passed Vit filter:                         3  (0.015544); expected 0.2 (0.001)
+Passed Fwd filter:                         2  (0.0103627); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 1624.64
+//
+Query:       AF226276.1.gene3.p01  [L=207]
+Description: CatD. Chloramphenicol acetyltransferase; similar to CatP. catD Curated. Encoded by gene catD. ARO:3002682 catD. ARO:3002686 catP. [Clostridium difficile]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (207 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         7  (0.0362694); expected 3.9 (0.02)
+Passed bias filter:                        6  (0.0310881); expected 3.9 (0.02)
+Passed Vit filter:                         2  (0.0103627); expected 0.2 (0.001)
+Passed Fwd filter:                         2  (0.0103627); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 1578.87
+//
+Query:       AF310956.2.gene7.p01  [L=202]
+Description: D,D-dipeptidase. Encoded by gene vanXB2. ARO:3002950 vanXB. [Enterococcus faecium]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                   -----------
+     8e-126  411.1   0.4   8.9e-126  410.9   0.4    1.0  1  vancomycin__vanX_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> vancomycin__vanX_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  410.9   0.4  4.6e-128  8.9e-126       1     201 [.       1     201 [.       1     202 [] 0.99
+
+  Alignments for each domain:
+  == domain 1  score: 410.9 bits;  conditional E-value: 4.6e-128
+  vancomycin__vanX_train_msa   1 mekdfvfldellkgvrwdakyatwdnftgkpvdgyevnrivgtkelaaalrkakkkaaalgyglllwdgyrpkravdcflrwa 83 
+                                 me++f+flde+l+gvrwdakyatwdnftgkpvdgyevnri+gtk++a alr+a+ +aaalgyglllwdgyrp++avdcflrwa
+        AF310956.2.gene7.p01   1 MENGFLFLDEMLHGVRWDAKYATWDNFTGKPVDGYEVNRIIGTKAVAFALREAQIHAAALGYGLLLWDGYRPRTAVDCFLRWA 83 
+                                 99********************************************************************************* PP
+
+  vancomycin__vanX_train_msa  84 aqpednltkeryypnidraelvekgyvasksshsrgsavdltlyrldtgelvsmgsdfdlmdershhaakgiseeeaknrell 166
+                                 aqpednltke++ypni+rael++kgyvas+sshsrgsa+dltly+ldtgelvsmgs+fd+mdershh+akgi+++ea+nr++l
+        AF310956.2.gene7.p01  84 AQPEDNLTKEKFYPNIERAELITKGYVASQSSHSRGSAIDLTLYHLDTGELVSMGSNFDFMDERSHHTAKGIGDAEAQNRRCL 166
+                                 *********************************************************************************** PP
+
+  vancomycin__vanX_train_msa 167 rsimeesgfeayelewwhyvlrdepypdtyfdfai 201
+                                 r+ime+sgf++y++ewwhy+l+depypdtyf+fa+
+        AF310956.2.gene7.p01 167 RKIMESSGFQSYRFEWWHYKLIDEPYPDTYFNFAV 201
+                                 *********************************98 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (202 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        10  (0.0518135); expected 3.9 (0.02)
+Passed bias filter:                        9  (0.0466321); expected 3.9 (0.02)
+Passed Vit filter:                         2  (0.0103627); expected 0.2 (0.001)
+Passed Fwd filter:                         2  (0.0103627); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.02
+# Mc/sec: 770.37
+//
+Query:       AF310956.2.gene5.p01  [L=323]
+Description: D-2-hydroxyacid dehydrogenase. Encoded by gene vanHB2. ARO:3002943 vanHB. [Enterococcus faecium]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                   -----------
+   5.1e-189  620.5   0.6   5.7e-189  620.3   0.6    1.0  1  vancomycin__vanH_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> vancomycin__vanH_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  620.3   0.6    3e-191  5.7e-189       1     323 []       1     323 []       1     323 [] 0.99
+
+  Alignments for each domain:
+  == domain 1  score: 620.3 bits;  conditional E-value: 3e-191
+  vancomycin__vanH_train_msa   1 vvkkigitvygceqdeaevfrelsprfgviptiisdavsetnaklakgnqcisvghkseisesillalkkaGvkyistrsiGy 83 
+                                 ++k++gitv+gceqdea++fr+lsp+f++ipt+isda+s++nakla+gnqc+svghkse+se+++lal+k+GvkyistrsiG+
+        AF310956.2.gene5.p01   1 MRKSVGITVFGCEQDEANAFRALSPDFHIIPTLISDAISADNAKLAAGNQCVSVGHKSEVSEATILALRKVGVKYISTRSIGC 83 
+                                 6899******************************************************************************* PP
+
+  vancomycin__vanH_train_msa  84 nhidvkaaeklGiavgnvayspdsvadytlmlllmavrnaksilrsvekhdfrldsvrGkelrdltvGvlGtGriGkavierl 166
+                                 +hid++aae++Gi+vg+vayspdsvady+lml+lma+r+ak ++++v+++dfrld++rGkel d+tvGv+GtG+iG+av++rl
+        AF310956.2.gene5.p01  84 DHIDTTAAERMGISVGTVAYSPDSVADYALMLMLMAIRGAKPTMHAVAQQDFRLDRIRGKELGDMTVGVIGTGHIGQAVVKRL 166
+                                 *********************************************************************************** PP
+
+  vancomycin__vanH_train_msa 167 rGfgckvlaydrskkieadyvsldellkksdivtlhvplaadtrhligreqieemkqgaflintarGalvdtealvkalesgk 249
+                                 rGfgc+vlayd+s+k++adyv+ldellk+sdivtlhvpl+adtrhlig++qi emkqgaflint+rGalvdt alv+alesgk
+        AF310956.2.gene5.p01 167 RGFGCHVLAYDNSRKMDADYVQLDELLKNSDIVTLHVPLCADTRHLIGQKQIGEMKQGAFLINTGRGALVDTGALVEALESGK 249
+                                 *********************************************************************************** PP
+
+  vancomycin__vanH_train_msa 250 lGGaaldvleGeeglfyadctqkvidnkfllklqrlpnviitphtayyteralrdtvektiknclefersetae 323
+                                 lGGaaldvleGe++++y+dc+qkv+d++fl++l r+pnviitphtayyter+l+dt+ekti+ncl+fers ++e
+        AF310956.2.gene5.p01 250 LGGAALDVLEGEDQFVYTDCSQKVLDHPFLSQLLRMPNVIITPHTAYYTERVLQDTTEKTIRNCLNFERSLQHE 323
+                                 **********************************************************************9985 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (323 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        11  (0.0569948); expected 3.9 (0.02)
+Passed bias filter:                       10  (0.0518135); expected 3.9 (0.02)
+Passed Vit filter:                         3  (0.015544); expected 0.2 (0.001)
+Passed Fwd filter:                         2  (0.0103627); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.01s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 2463.65
+//
+Query:       AF118110.1.gene1.p01  [L=321]
+Description: class A beta-lactamase CFXA2 precursor. CfxA2 Curated. Encoded by gene cfxA2. ARO:3003002 CfxA2. [Prevotella intermedia]
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                     -----------
+   2.8e-231  759.4   9.8   3.2e-231  759.3   9.8    1.0  1  beta_lactam__CfxA2_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> beta_lactam__CfxA2_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  759.3   9.8  1.6e-233  3.2e-231       1     321 []       1     321 []       1     321 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 759.3 bits;  conditional E-value: 1.6e-233
+  beta_lactam__CfxA2_train_msa   1 meknrkkqivvlsialvcifilvfslfhksatkdsanppltnvltdsisqivsacpgeigvavivnnrdtvkvnnksvypm 81 
+                                   meknrkkqivvlsialvcifilvfslfhksatkdsanppltnvltdsisqivsacpgeigvavivnnrdtvkvnnksvypm
+          AF118110.1.gene1.p01   1 MEKNRKKQIVVLSIALVCIFILVFSLFHKSATKDSANPPLTNVLTDSISQIVSACPGEIGVAVIVNNRDTVKVNNKSVYPM 81 
+                                   9******************************************************************************** PP
+
+  beta_lactam__CfxA2_train_msa  82 msvfkvhqalalcndfdnkgisldtlvninrdkldpktwspmlkdysgpvisltvrdllrytltqsdnnasnlmfkdmvnv 162
+                                   msvfkvhqalalcndfdnkgisldtlvninrdkldpktwspmlkdysgpvisltvrdllrytltqsdnnasnlmfkdmvnv
+          AF118110.1.gene1.p01  82 MSVFKVHQALALCNDFDNKGISLDTLVNINRDKLDPKTWSPMLKDYSGPVISLTVRDLLRYTLTQSDNNASNLMFKDMVNV 162
+                                   ********************************************************************************* PP
+
+  beta_lactam__CfxA2_train_msa 163 aqtdsfiatliprssfqiayteeemsadhnkaysnytsplgaamlmnrlftegliddekqsfikntlkecktgvdriaapl 243
+                                   aqtdsfiatliprssfqiayteeemsadhnkaysnytsplgaamlmnrlftegliddekqsfikntlkecktgvdriaapl
+          AF118110.1.gene1.p01 163 AQTDSFIATLIPRSSFQIAYTEEEMSADHNKAYSNYTSPLGAAMLMNRLFTEGLIDDEKQSFIKNTLKECKTGVDRIAAPL 243
+                                   ********************************************************************************* PP
+
+  beta_lactam__CfxA2_train_msa 244 ldkegvviahktgsgdvnengvlaahndvayiclpnnisytlavfvkdfkgnesqasqyvahisavvysllmqtsvks 321
+                                   ldkegvviahktgsg+vnengvlaahndvayiclpnnisytlavfvkdfkgnesqasqyvahisavvysllmqtsvks
+          AF118110.1.gene1.p01 244 LDKEGVVIAHKTGSGYVNENGVLAAHNDVAYICLPNNISYTLAVFVKDFKGNESQASQYVAHISAVVYSLLMQTSVKS 321
+                                   *****************************************************************************8 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (321 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        19  (0.0984456); expected 3.9 (0.02)
+Passed bias filter:                       14  (0.0725389); expected 3.9 (0.02)
+Passed Vit filter:                         6  (0.0310881); expected 0.2 (0.001)
+Passed Fwd filter:                         5  (0.0259067); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.01s 00:00:00.03 Elapsed: 00:00:00.03
+# Mc/sec: 816.13
+//
+Query:       YP_668451  [L=1049]
+Description: acriflavine resistance protein B [Escherichia coli 536].
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model    Description
+    ------- ------ -----    ------- ------ -----   ---- --  -------- -----------
+
+   [No hits detected that satisfy reporting thresholds]
+
+
+Domain annotation for each model (and alignments):
+
+   [No targets detected that satisfy reporting thresholds]
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (1049 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        27  (0.139896); expected 3.9 (0.02)
+Passed bias filter:                       13  (0.0673575); expected 3.9 (0.02)
+Passed Vit filter:                        12  (0.0621762); expected 0.2 (0.001)
+Passed Fwd filter:                        12  (0.0621762); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               0  [number of targets reported over threshold]
+# CPU time: 0.21u 0.01s 00:00:00.22 Elapsed: 00:00:00.22
+# Mc/sec: 363.69
+//
+Query:       ABC38311  [L=1043]
+Description: RND multidrug efflux transporter PA2018 [Burkholderia thailandensis E264].
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                     Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                  -----------
+          0 2276.2  42.2          0 2276.1  42.2    1.0  1  multidrug__amrB_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> multidrug__amrB_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ! 2276.1  42.2         0         0       1    1039 [.       1    1039 [.       1    1043 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 2276.1 bits;  conditional E-value: 0
+  multidrug__amrB_train_msa    1 marffidrpvfawvialfillggafairalpvaqypdiappvvsiyatypgasaqvveesvtalieremngapgllytsats 82  
+                                 marffidrpvfawvi+lfi+lgg+fairalpvaqypdiappvvs+yatypgasaqvveesvta+ieremng+pgllytsats
+                   ABC38311    1 MARFFIDRPVFAWVISLFIMLGGIFAIRALPVAQYPDIAPPVVSLYATYPGASAQVVEESVTAVIEREMNGVPGLLYTSATS 82  
+                                 9********************************************************************************* PP
+
+  multidrug__amrB_train_msa   83 sagaaslyltfkqgvnadlaavevqnrlktvearlpepvrrdgiqvekaadniqlvvsltsddgrltdvqlgeyasanvvqa 164 
+                                 sag+asl+ltfkqgv+adlaav+vqnrlktvearlpepvrrdgi++ekaadn+q++vslts+dgrl++v+lgeyasanv+qa
+                   ABC38311   83 SAGQASLSLTFKQGVSADLAAVDVQNRLKTVEARLPEPVRRDGISIEKAADNAQIIVSLTSEDGRLSGVELGEYASANVLQA 164 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  165 lrrvdgvgkvqfwgaeyamriwpdpvklaghgltasdiasavrahnarvtvgdigrsavpdsapiaatvladaplktpadfg 246 
+                                 lrrv+gvgkvqfwgaeyamriwpdpvk+a++gltasdiasavrahnarvt+gd+grsavpdsapiaatvladapl+tp++fg
+                   ABC38311  165 LRRVEGVGKVQFWGAEYAMRIWPDPVKMAALGLTASDIASAVRAHNARVTIGDVGRSAVPDSAPIAATVLADAPLTTPDAFG 246 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  247 aialraqadgsalylrdvariefggndynypsyvngkvatgmgiklapgsnavatekrvraamdelsayfppgvkyqipyet 328 
+                                 aialra+adgs+lylrdvariefggndynyps+vngk+atgmgiklapgsnavatekrvra+mdel+++fppgvkyqipyet
+                   ABC38311  247 AIALRARADGSTLYLRDVARIEFGGNDYNYPSFVNGKTATGMGIKLAPGSNAVATEKRVRATMDELAKFFPPGVKYQIPYET 328 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  329 ssfvrvsmnkvvttlieagvlvflvmflfmqnlratliptlvvpvalagtfgvmyaagfsinvltmfgmvlaigilvddaiv 410 
+                                 +sfvrvsm+kvvttl+eagvlvf+vmflfmqn+ratliptlvvpval+gtfg+m+aagfsinvltmfgmvlaigilvddaiv
+                   ABC38311  329 ASFVRVSMSKVVTTLVEAGVLVFAVMFLFMQNFRATLIPTLVVPVALLGTFGAMLAAGFSINVLTMFGMVLAIGILVDDAIV 410 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  411 vvenverlmveeklapydatvkamkqisgaivgitvvltsvfvpmaffggavgniyrqfalslavsiafsaflalsltpalc 492 
+                                 vvenverlmveekl+py+atvkamkqisgaivgitvvltsvfvpmaffggavgniyrqfa++lavsi+fsaflalsltpalc
+                   ABC38311  411 VVENVERLMVEEKLPPYEATVKAMKQISGAIVGITVVLTSVFVPMAFFGGAVGNIYRQFAFALAVSIGFSAFLALSLTPALC 492 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  493 atllkpvdddhhekrgffgwfnrfvarstqryatrvgallkkplrwlvvygaltaaaallltklpsaflpdedqgnfmvmvi 574 
+                                 atllkpv+ddhhek+gffgwfnrfvarst+ry++rvg++lk+plrwlvvygaltaaaall+tklp+aflpdedqgnfmvmvi
+                   ABC38311  493 ATLLKPVADDHHEKDGFFGWFNRFVARSTHRYTQRVGRVLKRPLRWLVVYGALTAAAALLITKLPAAFLPDEDQGNFMVMVI 574 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  575 rpqgtplaetmqsvrevesylrreepaaytfalggfnlygegpnggmifvtlknwkerkaardqvqaivarinerfagtpnt 656 
+                                 rpqgtplaetmqsvr+ve+y+r+++p+aytfalgg+nlygegpnggmifvt+k+wkerk+a+dqvqai+a in++fagtpnt
+                   ABC38311  575 RPQGTPLAETMQSVRRVEEYVRTHSPSAYTFALGGYNLYGEGPNGGMIFVTMKDWKERKRAQDQVQAIIAGINAHFAGTPNT 656 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  657 tvfalnspalpdlgstsgfdfrlqnrggldyaafsaarekllaagakdaaltdlmfagtqdapqlkldidrakasalgvsmd 738 
+                                 +vfa+n+palpdlg+t+gfdfrlq+rggl+y+af+aareklla g+kd++ltdlmfagtqdapqlkldidrakasalgvsm+
+                   ABC38311  657 MVFAINMPALPDLGLTGGFDFRLQDRGGLGYGAFVAAREKLLADGRKDPVLTDLMFAGTQDAPQLKLDIDRAKASALGVSME 738 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  739 einttlavmfgsdyigdfmhgtqvrrvivqadgkhrldpddvkklrvrnargemvplaafatlhwtlgppqltryngypsft 820 
+                                 ein+tlavmfgsdyigdfmhg+qvrrvivqadg+hrldp dv+klrvrna+gemvplaafatlhwt+gppqltryng+psft
+                   ABC38311  739 EINATLAVMFGSDYIGDFMHGSQVRRVIVQADGQHRLDPGDVTKLRVRNAKGEMVPLAAFATLHWTMGPPQLTRYNGFPSFT 820 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  821 ingsaaaghssgeamaaieriaatlpagigyawsgqsfeerlsgaqapllfalsvlvvflalaalyeswsiplavmlvvplg 902 
+                                 ing+a+aghssgeamaaieria+ lpagigyawsgqs+eerlsgaqap+lfalsvlvvflalaalyeswsip+avmlvvplg
+                   ABC38311  821 INGAASAGHSSGEAMAAIERIASALPAGIGYAWSGQSYEERLSGAQAPMLFALSVLVVFLALAALYESWSIPFAVMLVVPLG 902 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  903 vigavlgvtlrampndiyfkvgliatiglsaknailivevakdlvaqrmslvdaaleaarlrlrpivmtslafgvgvlplaf 984 
+                                 vigav+gvtlr+mpndiyfkvgliatiglsaknailivevakdlvaq msl+daaleaarlrlrpivmtslafgvgvlplaf
+                   ABC38311  903 VIGAVAGVTLRGMPNDIYFKVGLIATIGLSAKNAILIVEVAKDLVAQGMSLADAALEAARLRLRPIVMTSLAFGVGVLPLAF 984 
+                                 ********************************************************************************** PP
+
+  multidrug__amrB_train_msa  985 asgaasgaqiaigtgvlggviaatvlavflvplffvvvgrlfdvgprrrggaqaa 1039
+                                 a+gaasgaqiaigtgvlggvi+at++a+flvplffv+vgr+ d++prrrgga+aa
+                   ABC38311  985 ATGAASGAQIAIGTGVLGGVISATLFAIFLVPLFFVCVGRVVDIVPRRRGGARAA 1039
+                                 ****************************************************997 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (1043 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        33  (0.170984); expected 3.9 (0.02)
+Passed bias filter:                       16  (0.0829016); expected 3.9 (0.02)
+Passed Vit filter:                        12  (0.0621762); expected 0.2 (0.001)
+Passed Fwd filter:                        12  (0.0621762); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.23u 0.02s 00:00:00.25 Elapsed: 00:00:00.24
+# Mc/sec: 331.47
+//
+Query:       YP_112402  [L=271]
+Description: aminoglycoside 3'-phosphotransferase [uncultured bacterium].
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                               Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                            -----------
+   3.1e-156  511.8   0.1   3.5e-156  511.7   0.1    1.0  1  aminoglycoside__aph_3___I_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> aminoglycoside__aph_3___I_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  511.7   0.1  1.8e-158  3.5e-156       1     271 []       1     271 []       1     271 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 511.7 bits;  conditional E-value: 1.8e-158
+  aminoglycoside__aph_3___I_train_msa   1 mseiqretscsrarlnsnldadlygykwardnvgqsgatiyrlygkpdapelflkhgkgsvaddvtdemvrlnw 74 
+                                          m++i+re+ c++a+++++++a+++gykward+vgqsg+++yrl++k+ +++lflkhgk+++addvtdemvrl+w
+                            YP_112402   1 MNDIDREEPCAAAAVPESMAAHVMGYKWARDKVGQSGCAVYRLHSKSGGSDLFLKHGKDAFADDVTDEMVRLRW 74 
+                                          89************************************************************************ PP
+
+  aminoglycoside__aph_3___I_train_msa  75 lteflplptikhfirtpddawllttaipgktafqvleeypdsgenivdalaaflrrlhsipvsecpfnsdrvfr 148
+                                          l+ ++++p++++f+rtp++awllttai+gkta+qvl++++++++++vdalaaf+rrlh+ipvsec+fnsd+  r
+                            YP_112402  75 LAGHISVPSVVSFVRTPNQAWLLTTAIHGKTAYQVLKSDFGARLVVVDALAAFMRRLHAIPVSECSFNSDHACR 148
+                                          ************************************************************************** PP
+
+  aminoglycoside__aph_3___I_train_msa 149 laqarsrlenglvdasdfdderngwaveqvwkemhkllpfspdsvvthgdfsldnlildegkligcidvgrvgi 222
+                                          la+ar+r+e+g+vd++dfd+er+gw++eqvw++mh+llp++pd+vvthgdfsldnl++ egk++gcidvgr+gi
+                            YP_112402 149 LARARERIEAGVVDVDDFDKEREGWTAEQVWEAMHRLLPLAPDPVVTHGDFSLDNLLIVEGKVVGCIDVGRAGI 222
+                                          ************************************************************************** PP
+
+  aminoglycoside__aph_3___I_train_msa 223 adryqdlailwnclgefspslqkrlvekygiddpdrrklqfhllldelf 271
+                                          adryqdla+lwncl+ef+pslq+rlv++ygi+dpdrrklqfhllldelf
+                            YP_112402 223 ADRYQDLAVLWNCLEEFEPSLQERLVAQYGIADPDRRKLQFHLLLDELF 271
+                                          ***********************************************98 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (271 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        10  (0.0518135); expected 3.9 (0.02)
+Passed bias filter:                        9  (0.0466321); expected 3.9 (0.02)
+Passed Vit filter:                         5  (0.0259067); expected 0.2 (0.001)
+Passed Fwd filter:                         5  (0.0259067); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.02
+# Mc/sec: 1033.51
+//
+Query:       YP_001740011  [L=276]
+Description: aminoglycoside resistance protein B [Escherichia coli SMS-3-5].
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                              Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                           -----------
+   9.1e-153  501.0   2.1     1e-152  500.9   2.1    1.0  1  aminoglycoside__aph_6__I_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> aminoglycoside__aph_6__I_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  500.9   2.1  5.3e-155    1e-152       3     278 .]       1     273 [.       1     273 [. 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 500.9 bits;  conditional E-value: 5.3e-155
+  aminoglycoside__aph_6__I_train_msa   3 vpdvlaesWivslpalvadtvsslvvkvsladGtpailkllkPieeiadelrGadyLvarnGrGavRlldressl 77 
+                                         +p+v++++W+vs+p+l+adt+sslv+kvsl+dGtpai+k+lkPi++iadelrGadyLv+rnGrGavRll+re++l
+                        YP_001740011   1 MPPVFPAHWHVSQPVLIADTFSSLVWKVSLPDGTPAIVKGLKPIKDIADELRGADYLVWRNGRGAVRLLGRENNL 75 
+                                         8************************************************************************** PP
+
+  aminoglycoside__aph_6__I_train_msa  78 lLlerlagertLasivaeedDdeateilaellarLyaaseePlPsaLrplrdifaalfeearddvdaladtdlve 152
+                                         +Lle +ager+L++ivae++D++atei+ael+a+LyaaseePlPsaL+p+rd+faalf++ardd++a+++td+v+
+                        YP_001740011  76 MLLE-YAGERMLSHIVAEHGDYQATEIAAELMAKLYAASEEPLPSALLPIRDRFAALFQRARDDQNAGCQTDYVH 149
+                                         ****.********************************************************************** PP
+
+  aminoglycoside__aph_6__I_train_msa 153 aasiaaqllseaselrvLhgDLhyenvlfaeRgWLaiDPegLvGevgFdlanlftdpadrddlaldprRvarrad 227
+                                         aa+ia+q++s+aselr+LhgDLh+en++f++RgWL+iDP+gLvGevgF++an+f+dpadrddl+ldprR+a++ad
+                        YP_001740011 150 AAIIADQMMSNASELRGLHGDLHHENIMFSSRGWLVIDPVGLVGEVGFGAANMFYDPADRDDLCLDPRRIAQMAD 224
+                                         *************************************************************************** PP
+
+  aminoglycoside__aph_6__I_train_msa 228 llsealdldprRlldwalaylllsaaWdedGeeeiaqrdlavaaalkkvrq 278
+                                         ++s+ald+dprRlld+a+ay++lsaaW++dGeee  qrdla+aaa+k+vrq
+                        YP_001740011 225 AFSRALDVDPRRLLDQAYAYGCLSAAWNADGEEE--QRDLAIAAAIKQVRQ 273
+                                         **********************************..************986 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (276 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         6  (0.0310881); expected 3.9 (0.02)
+Passed bias filter:                        6  (0.0310881); expected 3.9 (0.02)
+Passed Vit filter:                         1  (0.00518135); expected 0.2 (0.001)
+Passed Fwd filter:                         1  (0.00518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.01s 00:00:00.02 Elapsed: 00:00:00.02
+# Mc/sec: 1052.58
+//
+Query:       Q0T2M8  [L=660]
+Description: RecName: Full=Bifunctional polymyxin resistance protein arnA; Includes: RecName: Full=UDP-4-amino-4-deoxy-L-arabinose formyltransferase; AltName: Full=UDP-L-Ara4N formyltransferase; AltName: Full=ArnAFT; Includes: RecName: Full=UDP-glucuronic acid oxidase, UDP-4-keto-hexauronic acid decarboxylating; AltName: Full=UDP-GlcUA decarboxylase; AltName: Full=UDP-glucuronic acid dehydrogenase; AltName: Full=ArnADH.
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                     Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                  -----------
+          0 1535.6   0.0          0 1535.4   0.0    1.0  1  polymyxin__arnA_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> polymyxin__arnA_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ! 1535.4   0.0         0         0       1     660 []       1     660 []       1     660 [] 1.00
+
+  Alignments for each domain:
+  == domain 1  score: 1535.4 bits;  conditional E-value: 0
+  polymyxin__arnA_train_msa   1 mktvvfayhdmgclgieallaagyeisaifthtdnpgekafygsvarlaaergipvyapdnvnhplwveriaqlspdvifsfyy 84 
+                                mktvvfayhdmgclgieallaagyeisaifthtdnpgekafygsva+laaer+ipvyapdnvnhplwveriaqlsp+vifsfyy
+                     Q0T2M8   1 MKTVVFAYHDMGCLGIEALLAAGYEISAIFTHTDNPGEKAFYGSVAHLAAERDIPVYAPDNVNHPLWVERIAQLSPEVIFSFYY 84 
+                                9*********************************************************************************** PP
+
+  polymyxin__arnA_train_msa  85 rhlisdeilqlapagafnlhgsllpkyrgraplnwvlvngetetgvtlhrmvkradagaivaqlrvaiapddiaitlhhklcha 168
+                                rhli+dei+qlapagafnlhgsllpkyrgraplnwvlvngetetgvtlhrmvkradagaivaqlrvaiapddiaitlhhklcha
+                     Q0T2M8  85 RHLICDEIFQLAPAGAFNLHGSLLPKYRGRAPLNWVLVNGETETGVTLHRMVKRADAGAIVAQLRVAIAPDDIAITLHHKLCHA 168
+                                ************************************************************************************ PP
+
+  polymyxin__arnA_train_msa 169 arqlleqtlpaikhgnileiaqreneatcfgrrtpddsflewhkpasvlhnlvravadpwpgafsyvgnqkftvwssrvhphas 252
+                                arqlleqtlpaikhgnileiaqreneatcfgrrtpddsflewhkpasvlhn+vravadpwpgafsyvgnqkftvwssrvhphas
+                     Q0T2M8 169 ARQLLEQTLPAIKHGNILEIAQRENEATCFGRRTPDDSFLEWHKPASVLHNMVRAVADPWPGAFSYVGNQKFTVWSSRVHPHAS 252
+                                ************************************************************************************ PP
+
+  polymyxin__arnA_train_msa 253 kaqpgsvisvaplliacgdgaleivtgqagdgitlqgsqlaqtlglvqgsrlnsqpactarrrtrvlilgvngfignhlterll 336
+                                kaqpgsvisvaplliacgdgaleivtgqagdgit+qgsqlaq+lglvqgsrlnsqpactarrrtrvlilgvngfignhlterll
+                     Q0T2M8 253 KAQPGSVISVAPLLIACGDGALEIVTGQAGDGITMQGSQLAQMLGLVQGSRLNSQPACTARRRTRVLILGVNGFIGNHLTERLL 336
+                                ************************************************************************************ PP
+
+  polymyxin__arnA_train_msa 337 redhyevygldigsdaisrflnhprfhfvegdisihsewieyhvkkcdvvlplvaiatpieytrnplrvfeldfeenlriiryc 420
+                                redhyevygldigsdaisrflnhp+fhfvegdisihsewieyhvkkcdvvlplvaiatpieytrnplrvfeldfeenlriiryc
+                     Q0T2M8 337 REDHYEVYGLDIGSDAISRFLNHPHFHFVEGDISIHSEWIEYHVKKCDVVLPLVAIATPIEYTRNPLRVFELDFEENLRIIRYC 420
+                                ************************************************************************************ PP
+
+  polymyxin__arnA_train_msa 421 vkyrkriifpstsevygmcsdkyfdedksnlivgpvnkprwiysvskqlldrviwaygekeglqftlfrpfnwmgprldnlnaa 504
+                                vkyrkriifpstsevygmcsdkyfded+snlivgpvnkprwiysvskqlldrviwaygekeglqftlf pfnwmgprldnlnaa
+                     Q0T2M8 421 VKYRKRIIFPSTSEVYGMCSDKYFDEDHSNLIVGPVNKPRWIYSVSKQLLDRVIWAYGEKEGLQFTLFLPFNWMGPRLDNLNAA 504
+                                ************************************************************************************ PP
+
+  polymyxin__arnA_train_msa 505 rigssraitqlilnlvegspiklidggkqkrcftdirdgiealyriienagnrcdgeiinignpeneasieelgelllasfekh 588
+                                rigssraitqlilnlvegspiklidggkqkrcftdirdgiealyriienagnrcdgeiinignpeneasieelge+llasfekh
+                     Q0T2M8 505 RIGSSRAITQLILNLVEGSPIKLIDGGKQKRCFTDIRDGIEALYRIIENAGNRCDGEIINIGNPENEASIEELGEMLLASFEKH 588
+                                ************************************************************************************ PP
+
+  polymyxin__arnA_train_msa 589 plrhhfppfagfrvvesssyygkgyqdvehrkpsirnarrcldwepkidmqetidetldfflrtvdltdkas 660
+                                plrhhfppfagfrvvess+yygkgyqdvehrkpsirna+rcldwepkidmqetidetldfflrtvdltdk+s
+                     Q0T2M8 589 PLRHHFPPFAGFRVVESSCYYGKGYQDVEHRKPSIRNAHRCLDWEPKIDMQETIDETLDFFLRTVDLTDKPS 660
+                                **********************************************************************97 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (660 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         5  (0.0259067); expected 3.9 (0.02)
+Passed bias filter:                        5  (0.0259067); expected 3.9 (0.02)
+Passed Vit filter:                         2  (0.0103627); expected 0.2 (0.001)
+Passed Fwd filter:                         1  (0.00518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.01s 00:00:00.03 Elapsed: 00:00:00.02
+# Mc/sec: 2517.04
+//
+Query:       B2VGJ3  [L=273]
+Description: RecName: Full=Undecaprenyl-diphosphatase; AltName: Full=Undecaprenyl pyrophosphate phosphatase; AltName: Full=Bacitracin resistance protein.
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                   -----------
+   1.1e-115  379.1  14.9   1.3e-115  378.9  14.9    1.0  1  bacitracin__bacA_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> bacitracin__bacA_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  378.9  14.9  6.5e-118  1.3e-115       2     269 ..       3     272 ..       2     273 .] 0.98
+
+  Alignments for each domain:
+  == domain 1  score: 378.9 bits;  conditional E-value: 6.5e-118
+  bacitracin__bacA_train_msa   2 dllellkalilgivEGltEflPvSStGhlilvgellgfeeekakvfevviqlGailavvvlyrekllsllk...gkleeekkk 81 
+                                 d+++l+ a ilg+vEGltEflPvSStGh+ilvg+llgfe++ka++fevviqlG+ilavvv+++++l+ l++   g++++e + 
+                      B2VGJ3   3 DIHQLWIAAILGLVEGLTEFLPVSSTGHMILVGHLLGFEGNKAETFEVVIQLGSILAVVVMFWRRLFGLIGihfGEVPHEGSG 85 
+                                 788999****************************************************************9877799*****9 PP
+
+  bacitracin__bacA_train_msa  82 grrlvl.nvlvallPaavlgllfedaikevlfnpltvaialivggllllvaeklekkkearaesvddltlkqalkiGlfqcla 163
+                                 + rl+l ++l++++Pa+v+gll++d+ik+ lfnp++v++al+vgg+ll++ae l k+k++++  vdd+t++qa++iG+fqcla
+                      B2VGJ3  86 QGRLTLiHILLGMVPAVVIGLLLHDQIKT-LFNPVNVMYALVVGGVLLIAAELL-KPKRPKSPGVDDITYRQAFMIGCFQCLA 166
+                                 9****99*********************9.***********************9.99999*********************** PP
+
+  bacitracin__bacA_train_msa 164 liPGtSRsgatiigglllglsrkaaaefsFflaiPvmlgasvldllknlkllssedllllavGfvvafivallvvktllkyvk 246
+                                 l+PG+SRsgati+gg+l+g+sr+aa+efsF+la+P+m+ga++ldl+k++ +ls++d++++avGfv+afival+++k +l+++k
+                      B2VGJ3 167 LWPGFSRSGATISGGMLVGVSRYAASEFSFLLAVPMMIGATGLDLYKSMGFLSMADFPMFAVGFVTAFIVALIAIKSFLHIIK 249
+                                 *********************************************************************************** PP
+
+  bacitracin__bacA_train_msa 247 kkklavFaiyRiilgivvlllll 269
+                                 ++++++FaiyR+i+++ v++l++
+                      B2VGJ3 250 RISFIPFAIYRFIVAAAVYALFV 272
+                                 *****************999875 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (273 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                         9  (0.0466321); expected 3.9 (0.02)
+Passed bias filter:                        1  (0.00518135); expected 3.9 (0.02)
+Passed Vit filter:                         1  (0.00518135); expected 0.2 (0.001)
+Passed Fwd filter:                         1  (0.00518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 2082.28
+//
+Query:       A8YZV4  [L=291]
+Description: RecName: Full=Undecaprenyl-diphosphatase; AltName: Full=Undecaprenyl pyrophosphate phosphatase; AltName: Full=Bacitracin resistance protein.
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                   -----------
+   1.2e-101  333.0  15.3   1.4e-101  332.8  15.3    1.0  1  bacitracin__bacA_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> bacitracin__bacA_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  332.8  15.3  7.3e-104  1.4e-101       2     270 ..       2     284 ..       1     288 [. 0.93
+
+  Alignments for each domain:
+  == domain 1  score: 332.8 bits;  conditional E-value: 7.3e-104
+  bacitracin__bacA_train_msa   2 dllellkalilgivEGltEflPvSStGhlilvgell....gfeeek.akvfevviqlGailavvvlyrekllsllk....... 72 
+                                  ++el+k +ilg+vEGltEf PvSStGh+ilv++++    +f +++ a +f++viqlG+++a ++++re++l++l+       
+                      A8YZV4   2 FIIELIKGIILGVVEGLTEFAPVSSTGHMILVDDMWlkssEFLGSQsAFTFKIVIQLGSVFAAAWVFRERFLEILHigkhkhv 84 
+                                 6899*******************************98777666655599*************************998877665 PP
+
+  bacitracin__bacA_train_msa  73 ..gkleeekkkgrrlvl.nvlvallPaavlgllfedaikevlfnpltvaialivggllllvaeklekkkearaesvddltlkq 152
+                                   ++ +++++k rrl+l +vlv+++Pa +lgllf+d+i+e+lf++ tv+i+l+vg++++++a+k+++k + + ++vd++++ q
+                      A8YZV4  85 egDNDQQRRSKPRRLNLlHVLVGMVPAGILGLLFDDFIEEHLFSVPTVMIGLFVGAIYMIIADKYSAKVK-NPQTVDQISYFQ 166
+                                 54266777777899*999***********************************************66555.999********* PP
+
+  bacitracin__bacA_train_msa 153 alkiGlfqclaliPGtSRsgatiigglllglsrkaaaefsFflaiPvmlgasvldllknlkllssedllllavGfvvafival 235
+                                 a++iG+ q++a++PG+SRsg+ti++g+l++l++kaa++f+F++a+P+ml+as+l+llk+++ ++++d++++++Gf++af v+l
+                      A8YZV4 167 AFVIGISQAVAMWPGFSRSGSTISTGVLMKLNHKAASDFTFIMAVPIMLAASGLSLLKHYQDIQIADIPFYILGFLAAFTVGL 249
+                                 *********************************************************************************** PP
+
+  bacitracin__bacA_train_msa 236 lvvktllkyvkkkklavFaiyRiilgivvllllla 270
+                                 +++kt+l++++k+kl++FaiyRi+l i++++l++ 
+                      A8YZV4 250 IAIKTFLHLINKIKLIPFAIYRIVLVIFIAILYFG 284
+                                 *****************************999875 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (291 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        10  (0.0518135); expected 3.9 (0.02)
+Passed bias filter:                        2  (0.0103627); expected 3.9 (0.02)
+Passed Vit filter:                         1  (0.00518135); expected 0.2 (0.001)
+Passed Fwd filter:                         1  (0.00518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.00u 0.00s 00:00:00.00 Elapsed: 00:00:00.01
+# Mc/sec: 2219.57
+//
+Query:       Q5P6K4  [L=274]
+Description: RecName: Full=Undecaprenyl-diphosphatase; AltName: Full=Undecaprenyl pyrophosphate phosphatase; AltName: Full=Bacitracin resistance protein.
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                   -----------
+   2.2e-108  355.1  12.1   2.5e-108  355.0  12.1    1.0  1  bacitracin__bacA_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> bacitracin__bacA_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  355.0  12.1  1.3e-110  2.5e-108       2     271 ..       2     267 ..       1     270 [. 0.97
+
+  Alignments for each domain:
+  == domain 1  score: 355.0 bits;  conditional E-value: 1.3e-110
+  bacitracin__bacA_train_msa   2 dllellkalilgivEGltEflPvSStGhlilvgellgfeeekakvfevviqlGailavvvlyrekllsllkgkleeekkkgrr 84 
+                                 dl  ++ alilgivEGltEflP+SStGhli++g+llg+++ ++kvf++viq++ailav++ yre+l++++ g + +e+ + +r
+                      Q5P6K4   2 DLPLFVIALILGIVEGLTEFLPISSTGHLIIIGDLLGYNDATSKVFKIVIQFAAILAVCWDYRERLARVAAG-VGSEPAA-QR 82 
+                                 6667899****************************************************************7.7777777.9* PP
+
+  bacitracin__bacA_train_msa  85 lvlnvlvallPaavlgllfedaikevlfnpltvaialivggllllvaeklekkkearaesvddltlkqalkiGlfqclaliPG 167
+                                 +v  +++++lPaavlgl+f+++ik+ lfnpltva+al+vgg+l+l+ e++    ++r++ vd++++ +alk+G++q+ a+iPG
+                      Q5P6K4  83 FVGLLFIGFLPAAVLGLMFHSTIKSLLFNPLTVATALVVGGVLILWLERR--AYHPRINAVDEMRWADALKVGFAQAAAMIPG 163
+                                 **************************************************..77899************************** PP
+
+  bacitracin__bacA_train_msa 168 tSRsgatiigglllglsrkaaaefsFflaiPvmlgasvldllknlkllssedllllavGfvvafivallvvktllkyvkkkkl 250
+                                 tSRsgati+ggl++glsrkaaaefsFfl+iP+m++a+v+dl+kn++ll++ dl+++a+Gfv++f +a+++vk+++++++++++
+                      Q5P6K4 164 TSRSGATILGGLVFGLSRKAAAEFSFFLSIPTMFAATVYDLYKNRDLLHMGDLPVFAIGFVASFFAAMFAVKAFIRFISNHTF 246
+                                 *********************************************************************************** PP
+
+  bacitracin__bacA_train_msa 251 avFaiyRiilgivvlllllak 271
+                                 ++Fa+yRi++g+vvl+++  +
+                      Q5P6K4 247 IAFAWYRIVFGLVVLATWQLE 267
+                                 ***************998765 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (274 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        15  (0.0777202); expected 3.9 (0.02)
+Passed bias filter:                        5  (0.0259067); expected 3.9 (0.02)
+Passed Vit filter:                         1  (0.00518135); expected 0.2 (0.001)
+Passed Fwd filter:                         1  (0.00518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.01
+# Mc/sec: 2089.91
+//
+Query:       Q880L3  [L=276]
+Description: RecName: Full=Undecaprenyl-diphosphatase; AltName: Full=Undecaprenyl pyrophosphate phosphatase; AltName: Full=Bacitracin resistance protein.
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                   -----------
+   4.8e-115  377.0  13.9   5.4e-115  376.8  13.9    1.0  1  bacitracin__bacA_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> bacitracin__bacA_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  376.8  13.9  2.8e-117  5.4e-115       1     271 [.       1     267 [.       1     270 [. 0.97
+
+  Alignments for each domain:
+  == domain 1  score: 376.8 bits;  conditional E-value: 2.8e-117
+  bacitracin__bacA_train_msa   1 mdllellkalilgivEGltEflPvSStGhlilvgellgfeeekakvfevviqlGailavvvlyrekllsllkgkleeekkkgr 83 
+                                 mdl+++++alilgivEGltEflP+SStGh+i+v +l++f +e+a +f+++iqlGailavv+ +r+k+l+++ g l++++++ +
+                      Q880L3   1 MDLWTAAQALILGIVEGLTEFLPISSTGHQIIVADLIDFGGERAMAFNIIIQLGAILAVVWEFRRKILDVVVG-LPKQQEA-Q 81 
+                                 78999*******************************************************************7.7887777.9 PP
+
+  bacitracin__bacA_train_msa  84 rlvlnvlvallPaavlgllfedaikevlfnpltvaialivggllllvaeklekkkearaesvddltlkqalkiGlfqclaliP 166
+                                 r++ln+l+a++Pa+vlg++f+d+i+++lfn +tva+al+vgg+++l+ae++   +++r+e+vdd+t+++alkiGl+qcla+iP
+                      Q880L3  82 RFTLNLLIAFMPAVVLGVIFADTIHHYLFNAITVATALVVGGVIMLWAERR--VHTVRTETVDDMTWRDALKIGLVQCLAMIP 162
+                                 ***************************************************..78899************************* PP
+
+  bacitracin__bacA_train_msa 167 GtSRsgatiigglllglsrkaaaefsFflaiPvmlgasvldllknlkllssedllllavGfvvafivallvvktllkyvkkkk 249
+                                 GtSRsg+tiiggll+glsrkaa+efsFfla+P+m+ga+v++ +k +++++ +d++++a+Gf+++f++a+++v++llk++++++
+                      Q880L3 163 GTSRSGSTIIGGLLFGLSRKAATEFSFFLAMPTMVGAAVYSGYKYRDMFRPDDFAVFAIGFITSFVFAMIAVRALLKFIATHS 245
+                                 *********************************************************************************** PP
+
+  bacitracin__bacA_train_msa 250 lavFaiyRiilgivvlllllak 271
+                                 +avFa+yRi++g+++l+++ + 
+                      Q880L3 246 YAVFAWYRIAFGLLILATWQFG 267
+                                 ****************999865 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (276 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        15  (0.0777202); expected 3.9 (0.02)
+Passed bias filter:                        2  (0.0103627); expected 3.9 (0.02)
+Passed Vit filter:                         1  (0.00518135); expected 0.2 (0.001)
+Passed Fwd filter:                         1  (0.00518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.01u 0.00s 00:00:00.01 Elapsed: 00:00:00.01
+# Mc/sec: 2105.16
+//
+Query:       Q8Y1I9  [L=293]
+Description: RecName: Full=Undecaprenyl-diphosphatase; AltName: Full=Undecaprenyl pyrophosphate phosphatase; AltName: Full=Bacitracin resistance protein.
+Scores for complete sequence (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Model                      Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------                   -----------
+   2.4e-115  378.0   6.5   2.8e-115  377.8   6.5    1.0  1  bacitracin__bacA_train_msa  
+
+
+Domain annotation for each model (and alignments):
+>> bacitracin__bacA_train_msa  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  377.8   6.5  1.5e-117  2.8e-115       1     272 [.       1     288 [.       1     290 [. 0.97
+
+  Alignments for each domain:
+  == domain 1  score: 377.8 bits;  conditional E-value: 1.5e-117
+  bacitracin__bacA_train_msa   1 mdllellkalilgivEGltEflPvSStGhlilvgellgfeeekakvfevviqlGailavvvlyrekllsllkgkleeekkkgr 83 
+                                 md++ ++kalilgivEGltEflP+SStGhlil+g+ll+f++ek k+fe+viq+Gailav++ +r+k+++++kg l++++++ +
+                      Q8Y1I9   1 MDIALAIKALILGIVEGLTEFLPISSTGHLILAGQLLDFNDEKGKIFEIVIQFGAILAVCWEFRHKIIDVIKG-LPNDPRQ-Q 81 
+                                 789999******************************************************************7.9999999.9 PP
+
+  bacitracin__bacA_train_msa  84 rlvlnvlvallPaavlgllfedaikevlfnpltvaialivggllllvaeklekkke..................araesvddl 148
+                                 r++lnv+va++Pa+ l+l+f +aik++lfnp++va a+i+ggl++l+ae++e+++                   +r+e++ddl
+                      Q8Y1I9  82 RFALNVIVATIPAITLALIFGKAIKAHLFNPIVVASAFIIGGLVILWAEWRERHRGqthdprgnalleaakagaPRVETLDDL 164
+                                 ***************************************************76544688999999999999999********* PP
+
+  bacitracin__bacA_train_msa 149 tlkqalkiGlfqclaliPGtSRsgatiigglllglsrkaaaefsFflaiPvmlgasvldllknlkllssedllllavGfvvaf 231
+                                 +l++a+k+Gl+qc+aliPGtSRsg+tiiggll+glsrk+a+efsFflaiPv++ga+v++l+k+++lls++dl ++ +Gfv+af
+                      Q8Y1I9 165 RLSDAFKVGLAQCFALIPGTSRSGSTIIGGLLFGLSRKVATEFSFFLAIPVIFGATVYELYKERALLSTDDLSIFGIGFVAAF 247
+                                 *********************************************************************************** PP
+
+  bacitracin__bacA_train_msa 232 ivallvvktllkyvkkkklavFaiyRiilgivvlllllakl 272
+                                 i+a+++v++ll+++++++++ Fa+yRi++g++vl++++++l
+                      Q8Y1I9 248 ISAFFCVRWLLRFIASHDFRGFAWYRIVFGVIVLVTAYTHL 288
+                                 ***********************************999876 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query sequence(s):                         1  (293 residues searched)
+Target model(s):                         193  (76274 nodes)
+Passed MSV filter:                        15  (0.0777202); expected 3.9 (0.02)
+Passed bias filter:                        5  (0.0259067); expected 3.9 (0.02)
+Passed Vit filter:                         1  (0.00518135); expected 0.2 (0.001)
+Passed Fwd filter:                         1  (0.00518135); expected 0.0 (1e-05)
+Initial search space (Z):                193  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.00s 00:00:00.02 Elapsed: 00:00:00.02
+# Mc/sec: 1117.41
+//
+[ok]
