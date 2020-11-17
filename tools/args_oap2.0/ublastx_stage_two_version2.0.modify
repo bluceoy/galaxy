@@ -492,17 +492,17 @@ $email =~ s/@/at/;
 
 $namprf = join("__",$namprf, $email, $timenow);
 
-if(-d "/home/lg209ws3/argoap/galaxy/USEROUT2.0/$taskname"){
+if(-d "/home/xianmao/argoap_20.05/galaxy/USEROUT2.0/$taskname"){
 
 }else{
-	`mkdir /home/lg209ws3/argoap/galaxy/USEROUT2.0/$taskname`;
+	`mkdir /home/xianmao/argoap_20.05/galaxy/USEROUT2.0/$taskname`;
 }
 
-my $pdf16s = "/home/lg209ws3/argoap/galaxy/USEROUT2.0/$taskname/$namprf.16S.pdf";
-my $pdfcell = "/home/lg209ws3/argoap/galaxy/USEROUT2.0//$taskname/$namprf.cell.pdf";
-my $normalize16s = "/home/lg209ws3/argoap/galaxy/USEROUT2.0/$taskname/$namprf.normalize.16s.txt";
-my $normalizecell = "/home/lg209ws3/argoap/galaxy/USEROUT2.0/$taskname/$namprf.normalize.cell.txt";
-my $ppmout = "/home/lg209ws3/argoap/galaxy/USEROUT2.0/$taskname/$namprf.ppm.txt";
+my $pdf16s = "/home/xianmao/argoap_20.05/galaxy/USEROUT2.0/$taskname/$namprf.16S.pdf";
+my $pdfcell = "/home/xianmao/argoap_20.05/galaxy/USEROUT2.0//$taskname/$namprf.cell.pdf";
+my $normalize16s = "/home/xianmao/argoap_20.05/galaxy/USEROUT2.0/$taskname/$namprf.normalize.16s.txt";
+my $normalizecell = "/home/xianmao/argoap_20.05/galaxy/USEROUT2.0/$taskname/$namprf.normalize.cell.txt";
+my $ppmout = "/home/xianmao/argoap_20.05/galaxy/USEROUT2.0/$taskname/$namprf.ppm.txt";
 
 ##generate compressed output zip files 
 `cat  $subtype16s  $type16s $gene16s $subtypemerge16s > $normalize16s`;
