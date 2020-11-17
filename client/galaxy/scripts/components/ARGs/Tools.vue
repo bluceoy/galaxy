@@ -10,10 +10,6 @@
         
         <ul class="collapsible">
             <li>
-                <div @click="click(0)" class="collapsible-header">DEMO</div>
-                <div class="collapsible-body container-fluid"><DEMO @exec="onExec"/></div>
-            </li>
-            <li>
                 <div @click="click(1)" class="collapsible-header">ARGs-OAP</div>
                 <div class="collapsible-body container-fluid"><ARGsOAP @exec="onExec"/></div>
             </li>
@@ -27,7 +23,7 @@
             </li>
             <li>
                 <div @click="click(4)" class="collapsible-header">Microbial source tracking v1.0</div>
-                <div class="collapsible-body"><MicrobialSourceTrackingV_1_0 @exec="onExec"/></div>
+                <div class="collapsible-body"><MST @exec="onExec"/></div>
             </li>
             <li>
                 <div @click="click(5)" class="collapsible-header">ARGs-OSP</div>
@@ -57,7 +53,7 @@ import DEMO from "./tools/DEMO";
 import ARGsOAP from "./tools/ARGsOAP";
 import SARGFAM from "./tools/SARGFAM";
 import ARGPORE from "./tools/ARGPORE";
-import MicrobialSourceTrackingV_1_0 from "./tools/MicrobialSourceTrackingV_1_0";
+import MST from "./tools/MST";
 import ARGsOSP from "./tools/ARGsOSP";
 import IVIP from "./tools/IVIP";
 export default {
@@ -66,7 +62,7 @@ export default {
         ARGsOAP,
         SARGFAM,
         ARGPORE,
-        MicrobialSourceTrackingV_1_0,
+        MST,
         ARGsOSP,
         IVIP
     },
@@ -91,7 +87,7 @@ export default {
         onShowFile() {
             this.$emit('result', 'file')
         },
-        onExec(tool, params) {
+        onExec(tool, params, func) {
             const galaxy = getGalaxyInstance();
             const url = `${galaxy.root}api/custom/job`;
             const d = {
@@ -102,7 +98,7 @@ export default {
             axios
                 .post(url, d)
                 .then((response) => {
-                    console.log(response)
+                    func(response)
                 });
         }
     }

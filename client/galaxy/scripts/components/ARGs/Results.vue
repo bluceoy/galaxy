@@ -41,7 +41,10 @@
                     <div><span>Input Params:</span> {{ job.params }}</div>
                 </div>
                 <div class="line">
-                    <div><span>Output File:</span> <a href="#" @click="onDownload(job.output)">{{ job.output }}</a></div>
+                    <div>
+                        <p><span>Output File:</span></p>
+                        <p v-for="(out, i) in job.output" :key="i"><a href="#" @click="onDownload(out)">{{ out }}</a></p>
+                    </div>
                 </div>
             </div>
             <div class="result-visualize">
@@ -76,7 +79,14 @@ export default {
                 3: 'error'
             },
             outputTypeMap: {
-                '__args_index__': 1
+                '__argsoap__': 1,
+                '__argsoap2.0__': 1,
+                '__argsoap2.2__': 1,
+                '__sargfam__': 1,
+                '__ivip__': 1,
+                '__mst__': 1,
+                '__argsosp__': 1,
+                '__argpore__': 1
             },
             modalShow: false,
             loginStatus: false,
@@ -85,7 +95,6 @@ export default {
                 { key: 'tool_id', label: 'Tool' },
                 { key: 'tool_version', label: 'Version' },
                 { key: 'params', label: 'Parmas' },
-                { key: 'output', label: 'Output' },
                 { key: 'status', label: 'Status' },
                 { key: 'create_time', label: 'Create Time' },
                 { key: 'update_time', label: 'Finish Time' },
