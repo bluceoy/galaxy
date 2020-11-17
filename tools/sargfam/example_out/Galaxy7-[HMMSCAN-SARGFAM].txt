@@ -1,0 +1,13 @@
+#                                                                         --- full sequence ---- --- best 1 domain ---- --- domain number estimation ----
+# target name        accession  query name                     accession    E-value  score  bias   E-value  score  bias   exp reg clu  ov env dom rep inc description of target
+#------------------- ----------           -------------------- ---------- --------- ------ ----- --------- ------ -----   --- --- --- --- --- --- --- --- ---------------------
+#
+# Program:         hmmscan
+# Version:         3.1b1 (May 2013)
+# Pipeline mode:   SCAN
+# Query file:      /home/lg209ws3/argoap_18.05/galaxy/USERDATAALL/016/dataset_16991.dat
+# Target file:     /home/lg209ws3/argoap_18.05/galaxy/tools/sargfam/DB/Sargfam.hmm
+# Option settings: /home/lg209ws3/argoap_18.05/galaxy/tools/sargfam/hmmer-3.1b1/bin/hmmscan --tblout /home/lg209ws3/argoap_18.05/galaxy/USERDATAALL/016/dataset_16992.dat --cut_ga --cpu 1 /home/lg209ws3/argoap_18.05/galaxy/tools/sargfam/DB/Sargfam.hmm /home/lg209ws3/argoap_18.05/galaxy/USERDATAALL/016/dataset_16991.dat 
+# Current dir:     /home/lg209ws3/argoap_18.05/galaxy/database/jobs_directory/009/9656/working
+# Date:            Fri Nov  6 13:48:45 2020
+# [ok]

@@ -1,0 +1,38 @@
+#                                                               --- full sequence ---- --- best 1 domain ---- --- domain number estimation ----
+# target name        accession  query name           accession    E-value  score  bias   E-value  score  bias   exp reg clu  ov env dom rep inc description of target
+#------------------- ---------- -------------------- ---------- --------- ------ ----- --------- ------ -----   --- --- --- --- --- --- --- --- ---------------------
+vancomycin__vanY_train_msa -          DQ212986.1.gene6.p01 -              3e-50  164.5  11.1   3.8e-44  144.5   6.8   2.5   1   1   2   3   3   2   2 -
+tetracycline__tetJ_train_msa -          AF038993.gene.p01    -           1.2e-278  916.9  26.5  1.4e-278  916.7  26.5   1.0   1   0   0   1   1   1   1 -
+tetracycline__tetY_train_msa -          AF070999.gene.p01    -           1.6e-269  886.8  30.0  1.8e-269  886.6  30.0   1.0   1   0   0   1   1   1   1 -
+chloramphenicol__catB_train_msa -          AY123251.gene2.p01   -             8e-143  466.5   0.4  8.9e-143  466.3   0.4   1.0   1   0   0   1   1   1   1 -
+multidrug__emrE_train_msa -          NC_002695.1.913273.p01 -              1e-66  216.5   6.4   1.1e-66  216.4   6.4   1.0   1   0   0   1   1   1   1 -
+beta_lactam__OKP_A_train_msa -          AM051145.1.gene1.p01 -           1.1e-200  658.0   2.2  1.2e-200  657.9   2.2   1.0   1   0   0   1   1   1   1 -
+beta_lactam__OKP_B_train_msa -          AM850918.2.gene1.p01 -           6.2e-204  668.8   1.8    7e-204  668.7   1.8   1.0   1   0   0   1   1   1   1 -
+beta_lactam__OKP_B_train_msa -          AM850921.2.gene1.p01 -           2.9e-203  666.6   1.9  3.2e-203  666.5   1.9   1.0   1   0   0   1   1   1   1 -
+aminoglycoside__aph_6__I_train_msa -          AY463797.7.gene32.p01 -           3.2e-154  505.8   2.0  3.6e-154  505.6   2.0   1.0   1   0   0   1   1   1   1 -
+aminoglycoside__aac_3__I_train_msa -          AY463797.7.gene13.p01 -            3.5e-78  254.5   3.1     4e-78  254.4   3.1   1.0   1   0   0   1   1   1   1 -
+tetracycline__tetC_train_msa -          AF326777.3.gene21.p01 -             3e-139  455.0  10.7  3.4e-139  454.9  10.7   1.0   1   0   0   1   1   1   1 -
+chloramphenicol__cat_chloramphenicol_acetyltransferase_train_msa -          AY238971.1.gene2.p01 -            2.6e-94  308.6   3.4   3.1e-94  308.3   3.4   1.0   1   0   0   1   1   1   1 -
+chloramphenicol__catA_train_msa -          AB082569.2.gene1.p01 -           1.6e-120  394.3   4.3  1.7e-120  394.1   4.3   1.0   1   0   0   1   1   1   1 -
+vancomycin__vanX_train_msa -          AF310956.2.gene7.p01 -             8e-126  411.1   0.4  8.9e-126  410.9   0.4   1.0   1   0   0   1   1   1   1 -
+vancomycin__vanH_train_msa -          AF310956.2.gene5.p01 -           5.1e-189  620.5   0.6  5.7e-189  620.3   0.6   1.0   1   0   0   1   1   1   1 -
+beta_lactam__CfxA2_train_msa -          AF118110.1.gene1.p01 -           2.8e-231  759.4   9.8  3.2e-231  759.3   9.8   1.0   1   0   0   1   1   1   1 -
+multidrug__amrB_train_msa -          ABC38311             -                  0 2276.2  42.2         0 2276.1  42.2   1.0   1   0   0   1   1   1   1 -
+aminoglycoside__aph_3___I_train_msa -          YP_112402            -           3.1e-156  511.8   0.1  3.5e-156  511.7   0.1   1.0   1   0   0   1   1   1   1 -
+aminoglycoside__aph_6__I_train_msa -          YP_001740011         -           9.1e-153  501.0   2.1    1e-152  500.9   2.1   1.0   1   0   0   1   1   1   1 -
+polymyxin__arnA_train_msa -          Q0T2M8               -                  0 1535.6   0.0         0 1535.4   0.0   1.0   1   0   0   1   1   1   1 -
+bacitracin__bacA_train_msa -          B2VGJ3               -           1.1e-115  379.1  14.9  1.3e-115  378.9  14.9   1.0   1   0   0   1   1   1   1 -
+bacitracin__bacA_train_msa -          A8YZV4               -           1.2e-101  333.0  15.3  1.4e-101  332.8  15.3   1.0   1   0   0   1   1   1   1 -
+bacitracin__bacA_train_msa -          Q5P6K4               -           2.2e-108  355.1  12.1  2.5e-108  355.0  12.1   1.0   1   0   0   1   1   1   1 -
+bacitracin__bacA_train_msa -          Q880L3               -           4.8e-115  377.0  13.9  5.4e-115  376.8  13.9   1.0   1   0   0   1   1   1   1 -
+bacitracin__bacA_train_msa -          Q8Y1I9               -           2.4e-115  378.0   6.5  2.8e-115  377.8   6.5   1.0   1   0   0   1   1   1   1 -
+#
+# Program:         hmmscan
+# Version:         3.1b1 (May 2013)
+# Pipeline mode:   SCAN
+# Query file:      test.fa
+# Target file:     Sargfam.hmm
+# Option settings: ../hmmer-3.1b1/bin/hmmscan --tblout output.tab --cut_ga --cpu 32 Sargfam.hmm test.fa 
+# Current dir:     /home/envx/argoap/galaxy/tools/sargfam/DB
+# Date:            Thu Feb  8 21:25:02 2018
+# [ok]
