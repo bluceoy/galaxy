@@ -32,7 +32,7 @@ export default {
         return {
             showOnlineAnalysis: false,
             tool: {
-                id: '__args_index__',
+                id: '__argsosp__',
                 version: '1.0.0'
             },
             params: {

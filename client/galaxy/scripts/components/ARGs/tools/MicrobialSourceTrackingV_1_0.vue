@@ -63,7 +63,7 @@ export default {
             showHowToCite: false,
             showContacts: false,
             tool: {
-                id: '__args_index__',
+                id: '__mst__',
                 version: '1.0.0'
             },
             params: {

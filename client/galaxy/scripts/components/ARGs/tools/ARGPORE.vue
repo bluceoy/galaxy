@@ -76,7 +76,7 @@ export default {
             showHowToUse: false,
             showHowToCite: false,
             tool: {
-                id: '__args_index__',
+                id: '__argpore__',
                 version: '1.0.0'
             },
             params: {
