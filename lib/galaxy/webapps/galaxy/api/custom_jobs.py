@@ -48,13 +48,16 @@ class CustomJobsAPIController(BaseAPIController):
     if not "output4" in kwargs:
       kwargs["output4"] = ""
       kwargs["real_output4"] = ""
+    if not "output5" in kwargs:
+      kwargs["output5"] = ""
+      kwargs["real_output5"] = ""
     now = int(time.time())
     conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
     cur = conn.cursor()
-    fields = "tool_id,tool_name,tool_version,galaxy_version,cwd,params,session_id,user_id,status,output,real_output,output2,real_output2,output3,real_output3,output4,real_output4,create_time,update_time"
-    values = "'%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s','%s','%s','%s','%s','%s','%s',%d,%d" % (kwargs['tool_id'],kwargs['tool_name'],kwargs['tool_version'],
+    fields = "tool_id,tool_name,tool_version,galaxy_version,cwd,params,session_id,user_id,status,output,real_output,output2,real_output2,output3,real_output3,output4,real_output4,output5,real_output5,create_time,update_time"
+    values = "'%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,%d" % (kwargs['tool_id'],kwargs['tool_name'],kwargs['tool_version'],
     kwargs['galaxy_version'],kwargs['cwd'],kwargs['params'],kwargs['session_id'],kwargs['user_id'],kwargs['status'],kwargs['output'],
-    kwargs['real_output'],kwargs['output2'],kwargs['real_output2'],kwargs['output3'],kwargs['real_output3'],kwargs['output4'],kwargs['real_output4'],now,now)
+    kwargs['real_output'],kwargs['output2'],kwargs['real_output2'],kwargs['output3'],kwargs['real_output3'],kwargs['output4'],kwargs['real_output4'],kwargs['output5'],kwargs['real_output5'],now,now)
     sql = "insert into custom_jobs(%s) values(%s) returning id" % (fields, values)
     log.info("sql = %s", sql)
     cur.execute(sql)
@@ -129,7 +132,14 @@ class CustomJobsAPIController(BaseAPIController):
       return self.__on_sargfam(trans, payload, **kwargs)
     if tool_id == "__mst__":
       return self.__on_mst(trans, payload, **kwargs)
-    
+    if tool_id == "__argpore__":
+      return self.__on_argpore(trans, payload, **kwargs)
+    if tool_id == "__argsoap__":
+      return self.__on_argsoap(trans, payload, **kwargs)
+    if tool_id == "__argsoap2.0__":
+      return self.__on_argsoap2_0(trans, payload, **kwargs)
+    if tool_id == "__argsoap2.2__":
+      return self.__on_argsoap2_2(trans, payload, **kwargs)
   
     #elif 
     return {"message": "ok"}
@@ -293,6 +303,8 @@ class CustomJobsAPIController(BaseAPIController):
       raise ActionInputError("input1 not exist")
 
     input1dir = os.path.dirname(real_path1)
+    output1 = input1_dir + "/output/output1.txt"
+    output2 = input1_dir + "/output/output2.txt"
     output1_path = input1dir + "/output/output1.txt"
     output2_path = input1dir + "/output/output2.txt"
 
@@ -309,14 +321,14 @@ class CustomJobsAPIController(BaseAPIController):
       "tool_version": tool_version,
       "galaxy_version": trans.app.config.version_major,
       "cwd": job_cwd,
-      "params": "%s %s %s %s %s %s" % (real_path1, input2, input3, input4, output1_path, output2_path),
+      "params": "%s %s %s %s %s %s" % (input1, input2, input3, input4, output1, output2),
       "session_id": trans.galaxy_session.id,
       "user_id": user_id,
       "status": 1,
       "output": input1_dir + "/output/output1.txt",
       "real_output": input1dir + "/output/output1.txt",
       "output2": input1_dir + "/output/output2.txt",
-      "real_output": input1dir + "/output/output2.txt"
+      "real_output2": input1dir + "/output/output2.txt"
     }
     if input1_dir == "/":
       params["output"] = "/output/output1.out"
@@ -333,6 +345,166 @@ class CustomJobsAPIController(BaseAPIController):
 
     return {"message": "ok", "job_id": job_id}
 
+  def __on_argpore(self, trans, payload, **kwargs):
+    missing_arguments = []
+    tool_id = payload.get("tool_id", None)
+    if not tool_id:
+      missing_arguments.append("tool_id")
+
+    tool_version = payload.get("tool_version", None)
+    if not tool_version:
+      missing_arguments.append("tool_version")
+    
+    input1 = payload.get("input1", None)
+    if not input1:
+      missing_arguments.append("input1")
+
+    if len(missing_arguments) > 0:
+      raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
+
+    input1_dir = os.path.dirname(input1)
+    log.info("input1 = %s, input1_dir = %s", input1, input1_dir)
+    root_dir = self.make_sure_root(trans)
+    real_path1 = root_dir + input1
+    log.info("real_path1 = %s", real_path1)
+    if not os.path.isfile(real_path1):
+      raise ActionInputError("input1 not exist")
+
+    output1 = input1_dir + "/output/output1.txt"
+    output2 = input1_dir + "/output/output2.txt"
+    output3 = input1_dir + "/output/output3.txt"
+    output4 = input1_dir + "/output/output4.txt"
+
+    input1dir = os.path.dirname(real_path1)
+    output1_path = input1dir + "/output/output1.txt"
+    output2_path = input1dir + "/output/output2.txt"
+    output3_path = input1dir + "/output/output3.txt"
+    output4_path = input1dir + "/output/output4.txt"
+
+    agent_cwd = trans.app.config.tool_path + "/custom"
+    job_cwd = trans.app.config.tool_path + "/hostract"
+
+    user_id = 0
+    if trans.user:
+      user_id = trans.user.id
+    
+    params = {
+      "tool_id": tool_id,
+      "tool_name": "sargfam",
+      "tool_version": tool_version,
+      "galaxy_version": trans.app.config.version_major,
+      "cwd": job_cwd,
+      "params": "%s %s %s %s %s %s" % (input1, output1, output2, output3, output4),
+      "session_id": trans.galaxy_session.id,
+      "user_id": user_id,
+      "status": 1,
+      "output": input1_dir + "/output/output1.txt",
+      "real_output": input1dir + "/output/output1.txt",
+      "output2": input1_dir + "/output/output2.txt",
+      "real_output2": input1dir + "/output/output2.txt",
+      "output3": input1_dir + "/output/output3.txt",
+      "real_output3": input1dir + "/output/output3.txt",
+      "output4": input1_dir + "/output/output4.txt",
+      "real_output4": input1dir + "/output/output4.txt"
+    }
+    if input1_dir == "/":
+      params["output"] = "/output/output1.out"
+      params["real_output"] = root_dir + "/output/output1.out"
+      params["output2"] = "/output/output2.out"
+      params["real_output2"] = root_dir + "/output/output2.out"
+    job_id = self.add_job(**params)
+    commandstr = "python job_agent.py %d oap.py %s %s %s %s %s %s %s" % (
+      job_id, job_cwd, real_path1, output1_path, output2_path, output3_path, output4_path)
+    log.info("command = %s", commandstr)
+
+    command = commandstr.split(" ")
+    subprocess.Popen(command, cwd=agent_cwd)
+
+    return {"message": "ok", "job_id": job_id}
+
+  def __on_argsoap(self, trans, payload, **kwargs):
+    missing_arguments = []
+    tool_id = payload.get("tool_id", None)
+    if not tool_id:
+      missing_arguments.append("tool_id")
+
+    tool_version = payload.get("tool_version", None)
+    if not tool_version:
+      missing_arguments.append("tool_version")
+    
+    input1 = payload.get("input1", None)
+    if not input1:
+      missing_arguments.append("input1")
+
+    if len(missing_arguments) > 0:
+      raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
+
+    input1_dir = os.path.dirname(input1)
+    log.info("input1 = %s, input1_dir = %s", input1, input1_dir)
+    root_dir = self.make_sure_root(trans)
+    real_path1 = root_dir + input1
+    log.info("real_path1 = %s", real_path1)
+    if not os.path.isfile(real_path1):
+      raise ActionInputError("input1 not exist")
+
+    output1 = input1_dir + "/output/output1.txt"
+    output2 = input1_dir + "/output/output2.txt"
+    output3 = input1_dir + "/output/output3.txt"
+    output4 = input1_dir + "/output/output4.txt"
+
+    input1dir = os.path.dirname(real_path1)
+    output1_path = input1dir + "/output/output1.txt"
+    output2_path = input1dir + "/output/output2.txt"
+    output3_path = input1dir + "/output/output3.txt"
+    output4_path = input1dir + "/output/output4.txt"
+
+    agent_cwd = trans.app.config.tool_path + "/custom"
+    job_cwd = trans.app.config.tool_path + "/args_oap"
+
+    user_id = 0
+    if trans.user:
+      user_id = trans.user.id
+    
+    params = {
+      "tool_id": tool_id,
+      "tool_name": "sargfam",
+      "tool_version": tool_version,
+      "galaxy_version": trans.app.config.version_major,
+      "cwd": job_cwd,
+      "params": "%s %s %s %s %s %s" % (input1, output1, output2, output3, output4),
+      "session_id": trans.galaxy_session.id,
+      "user_id": user_id,
+      "status": 1,
+      "output": input1_dir + "/output/output1.txt",
+      "real_output": input1dir + "/output/output1.txt",
+      "output2": input1_dir + "/output/output2.txt",
+      "real_output2": input1dir + "/output/output2.txt",
+      "output3": input1_dir + "/output/output3.txt",
+      "real_output3": input1dir + "/output/output3.txt",
+      "output4": input1_dir + "/output/output4.txt",
+      "real_output4": input1dir + "/output/output4.txt"
+    }
+    if input1_dir == "/":
+      params["output"] = "/output/output1.out"
+      params["real_output"] = root_dir + "/output/output1.out"
+      params["output2"] = "/output/output2.out"
+      params["real_output2"] = root_dir + "/output/output2.out"
+    job_id = self.add_job(**params)
+    commandstr = "python job_agent.py %d oap.py %s %s %s %s %s %s" % (
+      job_id, job_cwd, real_path1, output1_path, output2_path, output3_path, output4_path)
+    log.info("command = %s", commandstr)
+
+    command = commandstr.split(" ")
+    subprocess.Popen(command, cwd=agent_cwd)
+
+    return {"message": "ok", "job_id": job_id}
+
+  def __on_argsoap2_0(self, trans, payload, **kwargs):
+    pass
+
+  def __on_argsoap2_2(self, trans, payload, **kwargs):
+    pass
+
   @expose_api_anonymous_v2
   def on_job_detail(self, trans, id, **kwargs):
     """
@@ -340,6 +512,15 @@ class CustomJobsAPIController(BaseAPIController):
     """
     log.info("job_id = %s", id)
     job = self.get_job(id)
+    output = [ job["output"] ]
+    if not job["output2"]:
+      output.append(job["output2"])
+    if not job["output3"]:
+      output.append(job["output3"])
+    if not job["output4"]:
+      output.append(job["output4"])
+    if not job["output5"]:
+      output.append(job["output5"])
     data = {
       "job_id": job["id"],
       "tool_id": job["tool_id"],
@@ -347,10 +528,7 @@ class CustomJobsAPIController(BaseAPIController):
       "tool_name": job["tool_name"]+"-"+str(job["id"]),
       "status": job["status"],
       "params": job["params"],
-      "output": job["output"],
-      "output2": job["output2"],
-      "output3": job["output3"],
-      "output4": job["output4"],
+      "output": output,
       "create_time": job["create_time"],
       "update_time": job["update_time"]
     }
@@ -379,6 +557,15 @@ class CustomJobsAPIController(BaseAPIController):
     items = []
     total, jobs = self.list_job(user_id, session_id, page, size)
     for job in jobs:
+      output = [ job["output"] ]
+      if not job["output2"]:
+        output.append(job["output2"])
+      if not job["output3"]:
+        output.append(job["output3"])
+      if not job["output4"]:
+        output.append(job["output4"])
+      if not job["output5"]:
+        output.append(job["output5"])
       item = {
         "job_id": job["id"],
         "tool_id": job["tool_id"],
@@ -386,10 +573,7 @@ class CustomJobsAPIController(BaseAPIController):
         "tool_name": job["tool_name"]+"-"+str(job["id"]),
         "status": job["status"],
         "params": job["params"],
-        "output": job["output"],
-        "output2": job["output2"],
-        "output3": job["output3"],
-        "output4": job["output4"],
+        "output": output,
         "create_time": job["create_time"],
         "update_time": job["update_time"]
       }
