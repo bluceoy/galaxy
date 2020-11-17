@@ -812,12 +812,16 @@ class CustomJobsAPIController(BaseAPIController):
     job = self.get_job(id)
     output = [ job["output"] ]
     if not job["output2"]:
+      log.info("output2 = %s", job["output2"])
       output.append(job["output2"])
     if not job["output3"]:
+      log.info("output3 = %s", job["output3"])
       output.append(job["output3"])
     if not job["output4"]:
+      log.info("output4 = %s", job["output4"])
       output.append(job["output4"])
     if not job["output5"]:
+      log.info("output5 = %s", job["output5"])
       output.append(job["output5"])
     data = {
       "job_id": job["id"],
