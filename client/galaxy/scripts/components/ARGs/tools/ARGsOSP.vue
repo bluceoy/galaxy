@@ -16,23 +16,8 @@
                     <b-icon icon="check"></b-icon> Execute
                 </b-button>
             </div>
-            <div v-else-if="mode === 2" class="donemessagelarge"><!-- 执行成功提示内容 -->
-                <p>Executed <b>Microbial source tracking</b> and successfully added 1 job to the queue.</p>
-                <p>The tool uses this input:</p>
-                <p class="messagerow">
-                    <b>{{ params.input1 }}</b>
-                </p>
-                <p>It produces 2 outputs:</p>
-                <p class="messagerow">
-                    <b>Standard deviation of source proportions after running 5 times</b>
-                </p>
-                <p class="messagerow">
-                    <b>Average of source proportions after running 5 times</b>
-                </p>
-                <p>You can check the status of queued jobs and view the resulting data by refreshing the History panel. When the job has been run the status will change from 'running' to 'finished' if completed successfully or 'error' if problems were encountered.</p>
-            </div>
-            <div v-else-if="mode === 3"><!-- 执行失败提示内容 -->
-            </div>
+            <SuccessTip v-else-if="mode === 2" :name="tool.id" :input="params.input1" :output="['HMMSCAN-SARGFAM']"></SuccessTip>
+            <FailTip v-else-if="mode === 3" :name="tool.id" :msg="'some thing wrong'"></FailTip>
         </div>
 
         <p><a target="_blank" href="https://args-osp.herokuapp.com/">ARGs-OSP v1.0 (External Link)</a></p>
@@ -43,6 +28,8 @@
 import * as U from './util/index.js'
 export default {
     components: {
+        SuccessTip: U.SuccessTip,
+        FailTip: U.FailTip,
 	    ParamText: U.ParamText,
         ParamFile: U.ParamFile,
         ParamSelect: U.ParamSelect
@@ -59,6 +46,9 @@ export default {
                 input1: ''
             }
         };
+    },
+    created() {
+        this.mode = 1
     },
     methods: {
         onExecute() {
