@@ -1,5 +1,6 @@
 import os
 import sys
+import subprocess
 
 input1 = sys.argv[1]
 input2 = sys.argv[2]
@@ -18,6 +19,7 @@ output5 = sys.argv[14]
 
 # Step1 sum up in each file
 args = [input1, input2, input3, input4, input5, input6, input7, input8, input9, output1, output2, output3, output4, output5]
-cmd="bash /home/xianmao/argoap_20.05/galaxy/tools/args_oap2.2/ublastx_stage_two_version2.2.modify " + " ".join(args)
-print(cmd)
-os.system(cmd)
+commandstr="/home/xianmao/argoap_20.05/galaxy/tools/args_oap2.2/ublastx_stage_two_version2.2.modify " + " ".join(args)
+print(commandstr)
+command = commandstr.split(" ")
+subprocess.Popen(command, cwd="/home/xianmao/argoap_20.05/galaxy/tools/args_oap2.2")
