@@ -39,13 +39,22 @@ class CustomJobsAPIController(BaseAPIController):
     self.db = 'postgres'
 
   def add_job(self, **kwargs):
+    if not "output2" in kwargs:
+      kwargs["output2"] = ""
+      kwargs["real_output2"] = ""
+    if not "output3" in kwargs:
+      kwargs["output3"] = ""
+      kwargs["real_output3"] = ""
+    if not "output4" in kwargs:
+      kwargs["output4"] = ""
+      kwargs["real_output4"] = ""
     now = int(time.time())
     conn = psycopg2.connect(database=self.db, user=self.user, password=self.password, host=self.host, port=self.port)
     cur = conn.cursor()
-    fields = "tool_id,tool_name,tool_version,galaxy_version,cwd,params,session_id,user_id,status,output,real_output,create_time,update_time"
-    values = "'%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s',%d,%d" % (kwargs['tool_id'],kwargs['tool_name'],kwargs['tool_version'],
+    fields = "tool_id,tool_name,tool_version,galaxy_version,cwd,params,session_id,user_id,status,output,real_output,output2,real_output2,output3,real_output3,output4,real_output4,create_time,update_time"
+    values = "'%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s','%s','%s','%s','%s','%s','%s','%s',%d,%d" % (kwargs['tool_id'],kwargs['tool_name'],kwargs['tool_version'],
     kwargs['galaxy_version'],kwargs['cwd'],kwargs['params'],kwargs['session_id'],kwargs['user_id'],kwargs['status'],kwargs['output'],
-    kwargs['real_output'],now,now)
+    kwargs['real_output'],kwargs['output2'],kwargs['real_output2'],kwargs['output3'],kwargs['real_output3'],kwargs['output4'],kwargs['real_output4'],now,now)
     sql = "insert into custom_jobs(%s) values(%s) returning id" % (fields, values)
     log.info("sql = %s", sql)
     cur.execute(sql)
@@ -120,6 +129,7 @@ class CustomJobsAPIController(BaseAPIController):
       return self.__on_sargfam(trans, payload, **kwargs)
     if tool_id == "__mst__":
       return self.__on_mst(trans, payload, **kwargs)
+    
   
     #elif 
     return {"message": "ok"}
@@ -299,16 +309,20 @@ class CustomJobsAPIController(BaseAPIController):
       "tool_version": tool_version,
       "galaxy_version": trans.app.config.version_major,
       "cwd": job_cwd,
-      "params": "%s" % (input1),
+      "params": "%s %s %s %s %s %s" % (real_path1, input2, input3, input4, output1_path, output2_path),
       "session_id": trans.galaxy_session.id,
       "user_id": user_id,
       "status": 1,
       "output": input1_dir + "/output/output1.txt",
-      "real_output": input1dir + "/output/output1.txt"
+      "real_output": input1dir + "/output/output1.txt",
+      "output2": input1_dir + "/output/output2.txt",
+      "real_output": input1dir + "/output/output2.txt"
     }
     if input1_dir == "/":
       params["output"] = "/output/output1.out"
       params["real_output"] = root_dir + "/output/output1.out"
+      params["output2"] = "/output/output2.out"
+      params["real_output2"] = root_dir + "/output/output2.out"
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d mst.py %s %s %s %s %s %s %s" % (
       job_id, job_cwd, real_path1, input2, input3, input4, output1_path, output2_path)
@@ -334,6 +348,9 @@ class CustomJobsAPIController(BaseAPIController):
       "status": job["status"],
       "params": job["params"],
       "output": job["output"],
+      "output2": job["output2"],
+      "output3": job["output3"],
+      "output4": job["output4"],
       "create_time": job["create_time"],
       "update_time": job["update_time"]
     }
@@ -370,6 +387,9 @@ class CustomJobsAPIController(BaseAPIController):
         "status": job["status"],
         "params": job["params"],
         "output": job["output"],
+        "output2": job["output2"],
+        "output3": job["output3"],
+        "output4": job["output4"],
         "create_time": job["create_time"],
         "update_time": job["update_time"]
       }
