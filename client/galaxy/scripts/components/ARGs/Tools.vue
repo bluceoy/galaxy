@@ -10,27 +10,27 @@
         
         <ul class="collapsible">
             <li>
-                <div @click="click(1)" class="collapsible-header">ARGs-OAP</div>
+                <div @click="click(0)" class="collapsible-header">ARGs-OAP</div>
                 <div class="collapsible-body container-fluid"><ARGsOAP @exec="onExec"/></div>
             </li>
             <li>
-                <div @click="click(2)" class="collapsible-header">SARGFAM</div>
+                <div @click="click(1)" class="collapsible-header">SARGFAM</div>
                 <div class="collapsible-body"><SARGFAM @exec="onExec"/></div>
             </li>
             <li>
-                <div @click="click(3)" class="collapsible-header">ARGPORE</div>
+                <div @click="click(2)" class="collapsible-header">ARGPORE</div>
                 <div class="collapsible-body"><ARGPORE @exec="onExec"/></div>
             </li>
             <li>
-                <div @click="click(4)" class="collapsible-header">Microbial source tracking v1.0</div>
+                <div @click="click(3)" class="collapsible-header">Microbial source tracking v1.0</div>
                 <div class="collapsible-body"><MST @exec="onExec"/></div>
             </li>
             <li>
-                <div @click="click(5)" class="collapsible-header">ARGs-OSP</div>
+                <div @click="click(4)" class="collapsible-header">ARGs-OSP</div>
                 <div class="collapsible-body"><ARGsOSP @exec="onExec"/></div>
             </li>
             <li>
-                <div @click="click(6)" class="collapsible-header">I-VIP</div>
+                <div @click="click(5)" class="collapsible-header">I-VIP</div>
                 <div class="collapsible-body"><IVIP @exec="onExec"/></div>
             </li>
         </ul>
