@@ -113,6 +113,26 @@ class CustomJobsAPIController(BaseAPIController):
     log.info("root_dir = %s", root_dir)
     return root_dir
 
+  def make_sure_output_dir(self, tool_name, root, inputdir):
+    now = str(int(time.time()*1000))
+    outputdir = "/" + tool_name + "-" + now + "/output"
+    if inputdir != "/":
+      outputdir = inputdir + outputdir
+    real_outputdir = root + outputdir
+    if not os.path.exists(real_outputdir):
+      os.makedirs(real_outputdir)
+    log.info("outputdir = %s", outputdir)
+    return outputdir
+
+  def make_output_file(self, outputdir, num):
+    output = outputdir + "/output-" + str(num) + ".txt"
+    return output
+
+  def check_args(self, *args):
+    for arg in args:
+      if arg is None:
+        raise ActionInputError("Required arguments are missing in the payload")
+
   @expose_api_anonymous_v2
   def on_run_job(self, trans, payload, **kwargs):
     """
@@ -423,6 +443,7 @@ class CustomJobsAPIController(BaseAPIController):
     return {"message": "ok", "job_id": job_id}
 
   def __on_argsoap(self, trans, payload, **kwargs):
+    tool_name = "oapv1.0"
     tool_id = payload.get("tool_id", None)
     tool_version = payload.get("tool_version", None)
     input1 = payload.get("input1", None)
@@ -435,7 +456,7 @@ class CustomJobsAPIController(BaseAPIController):
     input8 = payload.get("input8", None)
     input9 = payload.get("input9", None)
 
-    self.__on_check_arg(tool_id, tool_version, 
+    self.check_args(tool_id, tool_version, 
       input1, input2, input3, input4, input5, 
       input6, input7, input8, input9)
 
@@ -450,24 +471,18 @@ class CustomJobsAPIController(BaseAPIController):
       raise ActionInputError("input2 not exist")
 
     input1_dir = os.path.dirname(input1)
-    output1 = input1_dir + "/output/output1.txt"
-    output2 = input1_dir + "/output/output2.txt"
-    output3 = input1_dir + "/output/output3.txt"
-    output4 = input1_dir + "/output/output4.txt"
-    output5 = input1_dir + "/output/output5.txt"
-    if input1_dir == "/":
-      output1 = "/output/output1.txt"
-      output2 = "/output/output2.txt"
-      output3 = "/output/output3.txt"
-      output4 = "/output/output4.txt"
-      output5 = "/output/output5.txt"
+    output_dir = self.make_sure_output_dir(tool_name, root_dir, input1_dir)
+    output1 = self.make_output_file(output_dir, 1)
+    output2 = self.make_output_file(output_dir, 2)
+    output3 = self.make_output_file(output_dir, 3)
+    output4 = self.make_output_file(output_dir, 4)
+    output5 = self.make_output_file(output_dir, 5)
 
-    real_input1dir = os.path.dirname(real_path1)
-    output1_path = real_input1dir + "/output/output1.txt"
-    output2_path = real_input1dir + "/output/output2.txt"
-    output3_path = real_input1dir + "/output/output3.txt"
-    output4_path = real_input1dir + "/output/output4.txt"
-    output5_path = real_input1dir + "/output/output5.txt"
+    abspath_output1 = root_dir + output1
+    abspath_output2 = root_dir + output2
+    abspath_output3 = root_dir + output3
+    abspath_output4 = root_dir + output4
+    abspath_output5 = root_dir + output5
 
     agent_cwd = trans.app.config.tool_path + "/custom"
     job_cwd = trans.app.config.tool_path + "/args_oap"
@@ -479,7 +494,7 @@ class CustomJobsAPIController(BaseAPIController):
     args = [input1, input2, input3, input4, input5, input6, input7, input8, input9,
       output1, output2, output3, output4, output5]
     xargs = [real_path1, real_path2, input3, input4, input5, input6, input7, input8, input9,
-      output1_path, output2_path, output3_path, output4_path, output5_path]
+      abspath_output1, abspath_output2, abspath_output3, abspath_output4, abspath_output5]
     
     params = {
       "tool_id": tool_id,
@@ -492,15 +507,15 @@ class CustomJobsAPIController(BaseAPIController):
       "user_id": user_id,
       "status": 1,
       "output": output1,
-      "real_output": output1_path,
+      "real_output": abspath_output1,
       "output2": output2,
-      "real_output2": output2_path,
+      "real_output2": abspath_output2,
       "output3": output3,
-      "real_output3": output3_path,
+      "real_output3": abspath_output3,
       "output4": output4,
-      "real_output4": output4_path,
+      "real_output4": abspath_output4,
       "output5": output5,
-      "real_output5": output5_path
+      "real_output5": abspath_output5
     }
 
     job_id = self.add_job(**params)
@@ -862,7 +877,3 @@ class CustomJobsAPIController(BaseAPIController):
     data["items"] = items
     return data
 
-  def __on_check_arg(self, *args):
-    for arg in args:
-      if arg is None:
-        raise ActionInputError("Required arguments are missing in the payload")
