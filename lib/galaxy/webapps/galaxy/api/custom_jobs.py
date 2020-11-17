@@ -444,6 +444,8 @@ class CustomJobsAPIController(BaseAPIController):
 
   def __on_argsoap(self, trans, payload, **kwargs):
     tool_name = "oapv1.0"
+    tool_dir = "args_oap"
+    script = "oap.py"
     tool_id = payload.get("tool_id", None)
     tool_version = payload.get("tool_version", None)
     input1 = payload.get("input1", None)
@@ -485,7 +487,7 @@ class CustomJobsAPIController(BaseAPIController):
     abspath_output5 = root_dir + output5
 
     agent_cwd = trans.app.config.tool_path + "/custom"
-    job_cwd = trans.app.config.tool_path + "/args_oap"
+    job_cwd = trans.app.config.tool_path + "/" + tool_dir
 
     user_id = 0
     if trans.user:
@@ -498,7 +500,7 @@ class CustomJobsAPIController(BaseAPIController):
     
     params = {
       "tool_id": tool_id,
-      "tool_name": "oapv1.0",
+      "tool_name": tool_name,
       "tool_version": tool_version,
       "galaxy_version": trans.app.config.version_major,
       "cwd": job_cwd,
@@ -519,8 +521,8 @@ class CustomJobsAPIController(BaseAPIController):
     }
 
     job_id = self.add_job(**params)
-    commandstr = "python job_agent.py %d oap.py %s %s" % (
-      job_id, job_cwd, " ".join(xargs))
+    commandstr = "python job_agent.py %d %s %s %s" % (
+      job_id, script, job_cwd, " ".join(xargs))
     log.info("command = %s", commandstr)
 
     command = commandstr.split(" ")
