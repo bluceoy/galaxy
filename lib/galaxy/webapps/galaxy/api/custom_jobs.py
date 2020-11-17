@@ -282,7 +282,7 @@ class CustomJobsAPIController(BaseAPIController):
     return {"message": "ok", "job_id": job_id}
 
   def __on_mst(self, trans, payload, **kwargs):
-    tool_name = "args_oap_v1.0"
+    tool_name = "mst"
     tool_dir = "MST"
     script = "mst.py"
     tool_id = payload.get("tool_id", None)
