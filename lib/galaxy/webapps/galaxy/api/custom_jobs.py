@@ -394,7 +394,7 @@ class CustomJobsAPIController(BaseAPIController):
       "tool_version": tool_version,
       "galaxy_version": trans.app.config.version_major,
       "cwd": job_cwd,
-      "params": "%s %s %s %s %s %s" % (input1, output1, output2, output3, output4),
+      "params": "%s %s %s %s %s" % (input1, output1, output2, output3, output4),
       "session_id": trans.galaxy_session.id,
       "user_id": user_id,
       "status": 1,
@@ -423,81 +423,51 @@ class CustomJobsAPIController(BaseAPIController):
     return {"message": "ok", "job_id": job_id}
 
   def __on_argsoap(self, trans, payload, **kwargs):
-    missing_arguments = []
     tool_id = payload.get("tool_id", None)
-    if not tool_id:
-      missing_arguments.append("tool_id")
-
     tool_version = payload.get("tool_version", None)
-    if not tool_version:
-      missing_arguments.append("tool_version")
-    
     input1 = payload.get("input1", None)
-    if not input1:
-      missing_arguments.append("input1")
-
     input2 = payload.get("input2", None)
-    if not input2:
-      missing_arguments.append("input2")
-
     input3 = payload.get("input3", None)
-    if not input3:
-      missing_arguments.append("input3")
-
     input4 = payload.get("input4", None)
-    if not input4:
-      missing_arguments.append("input4")
-
     input5 = payload.get("input5", None)
-    if not input5:
-      missing_arguments.append("input5")
-
     input6 = payload.get("input6", None)
-    if not input6:
-      missing_arguments.append("input6")
-
     input7 = payload.get("input7", None)
-    if not input7:
-      missing_arguments.append("input7")
-
     input8 = payload.get("input8", None)
-    if not input8:
-      missing_arguments.append("input8")  
-
     input9 = payload.get("input9", None)
-    if not input9:
-      missing_arguments.append("input9")        
 
-    if len(missing_arguments) > 0:
-      raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
+    self.__on_check_arg(tool_id, tool_version, 
+      input1, input2, input3, input4, input5, 
+      input6, input7, input8, input9)
 
-    input1_dir = os.path.dirname(input1)
-    log.info("input1 = %s, input1_dir = %s", input1, input1_dir)
     root_dir = self.make_sure_root(trans)
+
     real_path1 = root_dir + input1
-    log.info("real_path1 = %s", real_path1)
     if not os.path.isfile(real_path1):
       raise ActionInputError("input1 not exist")
 
-    input2_dir = os.path.dirname(input2)
-    log.info("input2 = %s, input2_dir = %s", input2, input2_dir)
     real_path2 = root_dir + input2
-    log.info("real_path2 = %s", real_path2)
     if not os.path.isfile(real_path2):
       raise ActionInputError("input2 not exist")
 
+    input1_dir = os.path.dirname(input1)
     output1 = input1_dir + "/output/output1.txt"
     output2 = input1_dir + "/output/output2.txt"
     output3 = input1_dir + "/output/output3.txt"
     output4 = input1_dir + "/output/output4.txt"
     output5 = input1_dir + "/output/output5.txt"
+    if input1_dir == "/":
+      output1 = "/output/output1.txt"
+      output2 = "/output/output2.txt"
+      output3 = "/output/output3.txt"
+      output4 = "/output/output4.txt"
+      output5 = "/output/output5.txt"
 
-    input1dir = os.path.dirname(real_path1)
-    output1_path = input1dir + "/output/output1.txt"
-    output2_path = input1dir + "/output/output2.txt"
-    output3_path = input1dir + "/output/output3.txt"
-    output4_path = input1dir + "/output/output4.txt"
-    output5_path = input1dir + "/output/output5.txt"
+    real_input1dir = os.path.dirname(real_path1)
+    output1_path = real_input1dir + "/output/output1.txt"
+    output2_path = real_input1dir + "/output/output2.txt"
+    output3_path = real_input1dir + "/output/output3.txt"
+    output4_path = real_input1dir + "/output/output4.txt"
+    output5_path = real_input1dir + "/output/output5.txt"
 
     agent_cwd = trans.app.config.tool_path + "/custom"
     job_cwd = trans.app.config.tool_path + "/args_oap"
@@ -505,6 +475,11 @@ class CustomJobsAPIController(BaseAPIController):
     user_id = 0
     if trans.user:
       user_id = trans.user.id
+
+    args = [input1, input2, input3, input4, input5, input6, input7, input8, input9,
+      output1, output2, output3, output4, output5]
+    xargs = [real_path1, real_path2, input3, input4, input5, input6, input7, input8, input9,
+      output1_path, output2_path, output3_path, output4_path, output5_path]
     
     params = {
       "tool_id": tool_id,
@@ -512,36 +487,25 @@ class CustomJobsAPIController(BaseAPIController):
       "tool_version": tool_version,
       "galaxy_version": trans.app.config.version_major,
       "cwd": job_cwd,
-      "params": "%s %s %s %s %s %s %s %s %s %s %s %s %s %s" % (input1, input2, input3, input4, input5, input6, input7, input8, input9, output1, output2, output3, output4, output5),
+      "params": " ".join(args),
       "session_id": trans.galaxy_session.id,
       "user_id": user_id,
       "status": 1,
-      "output": input1_dir + "/output/output1.txt",
-      "real_output": input1dir + "/output/output1.txt",
-      "output2": input1_dir + "/output/output2.txt",
-      "real_output2": input1dir + "/output/output2.txt",
-      "output3": input1_dir + "/output/output3.txt",
-      "real_output3": input1dir + "/output/output3.txt",
-      "output4": input1_dir + "/output/output4.txt",
-      "real_output4": input1dir + "/output/output4.txt",
-      "output5": input1_dir + "/output/output5.txt",
-      "real_output5": input1dir + "/output/output5.txt"
+      "output": output1,
+      "real_output": output1_path,
+      "output2": output2,
+      "real_output2": output2_path,
+      "output3": output3,
+      "real_output3": output3_path,
+      "output4": output4,
+      "real_output4": output4_path,
+      "output5": output5,
+      "real_output5": output5_path
     }
-    if input1_dir == "/":
-      params["output"] = "/output/output1.txt"
-      params["real_output"] = root_dir + "/output/output1.txt"
-      params["output2"] = "/output/output2.txt"
-      params["real_output2"] = root_dir + "/output/output2.txt"
-      params["output3"] = "/output/output3.txt"
-      params["real_output3"] = root_dir + "/output/output3.txt"
-      params["output4"] = "/output/output4.txt"
-      params["real_output4"] = root_dir + "/output/output4.txt"
-      params["output5"] = "/output/output5.txt"
-      params["real_output5"] = root_dir + "/output/output5.txt"
+
     job_id = self.add_job(**params)
-    commandstr = "python job_agent.py %d oap.py %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s" % (
-      job_id, job_cwd, real_path1, real_path2, input3, input4, input5, input6, input7, input8, input9,
-      output1_path, output2_path, output3_path, output4_path, output5_path)
+    commandstr = "python job_agent.py %d oap.py %s %s" % (
+      job_id, job_cwd, " ".join(xargs))
     log.info("command = %s", commandstr)
 
     command = commandstr.split(" ")
@@ -618,6 +582,12 @@ class CustomJobsAPIController(BaseAPIController):
     output3 = input1_dir + "/output/output3.txt"
     output4 = input1_dir + "/output/output4.txt"
     output5 = input1_dir + "/output/output5.txt"
+    if input1_dir == "/":
+      output1 = "/output/output1.txt"
+      output2 = "/output/output2.txt"
+      output3 = "/output/output3.txt"
+      output4 = "/output/output4.txt"
+      output5 = "/output/output5.txt"
 
     input1dir = os.path.dirname(real_path1)
     output1_path = input1dir + "/output/output1.txt"
@@ -745,6 +715,12 @@ class CustomJobsAPIController(BaseAPIController):
     output3 = input1_dir + "/output/output3.txt"
     output4 = input1_dir + "/output/output4.txt"
     output5 = input1_dir + "/output/output5.txt"
+    if input1_dir == "/":
+      output1 = "/output/output1.txt"
+      output2 = "/output/output2.txt"
+      output3 = "/output/output3.txt"
+      output4 = "/output/output4.txt"
+      output5 = "/output/output5.txt"
 
     input1dir = os.path.dirname(real_path1)
     output1_path = input1dir + "/output/output1.txt"
@@ -885,3 +861,8 @@ class CustomJobsAPIController(BaseAPIController):
     data["total"] = total
     data["items"] = items
     return data
+
+  def __on_check_arg(self, *args):
+    for arg in args:
+      if arg is None:
+        raise ActionInputError("Required arguments are missing in the payload")
