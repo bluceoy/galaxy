@@ -6,12 +6,11 @@ import copy
 
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument("-i",
-                    help="input directory or folder of your sequences",
-                    type=str, default='input',metavar='input')
-parser.add_argument("-f",
-                    help="file type or filename extension of your sequences.\n \
-                         To input genbank file, set \"-f .gbff\" or \"-f .gbff.gz\"",
-                    type=str, default='.fa',metavar='.fa, .fasta, .fna, .gbff, .gbff.gz')
+                    help="input file",
+                    type=str, default='input',metavar='input1')
+parser.add_argument("-o",
+                    help="output file",
+                    type=str, default='output.txt',metavar='output.txt')
 
 args = parser.parse_args()
 input1 = os.path.abspath(args.i)
@@ -24,6 +23,6 @@ except OSError:
     pass
 
 # Step1 sum up in each file
-cmd="/home/xianmao/argoap_20.05/galaxy/tools/sargfam/hmmer-3.1b1/bin/hmmscan --cut_ga --tblout "+output_dir+"/output.txt --cpu 1 /home/xianmao/argoap_20.05/galaxy/tools/sargfam/DB/Sargfam.hmm "+input1
+cmd="/home/xianmao/argoap_20.05/galaxy/tools/sargfam/hmmer-3.1b1/bin/hmmscan --cut_ga --tblout "+output_dir+"/final.txt --cpu 1 /home/xianmao/argoap_20.05/galaxy/tools/sargfam/DB/Sargfam.hmm "+input1
 print(cmd)
 os.system(cmd)

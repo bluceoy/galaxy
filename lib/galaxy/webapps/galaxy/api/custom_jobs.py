@@ -116,6 +116,9 @@ class CustomJobsAPIController(BaseAPIController):
 
     if tool_id == "__args_index__":
       return self.__on_args(trans, payload, **kwargs)
+    if tool_id == "__sargfam__":
+      return self.__on_sargfam(trans, payload, **kwargs)
+  
     #elif 
     return {"message": "ok"}
 
@@ -172,6 +175,64 @@ class CustomJobsAPIController(BaseAPIController):
     job_id = self.add_job(**params)
     commandstr = "python job_agent.py %d args.py %s -i %s -f %s" % (
       job_id, job_cwd, real_path, suffix)
+    log.info("command = %s", commandstr)
+
+    command = commandstr.split(" ")
+    subprocess.Popen(command, cwd=agent_cwd)
+
+    return {"message": "ok", "job_id": job_id}
+
+  def __on_sargfam(self, trans, payload, **kwargs):
+    missing_arguments = []
+    tool_id = payload.get("tool_id", None)
+    if not tool_id:
+      missing_arguments.append("tool_id")
+
+    tool_version = payload.get("tool_version", None)
+    if not tool_version:
+      missing_arguments.append("tool_version")
+    
+    input1 = payload.get("input1", None)
+    if not input1:
+      missing_arguments.append("input1")
+
+    if len(missing_arguments) > 0:
+      raise ActionInputError("The following required arguments are missing in the payload: {}".format(missing_arguments))
+
+    input_dir = os.path.dirname(input1)
+    log.info("input1 = %s, input_dir = %s", input1, input_dir)
+    root_dir = self.make_sure_root(trans)
+    real_path = root_dir + input1
+    log.info("real_path = %s", real_path)
+    if not os.path.isfile(real_path):
+      raise ActionInputError("input not exist")
+
+    inputdir = os.path.dirname(real_path)
+    output_path = inputdir + "/output/final.txt"
+
+    agent_cwd = trans.app.config.tool_path + "/custom"
+    job_cwd = trans.app.config.tool_path + "/sargfam"
+
+    user_id = 0
+    if trans.user:
+      user_id = trans.user.id
+    
+    params = {
+      "tool_id": tool_id,
+      "tool_name": "sargfam",
+      "tool_version": tool_version,
+      "galaxy_version": trans.app.config.version_major,
+      "cwd": job_cwd,
+      "params": "-i %s" % (input1),
+      "session_id": trans.galaxy_session.id,
+      "user_id": user_id,
+      "status": 1,
+      "output": input_dir + "/output/final.txt",
+      "real_output": inputdir + "/output/final.txt"
+    }
+    job_id = self.add_job(**params)
+    commandstr = "python job_agent.py %d sargfam.py %s -i %s -o %s" % (
+      job_id, job_cwd, real_path, output_path)
     log.info("command = %s", commandstr)
 
     command = commandstr.split(" ")
