@@ -32,7 +32,7 @@
                 </div>
                 <p>You can check the status of queued jobs and view the resulting data by refreshing the History panel. When the job has been run the status will change from 'running' to 'finished' if completed successfully or 'error' if problems were encountered.</p>
             </template>
-            <template v-else-if="mode === 3"><!-- 执行成功提示内容 -->
+            <template v-else-if="mode === 3"><!-- 执行失败提示内容 -->
             </template>
         </div>
 

@@ -8,12 +8,29 @@
 
         <p><a @click="showOnlineAnalysis = true" href="#">Online Analysis</a><a v-if="showOnlineAnalysis" @click="showOnlineAnalysis = false" href="#" style="margin-left:20px;">Collapse</a></p>
         <div v-show="showOnlineAnalysis" class="my-tool-wrap">
-            <!-- params -->
-            <ParamFile v-model="params.input1" title="Source Fasta File" tip=""></ParamFile>
-            <!-- operation -->
-            <b-button variant="primary" @click="onExecute">
-                <b-icon icon="check"></b-icon> Execute
-            </b-button>
+            <template v-if="mode === 1">
+                <!-- params -->
+                <ParamFile v-model="params.input1" title="Source Fasta File" tip=""></ParamFile>
+                <!-- operation -->
+                <b-button variant="primary" @click="onExecute">
+                    <b-icon icon="check"></b-icon> Execute
+                </b-button>
+            </template>
+            <template v-else-if="mode === 2"><!-- 执行成功提示内容 -->
+                <p>Executed Microbial source tracking and successfully added 1 job to the queue.</p>
+                <p>The tool uses this input:</p>
+                <div class="input-result">
+                    <p>a.gbk</p>
+                </div>
+                <p>It produces 2 outputs:</p>
+                <div class="output-result">
+                    <p>Standard deviation of source proportions after running 5 times</p>
+                    <p>Average of source proportions after running 5 times</p>
+                </div>
+                <p>You can check the status of queued jobs and view the resulting data by refreshing the History panel. When the job has been run the status will change from 'running' to 'finished' if completed successfully or 'error' if problems were encountered.</p>
+            </template>
+            <template v-else-if="mode === 3"><!-- 执行失败提示内容 -->
+            </template>
         </div>
 
         <p><a href="#" @click="showHowToUse = true">How to use</a><a v-if="showHowToUse" @click="showHowToUse = false" href="#" style="margin-left:20px;">Collapse</a></p>
@@ -51,6 +68,7 @@ export default {
   	},
     data() {
         return {
+            mode: 1, // 1表单，2成功提示，3失败提示
             showOnlineAnalysis: false,
             showHowToUse: false,
             showUnderTheHood: false,
@@ -67,7 +85,9 @@ export default {
     },
     methods: {
         onExecute() {
-            this.$emit('exec', this.tool, this.params);
+            this.$emit('exec', this.tool, this.params, (res) => {
+                this.mode = 2
+            });
         }
     }
 }
