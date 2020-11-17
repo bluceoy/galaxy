@@ -22,6 +22,8 @@
             </template>
 
             <template v-slot:cell(action)="data">
+                <a href="#" @click="onDownload(data.item.path)">Download</a>
+                |
                 <a href="#" @click="onRemove(data.item.path)">Remove</a>
             </template>
         </b-table>
@@ -226,6 +228,22 @@ export default {
                 .then((response) => {
                     console.log(response)
                     this.getCurrentList()
+                })
+                .catch((error) => {
+                    const message = error.response.data && error.response.data.err_msg;
+                    this.errorMessage = message;
+                });
+        },
+        onDownload(path) {
+            const Galaxy = getGalaxyInstance();
+            axios
+                .post(`${Galaxy.root}api/file/download`, { path: path }, { responseType: 'blob' })
+                .then((response) => {
+                    let s = path.split('/')
+                    const link = document.createElement('a')
+                    link.href = window.URL.createObjectURL(response.data)
+                    link.download = s[s.length - 1]
+                    link.click()
                 })
                 .catch((error) => {
                     const message = error.response.data && error.response.data.err_msg;

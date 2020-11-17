@@ -15,11 +15,6 @@
             </template>
             <template v-slot:cell(action)="data">
                 <a href="#" @click="onView(data.item.job_id)">View</a>
-                <!-- <a @click="onView(data.item.job_id)">View</a>
-                |
-                <a>Rerun</a>
-                |
-                <a @click="onDownload(data.item.output)">Download</a> -->
             </template>
         </b-table>
 
@@ -142,12 +137,20 @@ export default {
                     this.errorMessage = message;
                 });
         },
-        onDownload(path) {
+        onDownload(path, save = true) {
             const Galaxy = getGalaxyInstance();
             axios
                 .post(`${Galaxy.root}api/file/download`, { path: path }, { responseType: 'blob' })
                 .then((response) => {
                     let _that = this
+                    if (save) {
+                        let s = path.split('/')
+                        const link = document.createElement('a')
+                        link.href = window.URL.createObjectURL(response.data)
+                        link.download = s[s.length - 1]
+                        link.click()
+                        return
+                    }
                     if (this.vData.type === 1) {
                         let reader = new FileReader()
                         reader.onload = function(event) {
