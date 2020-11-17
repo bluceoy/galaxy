@@ -3,6 +3,7 @@
         <h2>
             Availible Tools
             <span style="float:right;">
+            <a @click="onShowFile" style="font-size:1rem;color: #2196F3;cursor: pointer;"># Upload</a>
             <a @click="onShowResult" style="font-size:1rem;color: #2196F3;cursor: pointer;"># Result</a>
             </span>
         </h2>
@@ -85,8 +86,10 @@ export default {
             $('.collapsible > li').eq(idx).find('.collapsible-body').toggle(500, 'swing');
         },
         onShowResult() {
-            console.log('xxx')
             this.$emit('result', 'result')
+        },
+        onShowFile() {
+            this.$emit('result', 'file')
         },
         onExec(tool, params) {
             const galaxy = getGalaxyInstance();

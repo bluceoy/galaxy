@@ -57,7 +57,7 @@ export default {
             showHowToCite: false,
             showContacts: false,
             tool: {
-                id: '__args_index__',
+                id: '__sargfam__',
                 version: '1.0.0'
             },
             params: {

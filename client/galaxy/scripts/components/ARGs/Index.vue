@@ -110,7 +110,6 @@ export default {
             this.modalMod = val
         },
         onChangeTab(val) {
-            console.log('xxxx')
             this.tab = val
             this.onChange(this.tab)
         },

@@ -1,7 +1,7 @@
 <template>
     <div class="nav-wrap">
         <div class="item" :class="{ active: active === 'home' }"><a href="#" @click="click('home')">Home</a></div>
-        <div v-if="isLogin" class="item" :class="{ active: active === 'tool' }"><a href="#" @click="click('tool')">Tools</a></div>
+        <div class="item" :class="{ active: active === 'tool' }"><a href="#" @click="click('tool')">Tools</a></div>
         <div class="item" :class="{ active: active === 'file' }"><a href="#" @click="click('file')">Files</a></div>
         <div class="item" :class="{ active: active === 'result' }"><a href="#" @click="click('result')">Results</a></div>
     </div>
