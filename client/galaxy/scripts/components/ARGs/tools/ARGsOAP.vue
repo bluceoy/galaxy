@@ -41,7 +41,7 @@
                     <b-icon icon="check"></b-icon> Execute
                 </b-button>
             </div>
-            <SuccessTip v-else-if="mode === 2" :name="tool.id" :input="params.input1" :output="[
+            <SuccessTip v-else-if="mode === 2" :name="tool.id" :input="[params.input1]" :output="[
                 'PcoA figure of samples for ARGs abundane matrix normalization against 16S reads number',
                 'PcoA figure of samples for ARGs abundance matrix normalization aganist cell number',
                 'Subtype, type, and sequence level abundance matrix, normalized against 16S copy numbers',

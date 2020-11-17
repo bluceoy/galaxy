@@ -14,7 +14,7 @@
                 <!-- operation -->
                 <b-button variant="primary" @click="onExecute"><b-icon icon="check"></b-icon> Execute</b-button>
             </div>
-            <SuccessTip v-else-if="mode === 2" :name="tool.id" :input="params.input1" :output="['HMMSCAN-SARGFAM']"></SuccessTip>
+            <SuccessTip v-else-if="mode === 2" :name="tool.id" :input="[params.input1]" :output="['HMMSCAN-SARGFAM']"></SuccessTip>
             <FailTip v-else-if="mode === 3" :name="tool.id" :msg="'some thing wrong'"></FailTip>
         </div>
 

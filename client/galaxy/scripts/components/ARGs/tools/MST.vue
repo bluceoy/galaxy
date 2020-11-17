@@ -19,7 +19,7 @@
                     <b-icon icon="check"></b-icon> Execute
                 </b-button>
             </div>
-            <SuccessTip v-else-if="mode === 2" :name="tool.id" :input="params.input1" :output="['Standard deviation of source proportions after running 5 times', 'Average of source proportions after running 5 times']"></SuccessTip>
+            <SuccessTip v-else-if="mode === 2" :name="tool.id" :input="[params.input1]" :output="['Standard deviation of source proportions after running 5 times', 'Average of source proportions after running 5 times']"></SuccessTip>
             <FailTip v-else-if="mode === 3" :name="tool.id" :msg="'some thing wrong'"></FailTip>
         </div>
 

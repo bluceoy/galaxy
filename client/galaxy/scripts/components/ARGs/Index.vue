@@ -205,6 +205,7 @@ body, html {
     top: 0;
     left: 0;
     background: url(/static/args/landing.png);
+    z-index: 999;
 }
 .mini-header .login-info {
     position: absolute;

@@ -99,7 +99,10 @@ export default {
                 .post(url, d)
                 .then((response) => {
                     func(response)
-                });
+                })
+                .catch((err) => {
+                    alert(err)
+                })
         }
     }
 }
