@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 email_2=`echo ${3}| sed 's/@/at/g'`
 locltime=`date| sed 's/ /_/g'|sed 's/:/_/g' `
 
