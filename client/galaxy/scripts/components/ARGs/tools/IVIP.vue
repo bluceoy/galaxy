@@ -39,7 +39,7 @@ export default {
         return {
             showOnlineAnalysis: false,
             tool: {
-                id: '__args_index__',
+                id: '__ivip__',
                 version: '1.0.0'
             },
             params: {
