@@ -32,11 +32,11 @@ class CustomJobsAPIController(BaseAPIController):
 
   def initialize(self):
     #self.host = '192.168.0.184'
-    self.host = '47.106.136.96'
+    self.host = 'localhost'
     self.port = 5432
-    self.user = 'postgres'
+    self.user = 'galaxy'
     self.password = '123456'
-    self.db = 'postgres'
+    self.db = 'galaxydb'
 
   def add_job(self, **kwargs):
     if not "output2" in kwargs:
