@@ -12,12 +12,11 @@ log = logging.getLogger(__name__)
 
 class JobAgent(object):
   def __init__(self, job_id, tool_id, cwd):
-    self.host = '192.168.0.184'
-    self.host = '47.106.136.96'
+    self.host = 'localhost'
     self.port = 5432
-    self.user = 'postgres'
+    self.user = 'galaxy'
     self.password = '123456'
-    self.db = 'postgres'
+    self.db = 'galaxydb'
     self.job_id = job_id
     self.tool_id = tool_id
     self.cwd = cwd
