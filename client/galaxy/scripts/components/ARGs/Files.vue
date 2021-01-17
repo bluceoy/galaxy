@@ -118,6 +118,7 @@ export default {
         });
 
         this.getCurrentPos()
+        this.options.target = Galaxy.root + 'api/upload_v2'
     },
     methods: {
         formatDate(ts) {
