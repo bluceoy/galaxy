@@ -1,7 +1,7 @@
 <template>
     <div id="index-wrap">
         <div v-if="!miniHeader" class="header">
-            <h1>Welcome to ARGs-OAP Galaxy!</h1>
+            <h1>Welcome to ARGs-OAP Galaxy</h1>
             <div class="login-info">
                 <a v-if="!loginStatus" href="#" @click="onModalShow(1)">Login</a>
                 <a v-if="!loginStatus" href="#" @click="onModalShow(2)">Register</a>
@@ -42,7 +42,10 @@
             <div v-else-if="tab === 'result'" class="main-wrap main-wrap-right">
                 <Results @result="onChangeTab"/>
             </div>
-            <div v-show="rightShow" class="twitter-wrap"><a class="twitter-timeline" data-height="680" href="https://twitter.com/yinxiaole?ref_src=twsrc%5Etfw">Tweets by yinxiaole</a></div>
+            <div v-show="rightShow" class="twitter-wrap">
+                <Notice></Notice>
+                <a class="twitter-timeline" data-height="680" href="https://twitter.com/yinxiaole?ref_src=twsrc%5Etfw">Tweets by yinxiaole</a>
+            </div>
         </div>
         <b-modal v-model="modalShow" static no-enforce-focus hide-footer>
             <template v-slot:modal-header>
@@ -59,6 +62,7 @@
 import axios from "axios";
 import Nav from './Nav'
 import AboutInfo from './AboutInfo'
+import Notice from './Notice'
 import Tools from './Tools'
 import Files from './Files'
 import Results from './Results'
@@ -75,6 +79,7 @@ export default {
     components: {
         Nav,
         AboutInfo,
+        Notice,
         Tools,
         Files,
         Results,
