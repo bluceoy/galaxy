@@ -25,9 +25,15 @@
                         </ul>
                     </div>
                     <div class="link">
-                        <a class="btn"></a>
-                        <a class="btn"></a>
-                        <a class="btn"></a>
+                        <a href="https://twitter.com/zhangt1968" target="_blank" class="btn twitter">
+                          <font-awesome-icon :icon="['fab', 'twitter']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
+                        <a href="mailto:zhangt@hku.hk" class="btn email">
+                          <font-awesome-icon :icon="['fas', 'envelope']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Tong_Zhang_15" target="_blank" class="btn researchgate">
+                          <font-awesome-icon :icon="['fab', 'researchgate']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
                     </div>
                 </div>
                 <div class="item">
@@ -49,11 +55,21 @@
                         </ul>
                     </div>
                     <div class="link">
-                        <a class="btn"></a>
-                        <a class="btn"></a>
-                        <a class="btn"></a>
-                        <a class="btn"></a>
-                        <a class="btn"></a>
+                        <a href="https://youtu.be/4RQBEILzm-4" target="_blank" class="btn youtu">
+                          <font-awesome-icon :icon="['fab', 'youtube']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
+                        <a href="https://github.com/caozhichongchong" class="btn github">
+                          <font-awesome-icon :icon="['fab', 'github']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
+                        <a href="https://twitter.com/annizhanghku" target="_blank" class="btn twitter">
+                          <font-awesome-icon :icon="['fab', 'twitter']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
+                        <a href="mailto:caozhichongchong@gmail.com" class="btn email">
+                          <font-awesome-icon :icon="['fas', 'envelope']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/An_Ni_Zhang" target="_blank" class="btn researchgate">
+                          <font-awesome-icon :icon="['fab', 'researchgate']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
                     </div>
                 </div>
                 <div class="item">
@@ -67,15 +83,43 @@
                         <p class="desc">University of Hong Kong</p>
                     </div>
                     <div class="link">
-                        <a class="btn"></a>
-                        <a class="btn"></a>
-                        <a class="btn"></a>
+                        <a href="mailto:bhou@hku.hk" class="btn email">
+                          <font-awesome-icon :icon="['fas', 'envelope']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
+                        <a href="https://www.linkedin.com/in/bryan-hou-212407a5" class="btn linkedin">
+                          <font-awesome-icon :icon="['fab', 'linkedin-in']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
+                        <a href="https://github.com/bryanhou1" class="btn github">
+                          <font-awesome-icon :icon="['fab', 'github']" :style="{ color: 'white' }" size="lg"/>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faResearchgate } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+library.add(faEnvelope);
+library.add(faTwitter);
+library.add(faResearchgate);
+library.add(faLinkedinIn);
+library.add(faGithub);
+library.add(faYoutube);
+export default {
+    components: {
+        FontAwesomeIcon
+    }
+}
+</script>
 
 <style scoped>
 * {
@@ -144,5 +188,26 @@ h1 {
   width: 35px;
   height: 35px;
   margin: 0 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-wrap .item .link .twitter {
+  background: #35a2f4;
+}
+.flex-wrap .item .link .email {
+  background: #1678c2;
+}
+.flex-wrap .item .link .researchgate {
+  background: #009c95;
+}
+.flex-wrap .item .link .youtu {
+  background: #e60000;
+}
+.flex-wrap .item .link .github {
+  background: #838383;
+}
+.flex-wrap .item .link .linkedin {
+  background: #147baf;
 }
 </style>
